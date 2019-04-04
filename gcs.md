@@ -1,3 +1,8 @@
+|Versão|Autor|Descrição|
+|------|-----|---------|
+|1.0|Rossicler Júnior|Estrutura inicial|
+|1.1|Rossicler Júnior|Adaptação das ferramentas|
+
 # Plano de Gerenciamento
 
 ---
@@ -8,11 +13,9 @@
 
 [2. Ferramentas](#2-ferramentas)
 
-[4. Diagrama de Integração entre Ferramentas](#3-diagrama-de-integração-entre-ferramentas)
+[3. Políticas](#3-políticas)
 
-[5. Políticas](#3-políticas)
-
-[6. Uso de Issues](#3-uso-de-issues) 
+[4. Uso de Issues](#4-uso-de-issues) 
 
 ---
 
