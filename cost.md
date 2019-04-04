@@ -11,8 +11,8 @@ Como o projeto vai utilizar iterações com duração de uma semana, a duração
 ## Custo de pessoal
 
 <iframe
-    width=700
-    height=230
+    width="700"
+    height="230"
     src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4aZcHRwU6DiCm-Gv1BGUU3yzwVlWaVoSV9n3xF744hYRnD875lFSXugHIWM6XDNBlRbbGDcICDw16/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false">
 </iframe>
 
@@ -25,8 +25,8 @@ Os salários foram definidos com base em pesquisa de salário mensal médio de c
 ## Equipamento de Desenvolvimento
 
 <iframe
-    width=1000
-    height=230
+    width="1000"
+    height="230"
     src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4aZcHRwU6DiCm-Gv1BGUU3yzwVlWaVoSV9n3xF744hYRnD875lFSXugHIWM6XDNBlRbbGDcICDw16/pubhtml?gid=1310096979&amp;single=true&amp;widget=true&amp;headers=false">
 </iframe>
 
@@ -41,8 +41,8 @@ Além disso, é aplicada também uma taxa sobre o valor investido com base na CD
 ## Custo de Reunião
 
 <iframe
-    width=400
-    height=320
+    width="400"
+    height="320"
     src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4aZcHRwU6DiCm-Gv1BGUU3yzwVlWaVoSV9n3xF744hYRnD875lFSXugHIWM6XDNBlRbbGDcICDw16/pubhtml?gid=660778229&amp;single=true&amp;widget=true&amp;headers=false">
 </iframe>
 
@@ -56,8 +56,8 @@ O time precisa se reunir periodicamente para cumprimento da metodologia proposta
 ## Custo Total
 
 <iframe 
-    width=400
-    height=300
+    width="400"
+    height="300"
     src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4aZcHRwU6DiCm-Gv1BGUU3yzwVlWaVoSV9n3xF744hYRnD875lFSXugHIWM6XDNBlRbbGDcICDw16/pubhtml?gid=1839291929&amp;single=true&amp;widget=true&amp;headers=false">
 </iframe>
 
