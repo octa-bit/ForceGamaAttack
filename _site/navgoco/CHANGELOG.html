@@ -16,15 +16,15 @@
 	<link rel="stylesheet" href="/navgoco/src/jquery.navgoco.css" type="text/css" media="screen" />
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Force Gama Attack (F.G.A.) | ForceGamaAttack</title>
+<title>Changelog | ForceGamaAttack</title>
 <meta name="generator" content="Jekyll v3.7.4" />
-<meta property="og:title" content="Force Gama Attack (F.G.A.)" />
+<meta property="og:title" content="Changelog" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
+<link rel="canonical" href="http://localhost:4000/navgoco/CHANGELOG.html" />
+<meta property="og:url" content="http://localhost:4000/navgoco/CHANGELOG.html" />
 <meta property="og:site_name" content="ForceGamaAttack" />
 <script type="application/ld+json">
-{"headline":"Force Gama Attack (F.G.A.)","@type":"WebSite","url":"http://localhost:4000/","name":"ForceGamaAttack","@context":"http://schema.org"}</script>
+{"headline":"Changelog","@type":"WebPage","url":"http://localhost:4000/navgoco/CHANGELOG.html","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -110,83 +110,86 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1 id="force-gama-attack-fga">Force Gama Attack (F.G.A.)</h1>
+        <h2 id="changelog">Changelog</h2>
 
-<h2 id="sobre-a-fga">Sobre a F.G.A.</h2>
+<p><strong>v0.2.1</strong> (April 11, 2014)</p>
+<ul>
+  <li>Fixed issue #13</li>
+  <li>Fixed issue #12</li>
+  <li>Updated documentation and demo</li>
+</ul>
 
-<p>Este projeto foi concebido no contexto da disciplina de Arquitetura e Desenho de Software da Faculdade do Gama (FGA), Universidade de Brasília. O jogo tem como proposta exercitar e aplicar conhecimentos relativos ao assuntos de projeto de Software, como padrões de projeto.</p>
+<p><strong>v0.2.0</strong> (March 9, 2014)</p>
+<ul>
+  <li>Added ability to have parent links with proper links</li>
+  <li>Parent links with <code class="highlighter-rouge">href</code> equal to <code class="highlighter-rouge">''</code> or <code class="highlighter-rouge">#</code> toggle submenus as they used to.</li>
+  <li>To toggle parent links with normal <code class="highlighter-rouge">href</code> you now have to click the caret/arrow</li>
+  <li>Added option <code class="highlighter-rouge">caretHtml</code> to insert custom html in the caret markup.</li>
+  <li><code class="highlighter-rouge">caret</code> option was removed to since it’s not optional anymore. Default caret markup: <code class="highlighter-rouge">&lt;span&gt;&lt;/span&gt;</code></li>
+  <li>Updated demo css to opt for css content attribute instead of borders to create the arrow effects.</li>
+  <li>Updated documentation.</li>
+</ul>
 
-<p>Como o jogo está sendo construído por estudantes de Engenharia de Software, ele contém vários Easter Eggs a respeito da realidade do curso.</p>
+<p><strong>v0.1.5</strong> (September 7, 2013)</p>
+<ul>
+  <li>Added callback methods: onClickBefore, onClickAfter, onToggleBefore, onToggleAfter</li>
+  <li>Updated readme &amp; demo.</li>
+</ul>
 
-<h2 id="sobre-a-escolha-do-tema">Sobre a Escolha do Tema</h2>
+<p><strong>v0.1.4</strong> (September 1, 2013)</p>
+<ul>
+  <li>Improve accordion mode to close sub-menus when clicking menu links without children.</li>
+  <li>Updated readme to correct a false statement.</li>
+  <li>Updated qunit tests, fixtures &amp; demo.</li>
+</ul>
 
-<p>Na tentativa de explorar conceitos que extrapolam os casos comuns de software e também de realizar um trabalho um pouco mais descontraído, foi escolhido um jogo como tema de projeto para a disciplina descrita acima.</p>
+<p><strong>v0.1.3</strong> (July 11, 2013)</p>
 
-<p>Após estudar as tecnologias onde são aplicáveis padrões de projetos (GoFs) e as alternativas de gêneros de jogos, o time optou por contruir um Space Shooter em Java. A escolha de não utilizar uma Game Engine própria para este tipo de aplicação foi proposital, para que o time tenha a experiência de implementar os detalhes de um jogo, como o Game Loop e um renderizador eficiente.</p>
+<ul>
+  <li>Small changes to improve performance and usability</li>
+  <li>Updated default settings to be accessible <code class="highlighter-rouge">$.fn.navgoco.defaults.save = false;</code></li>
+  <li>Updated documentation and demo</li>
+  <li>Updated tests</li>
+</ul>
 
-<h2 id="time">Time</h2>
+<p><strong>v0.1.2</strong> (July 9, 2013)</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Matrícula</th>
-      <th>GitHub</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Eduardo Lima</td>
-      <td>16/0049458</td>
-      <td>@Eduardolimr</td>
-    </tr>
-    <tr>
-      <td>Filipe Toyoshima</td>
-      <td>16/0049971</td>
-      <td>@filipetoyoshima</td>
-    </tr>
-    <tr>
-      <td>Gabiel Viana</td>
-      <td>16/0120942</td>
-      <td>@GabrielDViana</td>
-    </tr>
-    <tr>
-      <td>Isaac Borges</td>
-      <td>11/0121996</td>
-      <td>@isaacborges</td>
-    </tr>
-    <tr>
-      <td>João Lucas</td>
-      <td>16/0009758</td>
-      <td>@jlucassr</td>
-    </tr>
-    <tr>
-      <td>João Vítor</td>
-      <td>16/0010195</td>
-      <td>@joaovitorml</td>
-    </tr>
-    <tr>
-      <td>Lucas Hiroshi</td>
-      <td>16/0034591</td>
-      <td>@hiroshi18</td>
-    </tr>
-    <tr>
-      <td>Lucas Vítor</td>
-      <td>16/0052432</td>
-      <td>@Lucas362</td>
-    </tr>
-    <tr>
-      <td>Luciano Santos</td>
-      <td>16/0013321</td>
-      <td>@lucianosz7</td>
-    </tr>
-    <tr>
-      <td>Rossicler Rodrigues</td>
-      <td>16/0154197</td>
-      <td>@rossicler</td>
-    </tr>
-  </tbody>
-</table>
+<ul>
+  <li>Updated toggle procedure to open parent sub-menus</li>
+  <li>Added code documentation</li>
+  <li>Added qunit tests</li>
+</ul>
+
+<hr />
+
+<p><strong>v0.1.1</strong> (July 8, 2013)</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Replaced public methods expand</td>
+          <td>collapse with new <strong>toggle</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Replaced <code class="highlighter-rouge">.data()</code> uses with <code class="highlighter-rouge">.attr('data-xxxx)</code></li>
+  <li>Added method destroy to clear instances and unbind events</li>
+  <li>Added comments header to minified version</li>
+  <li>Added banner image to project</li>
+  <li>Code cleanup</li>
+  <li>Updated demo</li>
+</ul>
+
+<hr />
+
+<p><strong>v0.1.0</strong> (July 5, 2013)</p>
+
+<ul>
+  <li>First Release</li>
+</ul>
 
       </section>
     </div>

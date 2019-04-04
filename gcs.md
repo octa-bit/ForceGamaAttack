@@ -110,4 +110,6 @@ As issues serão utilizadas por questões de rastreabilidade, ou seja, para se t
 
 ## 5. Bibliografia
 
-> | [GCS da equipe do Receita Mais](https://github.com/fga-eps-mds/2017.2-Receita-Mais/wiki/Plano-de-Gerenciamento-e-Configura%C3%A7%C3%A3o-de-Software)
+> | [GCS da equipe Aix](https://github.com/fga-eps-mds/2019.1-Aix/blob/gh-pages/_posts/2019-03-29-gcs.md)
+> | [JPlay](http://www2.ic.uff.br/jplay/index.html)
+> | [Eclipse](https://pt.wikipedia.org/wiki/Eclipse_(software))
