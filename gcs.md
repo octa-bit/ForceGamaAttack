@@ -3,7 +3,7 @@
 |1.0|Rossicler Júnior|Estrutura inicial|
 |1.1|Rossicler Júnior|Adaptação das ferramentas|
 
-# Plano de Gerenciamento
+# Plano de Gerenciamento de Configuração
 
 ---
 
