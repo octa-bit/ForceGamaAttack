@@ -2,7 +2,7 @@
 |------|-----|---------|
 |1.0|Lucas Vitor|Estrutura inicial|
 |1.1|Isaac e Lucas Vitor|Gerenciamento de tempo|
-|1.2|Lucas Vitor|Introdução, Modelo do ocronograma de tempo, Medição do desempenho, Cronograma e referências|
+|1.2|Lucas Vitor|Introdução, Modelo do cronograma de tempo, Medição do desempenho, Cronograma e referências|
 
 # Plano de Gerenciamento de Tempo
 
@@ -45,29 +45,21 @@ projeto, baseado nos entregáveis do iterações. Com base nele foi gerado o cro
 
 ## 4. Medição do desempenho
 
-<p align="justify">Segundo o PMBOK, gerenciamento do valor agregado (GVA) é uma metodologia que combina escopo, cronograma, e medições de recursos para avaliar o desempenho e progresso do projeto. Esse método será utilizado para este propósito. O gerenciamento do valor agregado tem como linha de base a variação de prazos (VPR) e índice de desempenho de prazo (IDP).
+<p align="justify">Segundo o PMBOK, gerenciamento do valor agregado (GVA) é uma metodologia que combina escopo, cronograma, e medições de recursos para avaliar o desempenho e progresso do projeto. Esse método será utilizado para este propósito. O gerenciamento do valor agregado tem como linha de base a variação de prazos (VPR) e índice de desempenho de prazo (IDP).</p>
 
+<p align="justify">A variação de prazos (VPR) é uma medida de desempenho do cronograma que é expresso pela diferença entre o valor agregado (VA) e o valor planejado (VP), portanto, a variação de prazos será igualado a zero quando o projeto terminar.</p>
 
-A variação de prazos (VPR) é uma medida de desempenho do cronograma que é expresso pela diferença entre o valor agregado (VA) e o valor planejado (VP), portanto, a variação de prazos será igualado a zero quando o projeto terminar.
+<p align="justify">VPR = VA - VP</p>
 
+<p align="justify">O índice de desempenho de prazo (IDP) é uma medida de eficiência do cronograma, que pode ser expresso pela razão entre o valor agregado (VA) e o valor planejado (VP).</p>
 
-VPR = VA - VP
+<p align="justify">IDP = VA / VP</p>
 
+<p align="justify">IDP > 1, indica que mais trabalho foi executado que o planejado</p>
 
-O índice de desempenho de prazo (IDP) é uma medida de eficiência do cronograma, que pode ser expresso pela razão entre o valor agregado (VA) e o valor planejado (VP).
+<p align="justify">IDP = 1, indica que o trabalho executado foi igual ao planejado</p>
 
-
-IDP = VA / VP
-
-
-IDP > 1, indica que mais trabalho foi executado que o planejado
-
-
-IDP = 1, indica que o trabalho executado foi igual ao planejado
-
-
-IDP < 1, indica que foi executado menos trabalho que o planejado
-</p>
+<p align="justify">IDP < 1, indica que foi executado menos trabalho que o planejado</p>
 
 ## 5. Cronograma
 
