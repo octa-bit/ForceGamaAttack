@@ -4,7 +4,7 @@
 |1.1|Isaac e Lucas Vitor|Gerenciamento de tempo|
 |1.2|Lucas Vitor|Introdução, Modelo do ocronograma de tempo, Medição do desempenho, Cronograma e referências|
 
-# Plano de Gerenciamento
+# Plano de Gerenciamento de Tempo
 
 ---
 
