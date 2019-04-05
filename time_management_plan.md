@@ -47,17 +47,24 @@ projeto, baseado nos entregáveis do iterações. Com base nele foi gerado o cro
 
 <p align="justify">Segundo o PMBOK, gerenciamento do valor agregado (GVA) é uma metodologia que combina escopo, cronograma, e medições de recursos para avaliar o desempenho e progresso do projeto. Esse método será utilizado para este propósito. O gerenciamento do valor agregado tem como linha de base a variação de prazos (VPR) e índice de desempenho de prazo (IDP).
 
+
 A variação de prazos (VPR) é uma medida de desempenho do cronograma que é expresso pela diferença entre o valor agregado (VA) e o valor planejado (VP), portanto, a variação de prazos será igualado a zero quando o projeto terminar.
+
 
 VPR = VA - VP
 
+
 O índice de desempenho de prazo (IDP) é uma medida de eficiência do cronograma, que pode ser expresso pela razão entre o valor agregado (VA) e o valor planejado (VP).
+
 
 IDP = VA / VP
 
+
 IDP > 1, indica que mais trabalho foi executado que o planejado
 
+
 IDP = 1, indica que o trabalho executado foi igual ao planejado
+
 
 IDP < 1, indica que foi executado menos trabalho que o planejado
 </p>
@@ -65,10 +72,10 @@ IDP < 1, indica que foi executado menos trabalho que o planejado
 ## 5. Cronograma
 
 O cronograma do projeto pode ser encontrado no seguinte 
-[link](https://drive.google.com/file/d/10r83KFYUpkRFKHHs7ZCE4pOhKQCR1y-c/view).
+[link](https://docs.google.com/spreadsheets/d/11JmD_9_P_ua6s2bwCrkOd1pm2SVvM9uLDEIWXEK9IH4/edit?usp=sharing).
 
 ## 6. Referências
 
-> [Plano de Gerenciamento de Tempo](https://github.com/fga-eps-mds/2017.2-Receita-Mais/wiki/Plano-de-Gerenciamento-de-Tempo)
+> [Plano de Gerenciamento de Tempo do Receita Mais](https://github.com/fga-eps-mds/2017.2-Receita-Mais/wiki/Plano-de-Gerenciamento-de-Tempo)
 
 > PMI. Um guia do conhecimento em gerenciamento de projetos. Guia PMBOK 5a. ed. - EUA: Project Management Institute, 2013.
