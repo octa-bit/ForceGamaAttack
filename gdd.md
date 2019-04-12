@@ -80,13 +80,15 @@ A nave é customizável ela é dividida em módulos independentes sendo eles:
 #### Armas
 Neste módulo o jogador pode escolher quais serão as armas de sua nave.
 
-* Caracteristicas comum às armas
+* Características comum às armas
      - Dano
      - Frequência de disparos
      - Velocidade do projétil
      
 * Java
+<br>
 <img src="https://i.imgur.com/LSVs8F2.png" height="50" />
+<br>
      - Dano: Alto
      - Frequência de disparos: Devagar
      - Velocidade do projétil: Média
@@ -94,7 +96,9 @@ Neste módulo o jogador pode escolher quais serão as armas de sua nave.
 Dispara 3 projéteis a cada disparo.
 
 * C
+<br>
 <img src="https://i.imgur.com/w7HbA1Y.png" height="50" />
+<br>
      - Dano: Baixo
      - Frequência de disparos: Alta
      - Velocidade do projétil: Alta
@@ -102,7 +106,9 @@ Dispara 3 projéteis a cada disparo.
 Dispara 1 projétil a cada disparo.
 
 * Python
+<br>
 <img src="https://i.imgur.com/YCYdtem.png" height="50" />
+<br>
      - Dano: Médio
      - Frequência de disparos: Média
      - Velocidade do projétil: Média
@@ -110,62 +116,80 @@ Dispara 1 projétil a cada disparo.
 Ele dispara um laser.
 
 ##### Especial
-Além das armas também é possivel escolher um __framework__ para ser seu especial.
+Além das armas também é possível escolher um __framework__ para ser seu especial.
 
 * Django
+<br>
 <img src="https://i.imgur.com/5yLNquV.png" height="50" />
+<br>
 Ao ser ativado este especial um pegasus que auxilia a nave do jogador por um tempo definido.
 
 * C++
+<br>
 <img src="https://i.imgur.com/C2l0noc.png" height="50" />
+<br>
 A frequência dos seus disparos aumenta assim como o seu dano por um tempo definido.
 
 * Vaadin
+<br>
 <img src="https://i.imgur.com/pj4xhdM.png" height="50" />
+<br>
 Ao ser utilizado este especial dispara pontos azuis e rosa por um tempo definido.
 
 #### Estrutura e Propulsor
-* Caracteristicas comum
+* Características comum
      - Velocidade
      - Resistência
      - Tamanho
 
 * Java
+<br>
 <img src="https://i.imgur.com/LSVs8F2.png" height="50" />
+<br>
      - Velocidade: Lenta
      - Resistência: Alta
      - Tamanho: Grande
      
 * C
+<br>
 <img src="https://i.imgur.com/w7HbA1Y.png" height="50" />
+<br>
      - Velocidade: Alta
      - Resistência: Pequena (qualquer coisa quebra)
      - Tamanho: Pequeno
      
 * Python
+<br>
 <img src="https://i.imgur.com/YCYdtem.png" height="50" />
+<br>
      - Velocidade: Média
      - Resistência: Média
      - Tamanho: Médio
      
 
 #### Escudos
-* Caracteristicas comum
+* Características comum
      - Resistência
      - Tipo de Recarga
 
 * Java
+<br>
 <img src="https://i.imgur.com/LSVs8F2.png" height="50" />
+<br>
      - Resistência: Alta
      - Tipo de Recarga: Tempo
      
 * C
+<br>
 <img src="https://i.imgur.com/w7HbA1Y.png" height="50" />
+<br>
      - Resistência: Baixa
      - Tipo de Recarga: Instantânea
      
 * Python
+<br>
 <img src="https://i.imgur.com/YCYdtem.png" height="50" />
+<br>
      - Resistência: Média
      - Tipo de Recarga: Tempo
 
@@ -223,7 +247,7 @@ O jogo é dividio em 3 estágios e cada estágio é divido em 2 fases.
 ### Inimigos
 Os inimigos são bugs eles se diferenciam pela cor e pelo seu compartamento.
 
-* Caracteristicas comum
+* Características comum
      - Velocidade
      - Resistência
      - Tamanho
