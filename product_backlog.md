@@ -1,3 +1,7 @@
+| Versão | Autor | Descrição |
+| :----: | :---: | :-------: |
+| 1.0    | João Vítor, Eduardo e Gabriel Viana | Versão inicial do documento |
+
 # Product Backlog
 ## Legenda de prioridades atuais 
 
