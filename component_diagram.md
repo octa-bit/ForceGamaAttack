@@ -1,6 +1,7 @@
 |Versão|Autor|Descrição|
 |------|-----|---------|
-|1.0|Rossicler e Lucas|Diagrama versão 1 e 2|
+|1.0|Rossicler e Lucas|Diagrama versão 1|
+|1.1|Rossicler e Lucas|Diagrama versão 2|
 
 # Diagrama de Componentes
 
