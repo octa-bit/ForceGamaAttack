@@ -35,3 +35,5 @@
 |      RF018    |       Controles de power-ups |         O jogador deve poder ativar os power-ups ativáveis quando eles estiverem disponíveis                        |         GDD               |                      |
 |      RF019    |       Controles da arma      |         O jogador deve poder atirar nos inimigos com sua arma durante a fase                                        |         GDD               |                      |
 |      RF020    |       Recompensa             |         Ao final do jogo, a pontuação do jogador deve ser convertida em moedas que podem ser usadas na loja         |         GDD               |                      |
+
+[Link do Drive](https://docs.google.com/spreadsheets/d/1v5esvacIuUPV8ZKtp0cpYaXCHVMb6mBJF853bKzrZJY/edit?usp=sharing)
