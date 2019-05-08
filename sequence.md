@@ -10,7 +10,7 @@ Os ciclos de vida podem ser Classes, atores ou até mesmo abstrações que ocorr
 
 ## O Game Loop
 
-![gameloop](gameLoop.png)
+![gameloop](assets/images/gameLoop.png)
 
 Este diagrama tem por finalidade resumir todo o trabalho da Game Engine, delimitando assim o tempo de execução máximo para cada loop. Esse tempo foi definido com base no que a comunidade de jogadores defende sobre o mínimo de taxa de atualização para que se tenha noção de fluidez. Este mínimo constatado foi de 30Hz a 60Hz, o que, convertendo para o tempo de cada atualização, gera um máximo de aproximadamente 35ms.
 
@@ -18,7 +18,7 @@ Além disso, esse diagrama nos conta um pouco sobre como a arquitetura do jogo v
 
 ## Experiência do Jogo
 
-![gameExperience](gameExperience.png)
+![gameExperience](assets/images/gameExperience.png)
 
 Esse diagrama resume as interações do jogador para com cada parte do jogo. Note que alguns dos ciclos de vida são classes, enquanto outros são abstrações explicadas por notas, logo acima do nome.
 
