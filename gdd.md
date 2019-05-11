@@ -251,60 +251,118 @@ Os inimigos são bugs eles se diferenciam pela cor e pelo seu compartamento.
      - Velocidade
      - Resistência
      - Tamanho
-     - Dano
      - Tipo de ataque
+     - Tipo de Movimentação / Interação
 
-Os inimigos são diferenciáveis pela cor.
+Os inimigos são diferenciáveis por categoria.
 
-- Violeta 
-     - Velocidade:
-     - Resistência:
-     - Tamanho:
-     - Dano:
+- Tasker
+     - Velocidade: média
+     - Resistência: fraca
+     - Tamanho: médio
+     - Dano de colisão: baixo
      - Tipo de ataque:
+          - Direção: Para baixo
+          - Taxa de disparo: média
+          - Velocidade do projétil: média
+          - dano: baixo
+     - Tipo de Movimentação:
+          - X: Movimentação senóide média
+          - Y: Movimentação linear para baixo média
+     - Spawning:
+          - Grupos: médios
+          - Formação: linha horizontal
 
-- Indigo 
-     - Velocidade:
-     - Resistência:
-     - Tamanho:
-     - Dano:
+- Issuelizer
+     - Velocidade: lenta
+     - Resistência: média
+     - Tamanho: grande
+     - Dano de colisão: médio
      - Tipo de ataque:
-     
-- Azul 
-     - Velocidade:
-     - Resistência:
-     - Tamanho:
-     - Dano:
-     - Tipo de ataque:
+          - Direção: jogador
+          - Taxa de disparo: lenta
+          - Velocidade do projétil: lenta
+          - Dano: médio
+     - Tipo de Movimentação: Movimentação linear para baixo lenta
+     - Spawning:
+          - Grupos: pequenos
+          - Formação: linha vertical
 
-- Verde
-     - Velocidade:
-     - Resistência:
-     - Tamanho:
-     - Dano:
-     - Tipo de ataque:
+- Buging
+     - Velocidade: média
+     - Resistência: fraca
+     - Tamanho: pequeno
+     - Dano de colisão: baixo
+     - Tipo de ataque: Não há
+     - Tipo de Movimentação: em direção ao jogador
+     - Spawning:
+          - Grupos: grandes
+          - Formação: cluster pequeno
 
-- Amarelo 
-     - Velocidade:
-     - Resistência:
-     - Tamanho:
-     - Dano:
+- Refactor-Ad
+     - Velocidade: lenda
+     - Resistência: forte
+     - Tamanho: grande
+     - Dano de colisão: baixo
      - Tipo de ataque:
+          - Direção: jogador
+          - Taxa de disparo: baixa
+          - Velocidade do projétil: rápida
+          - dano: alto
+     - Tipo de Movimentação: Movimentação linear para baixo lenta
+     - Spawning: Sem grupos
+     - Consequência da Morte: spawna vários Bugings
 
-- Laranja 
-     - Velocidade:
-     - Resistência:
-     - Tamanho:
-     - Dano:
+- Test-O
+     - Velocidade: lenta
+     - Resistência: média
+     - Tamanho: médio
+     - Dano de colisão: alto
      - Tipo de ataque:
+          - Direção: jogador
+          - Taxa de disparo: rajadas em intervalos médios
+          - Velocidade do projétil: alta
+          - dano: baixo
+     - Tipo de Movimentação:
+          - Intervalo: Fica parado por um tempo, movimenta-se brevemente
+          - X: Uma vez para direita, outra para esquerda
+          - Y: A cada movimentação, desce um pouco
+     - Spawning: Sem grupos
 
-- Vermelho
-     - Velocidade:
-     - Resistência:
-     - Tamanho:
-     - Dano:
+- FalconFeature
+     - Velocidade: alta
+     - Resistência: média
+     - Tamanho: médio
+     - Dano de colisão: médio
      - Tipo de ataque:
+          - Direção: jogador
+          - Taxa de disparo: baixa
+          - Tipo de disparo: três tiros em leque \\|/
+          - Velocidade do projétil: alta
+          - dano: alto
+     - Tipo de Movimentação:
+          - X: senóide longa e lenta
+          - Y:
+               - Estágio 1: desce bem lentamente
+               - Estágio 2: senóide longa e rápida
+     - Spawning:
+          - Grupos: indivíduos .. grupos pequenos
+          - Formação: linha horizontal
 
+- EpicMother
+     - Velocidade: lenta
+     - Resistência: muito alta
+     - Tamanho: grande
+     - Dano de colisão: alto
+     - Tipo de ataque:
+          - Direção: jogador
+          - Quantidade de pontos de disparo: muitos
+          - Taxa de disparo: lenta
+          - Velocidade do projétil: médio
+          - Dano: médio
+     - Habilidade: Spawna Taskers pela parte de trás
+     - Tipo de Movimentação: Movimentação senóide horizontal (não sai da tela até ser destruída)
+     - Spawning: no máximo em dupla, alinhados horizontalmente
 
 ### Chefes
 Existem chefes em cada estágio:
