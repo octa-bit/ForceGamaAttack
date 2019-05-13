@@ -1,13 +1,14 @@
 import jplay.Window;
 import jplay.GameImage;
 import jplay.Mouse;
-import java.awt.Point;
+
 
 public class Game {
 	GameState state;
 	Window window;
 	GameImage background;
 	GameImage startButton;
+	GameImage spaceBackground;
 	Mouse mouse;
 	
 	public enum GameState{
@@ -19,6 +20,7 @@ public class Game {
 		this.background = new GameImage("src/graphics/img/temporary.png");
 		this.state = GameState.Running;
 		this.startButton = new GameImage("src/graphics/img/start_btn.png");
+		this.spaceBackground = new GameImage("src/graphics/img/space_bg.jpg");
 		this.startButton.x = 300;
 		this.startButton.y = 150;
 		this.mouse = window.getMouse();
@@ -33,9 +35,18 @@ public class Game {
 			if (mouse.isLeftButtonPressed() && mouse.isOverObject(startButton))  
             {  
                 System.out.println("Starting game!!");
-            	window.exit();																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													
+            	this.startGame();																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												
             }
 		}
+	}
+	
+	public void startGame() {
+		System.out.println("Inicio!!");
+		this.window.exit();
+		this.window = new Window(800, 600);
+		this.spaceBackground.draw();
+		this.window.update();
+		System.out.println("Fim!!");
 	}
 
 }
