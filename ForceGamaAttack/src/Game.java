@@ -42,9 +42,8 @@ public class Game {
 	
 	public void startGame() {
 		System.out.println("Inicio!!");
-		this.window.exit();
-		this.window = new Window(800, 600);
-		this.spaceBackground.draw();
+		this.background = new GameImage("src/graphics/img/space_bg.jpg");
+		this.startButton.hide();
 		this.window.update();
 		System.out.println("Fim!!");
 	}
