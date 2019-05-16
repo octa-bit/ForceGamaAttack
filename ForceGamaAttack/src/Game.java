@@ -1,3 +1,5 @@
+package src;
+
 import jplay.Window;
 import jplay.GameImage;
 
