@@ -1,4 +1,4 @@
-package src.scenes.menu;
+package scenes.menu;
 
 enum OptionMenu {  
 	Start(0), Config(1), Exit(2);

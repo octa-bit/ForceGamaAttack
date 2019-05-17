@@ -1,9 +1,9 @@
-package src.scenes.menu;
-import src.scenes.Scene;
+package scenes.menu;
+import scenes.Scene;
 import jplay.GameImage;
 import jplay.Keyboard;
 import java.util.ArrayList;
-import src.constants.WindowConstants;
+import constants.WindowConstants;
 import jplay.Sprite;
 
 public class MenuScene extends Scene {

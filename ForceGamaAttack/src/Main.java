@@ -1,13 +1,12 @@
-package src;
 
 import jplay.Window; 
 
 import java.awt.Color;
 
-import src.constants.WindowConstants;
-import src.scenes.Scene;
-import src.scenes.menu.MenuScene;
-import src.controller.Controller;
+import constants.WindowConstants;
+import scenes.Scene;
+import scenes.menu.MenuScene;
+import controller.Controller;
 
 public class Main {
 

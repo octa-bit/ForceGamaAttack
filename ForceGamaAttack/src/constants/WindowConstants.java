@@ -1,4 +1,4 @@
-package src.constants;
+package constants;
 
 public class WindowConstants {
 	public static final int WIDTH = 800;

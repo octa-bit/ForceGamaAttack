@@ -1,5 +1,5 @@
-package src.scenes;
-import src.controller.Controller;
+package scenes;
+import controller.Controller;
 import jplay.Keyboard;;
 
 public abstract class Scene {

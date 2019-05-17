@@ -1,6 +1,6 @@
-package src.controller;
+package controller;
 
-import src.scenes.Scene;
+import scenes.Scene;
 import jplay.Keyboard;
 
 public class Controller {
