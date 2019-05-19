@@ -1,10 +1,7 @@
-package scenes;
+package scenes.game;
 import scenes.Scene;
 import jplay.GameImage;
 import jplay.Keyboard;
-import java.util.ArrayList;
-import constants.WindowConstants;
-import jplay.Sprite;
 
 public class GameScene extends Scene {
 	private GameImage background;
