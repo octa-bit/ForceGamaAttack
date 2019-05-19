@@ -44,7 +44,6 @@ public class Game {
 	public void startGame() {
 		System.out.println("Inicio!!");
 		this.background = new GameImage("src/graphics/img/space_bg.jpg");
-		this.startButton.hide();
 		this.window.update();
 		System.out.println("Fim!!");
 	}
