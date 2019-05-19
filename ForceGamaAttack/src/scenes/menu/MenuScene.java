@@ -43,10 +43,12 @@ public class MenuScene extends Scene {
 	private void appendButtons() {
 		Sprite startButton = new Sprite("src/graphics/img/new-game.png");
 		Sprite settingsButton = new Sprite("src/graphics/img/config.png");
+		Sprite creditButton = new Sprite("src/graphics/img/credits.png");
 		Sprite quitButton = new Sprite("src/graphics/img/exit.png");
 		
 		buttons.add(startButton);
 		buttons.add(settingsButton);
+		buttons.add(creditButton);
 		buttons.add(quitButton);
 		
 		for(OptionMenu option : OptionMenu.values()) {
@@ -94,6 +96,10 @@ public class MenuScene extends Scene {
 		}
 	}
 	
+	public Scene credits() {
+		return null;
+	}
+	
 	public Scene startStage(){
 		return null;
 	}
@@ -111,6 +117,9 @@ public class MenuScene extends Scene {
 					break;
 				case Config:
 					game.transitTo(settings());
+					break;
+				case Credit:
+					game.transitTo(credits());
 					break;
 				case Exit:
 					game.quit();
