@@ -1,5 +1,6 @@
 package scenes.menu;
 import scenes.Scene;
+import scenes.game.GameScene;
 import jplay.GameImage;
 import jplay.Keyboard;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class MenuScene extends Scene {
 	protected void initialSetup(){
 		
 		selectedMenuOption = OptionMenu.Start;
+		startLevel = new GameScene();
 		
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		keyboard.setBehavior(Keyboard.UP_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
@@ -95,7 +97,7 @@ public class MenuScene extends Scene {
 	}
 	
 	public Scene startStage(){
-		return null;
+		return startLevel;
 	}
 	
 	public Scene settings(){
