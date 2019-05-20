@@ -6,7 +6,9 @@
 # Diagrama de Estados
 
 ## Versão 0.2
-[Diagrama de Estados](https://i.imgur.com/20VpsLn.png)
+
+![Diagrama de Estados](https://i.imgur.com/20VpsLn.png)
 
 ## Versão 1.0
-[Diagrama de Estados](https://i.imgur.com/LH2qlvz.png)
+
+![Diagrama de Estados](https://i.imgur.com/LH2qlvz.png)
