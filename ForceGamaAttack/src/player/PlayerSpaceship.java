@@ -12,6 +12,26 @@ public class PlayerSpaceship {
 	private int leftKey = Keyboard.LEFT_KEY;
 	private int rightKey = Keyboard.RIGHT_KEY;
 
+	private double x;
+
+	private double y;
+
+
+	public PlayerSpaceship(Player player, double x, double y, boolean adjust) {
+		this.x = x;
+		this.y = y;
+		this.player = player;
+	}
 	
-	public 
+	public Player getPlayer() {
+		return this.player;
+	}
+	
+	public void setKeySet(int upKey, int downKey, int leftKey,  int rightKey) {
+		this.upKey = upKey;
+		this.downKey = downKey;
+		this.rightKey = rightKey;
+		this.leftKey = leftKey;
+	}
+	
 }
