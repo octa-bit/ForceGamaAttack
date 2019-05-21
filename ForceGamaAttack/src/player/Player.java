@@ -1,8 +1,9 @@
 package player;
 
 import player.PlayerSpaceship;
+import jplay.GameObject;
 
-public class Player {
+public class Player extends GameObject{
 	private PlayerSpaceship spaceship;
 	public double iniPositionX = 0;
 	public double iniPositionY = 0;
