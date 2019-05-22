@@ -1,6 +1,7 @@
 |Versão|Autor|Descrição|
 |------|-----|---------|
 |1.0|Luciano Santos|Adição do diagrama de colaboração|
+|1.1|Isaac Borges|Adição do sprite 0.2|
 
 # Diagramas de Colaboração
 
@@ -21,8 +22,10 @@
 ![Diagrama de colaboração - Menu Game v0.2](https://i.imgur.com/fFV7XRO.png)
 
 #### Diagrama Sprite
-
+![Diagrama de colaboração - Sprite v0.2](https://imgur.com/6gbSLao)
 
 
 
 ## Referências
+
+Material de aula.
