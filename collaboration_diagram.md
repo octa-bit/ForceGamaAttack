@@ -22,7 +22,7 @@
 ![Diagrama de colaboração - Menu Game v0.2](https://i.imgur.com/fFV7XRO.png)
 
 #### Diagrama Sprite
-![Diagrama de colaboração - Sprite v0.2](https://imgur.com/6gbSLao)
+![Diagrama de colaboração - Sprite v0.2](https://i.imgur.com/6gbSLao.png)
 
 
 
