@@ -1,6 +1,7 @@
 package player;
 
 import jplay.Sprite;
+import scenes.game.*;
 
 public class Player extends Sprite{
 	private Player player;
@@ -12,6 +13,9 @@ public class Player extends Sprite{
 	}
 	
 	public void move() {
+		
+		player.moveY(10.0);
+		player.moveX(10.0);
 	}
 
 }
