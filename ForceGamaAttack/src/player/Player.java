@@ -1,20 +1,17 @@
 package player;
 
-import player.PlayerSpaceship;
-import jplay.GameObject;
+import jplay.Sprite;
 
-public class Player extends GameObject{
-	private PlayerSpaceship spaceship;
-	public double iniPositionX = 0;
-	public double iniPositionY = 0;
+public class Player extends Sprite{
+	private Player player;
 	
-	public PlayerSpaceship getSpaceship() {
-		
-		if (spaceship == null){
-		//	spaceship = new PlayerSpaceship(this, this.iniPositionY, this.iniPositionY, true);
-		}
-		
-		return spaceship;
+	public Player(int x, int y) {
+		super("src/graphics/img/spaceship.png", 10);
+		this.x = x;
+		this.y = y;
+	}
+	
+	public void move() {
 	}
 
 }

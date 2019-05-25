@@ -3,7 +3,6 @@ import scenes.Scene;
 import jplay.GameImage;
 import jplay.Sprite;
 import jplay.Keyboard;
-import player.Player;
 
 public class GameScene extends Scene {
 	private GameImage background;
@@ -18,11 +17,11 @@ public class GameScene extends Scene {
 	
 	protected void viewSetup(){
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-		player = new Sprite("src/graphics/img/SpaceshipWhiteNoT.gif",10);
+		player = new Sprite("src/graphics/img/spaceship.png", 10);
 		player.x = 360.0;
 		player.y = 550.0;
-		player.height = 40;
-		player.width = 40;
+		player.height = 100;
+		player.width = 100;
 	}
 	
 	private void draw() {
