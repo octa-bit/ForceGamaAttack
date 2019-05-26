@@ -1,7 +1,6 @@
 package player;
 
-import jplay.Sprite;
-import scenes.game.*;
+import jplay.Sprite;	
 
 public class Player extends Sprite{
 	private Player player;
