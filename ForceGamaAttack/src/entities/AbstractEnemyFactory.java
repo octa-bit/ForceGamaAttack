@@ -1,34 +1,44 @@
 package entities;
 
-enum Type {
-    BOSS, BUG, ISSUE
-}
+import java.util.ArrayList;
+import java.util.List;
+import Observer.Observer;
+import jplay.Sprite;
+import score.Score;
 
-abstract class AbstractEnemyFactory {
+public abstract class AbstractEnemyFactory extends Sprite{
 	private int health;
 	private int shootDamage;
 	private int healthDamage;
 	private int points;
-	
 	private static final Boss BOSS = new Boss();
 	private static final Bug BUG = new Bug();
 	private static final Issue ISSUE = new Issue();
 	
-	public AbstractEnemyFactory() {
-		this.health = 0;
-		this.shootDamage = 0;
-		this.healthDamage = 0;
-		this.points = 0;
-	}
+	private float positionX;
+	private float positionY;
+	private int hitPoints;
+	
+	public int value;
+	private int time = 0;
+	private static String sprite = "";
+	
+	private List<Observer> observers = new ArrayList<Observer>();
+	
 	
 	public AbstractEnemyFactory(int health, int shootDamage, int healthDamage, int points) {
+		super(sprite, 10);
 		this.health = health;
 		this.shootDamage = shootDamage;
 		this.healthDamage = healthDamage;
 		this.points = points;
 	}
 	
-	static AbstractEnemyFactory getFactory(Type type) {
+	public AbstractEnemyFactory(String sprite, int size) {
+		super(sprite, size);
+	}
+
+	public static AbstractEnemyFactory getFactory(EnemyType type) {
 		AbstractEnemyFactory enemy = null;
         switch (type) {
             case BOSS:
@@ -44,7 +54,16 @@ abstract class AbstractEnemyFactory {
         return enemy;
     }
 	
-	void shoot() {
-		// TODO;
+	public void attach(Observer obs) {
+		this.observers.add(obs);
 	}
+	
+	public void deattach(Observer obs) {
+		this.observers.remove(obs);
+	}
+	
+	void getHit(int dmg) {}
+	void die() {}
+	void move() {}
+	void shoot() {}
 }
