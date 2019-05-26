@@ -1,7 +1,7 @@
 package scenes.menu;
 
 enum OptionMenu {  
-	Start(0), Config(1), Exit(2);
+	Start(0), Config(1), Credit(2),  Exit(3);
 	
 	private final int value; 
 	
@@ -12,7 +12,7 @@ enum OptionMenu {
 	OptionMenu next(){
 		
 		int option = value;
-		if (value < 2){
+		if (value < 3){
 			option += 1;
 		}
 		
@@ -38,8 +38,9 @@ enum OptionMenu {
 			
 		case 1:
 			return OptionMenu.Config;
-			
 		case 2:
+			return OptionMenu.Credit;
+		case 3:
 			return OptionMenu.Exit;
 		}
 
