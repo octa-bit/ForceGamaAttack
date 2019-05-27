@@ -1,6 +1,5 @@
 package scenes.menu;
 import scenes.Scene;
-import scenes.game.GameScene;
 import jplay.GameImage;
 import jplay.Keyboard;
 import java.util.ArrayList;
@@ -10,9 +9,8 @@ import jplay.Sprite;
 public class MenuScene extends Scene {
 	private static final int DISTANCE_TITLE_BUTTON = WindowConstants.HEIGHT/24;
 	private static final int DISTANCE_BETWEEN_BUTTONS = WindowConstants.HEIGHT/48;
-	private static Scene startLevel;
 	
-	private OptionMenu selectedMenuOption = OptionMenu.Start;
+	private Menu selectedMenu;
 	
 	private GameImage background;
 	private Sprite title;
@@ -20,9 +18,7 @@ public class MenuScene extends Scene {
 	private ArrayList<Sprite> buttons = new ArrayList<Sprite>();
 	
 	protected void initialSetup(){
-		
-		selectedMenuOption = OptionMenu.Start;
-		startLevel = new GameScene();
+		selectedMenu = new Menu(new StartState());
 		
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		keyboard.setBehavior(Keyboard.UP_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
@@ -66,21 +62,17 @@ public class MenuScene extends Scene {
 	}
 	
 	private void checkMenuOption() {
-				if (keyboard.keyDown(Keyboard.DOWN_KEY)){
-					System.out.println("down");
-					selectedMenuOption = selectedMenuOption.next();
-					System.out.println(selectedMenuOption);
-				}
-				
-				if (keyboard.keyDown(Keyboard.UP_KEY)){
-					System.out.println("up");
-					selectedMenuOption = selectedMenuOption.back();
-					System.out.println(selectedMenuOption);
-				}
+		if (keyboard.keyDown(Keyboard.DOWN_KEY)){
+			selectedMenu.nextState();
+		}
+		
+		if (keyboard.keyDown(Keyboard.UP_KEY)){
+			selectedMenu.previousState();
+		}
 	}
 	
 	private void moveArrow() {
-		int currentButtonIndex = this.selectedMenuOption.ordinal();
+		int currentButtonIndex = this.selectedMenu.getOrdinal().ordinal();
 		Sprite currentButton = this.buttons.get(currentButtonIndex);
 		
 		this.arrow.x = currentButton.x - arrow.width - DISTANCE_BETWEEN_BUTTONS;
@@ -97,35 +89,13 @@ public class MenuScene extends Scene {
 			button.draw();
 		}
 	}
-	
-	public Scene credits() {
-		return null;
-	}
-	
-	public Scene startStage(){
-		return startLevel;
-	}
-	
-	public Scene settings(){
-		return null;
-	}
 
 	private void checkButtonSelection(){
 		if (keyboard.keyDown(Keyboard.ENTER_KEY)){
-			
-			switch(selectedMenuOption){
-				case Start:
-					game.transitTo(startStage());
-					break;
-				case Config:
-					game.transitTo(settings());
-					break;
-				case Credit:
-					game.transitTo(credits());
-					break;
-				case Exit:
-					game.quit();
-					break;
+			if(selectedMenu.getOrdinal() == OptionMenu.Exit) {
+				game.quit();
+			} else {
+				game.transitTo(selectedMenu.getScene());
 			}
 		}
 	}
