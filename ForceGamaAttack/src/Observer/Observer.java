@@ -1,6 +1,8 @@
 package Observer;
-import enemy.Enemy;
+import entities.AbstractEnemy;
+import entities.AbstractEnemyFactory;
+import entities.Boss;
 
 public abstract class Observer {
-	public abstract void notifier(Enemy enemy);
+	public abstract void notifier(AbstractEnemy boss);
 }
