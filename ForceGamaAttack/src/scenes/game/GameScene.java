@@ -28,7 +28,7 @@ public class GameScene extends Scene {
 		playerImage.y = 550.0;
 		playerImage.height = 90;
 		playerImage.width = 40;
-		enemy = AbstractEnemyFactory.getFactory(EnemyType.BUG);
+		enemy = AbstractEnemyFactory.getFactory(EnemyType.ISSUE);
 		enemy.setPosition(100.0, 100.0);
 		enemy.setSize(300, 400);
 	}

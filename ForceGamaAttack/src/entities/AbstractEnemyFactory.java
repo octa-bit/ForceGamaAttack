@@ -1,16 +1,11 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
-import Observer.Observer;
-import jplay.Sprite;
 import score.Score;
 
 public abstract class AbstractEnemyFactory {
-	private static Score score;
-	private static final Boss BOSS = new Boss(score);
-	private static final Bug BUG = new Bug(score);
-	private static final Issue ISSUE = new Issue(score);
+	private static final Boss BOSS = new Boss(Score.INSTANCE);
+	private static final Bug BUG = new Bug(Score.INSTANCE);
+	private static final Issue ISSUE = new Issue(Score.INSTANCE);
 
 	public static AbstractEnemy getFactory(EnemyType type) {
 		AbstractEnemy enemy = null;
