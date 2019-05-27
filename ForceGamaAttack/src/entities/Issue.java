@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Observer.Observer;
+import score.Score;
 
 public class Issue extends AbstractEnemyFactory {
 	
@@ -20,12 +21,13 @@ public class Issue extends AbstractEnemyFactory {
 	private final static String sprite = "src/graphics/img/ship-enemy.png";
 	private List<Observer> observers = new ArrayList<Observer>();
 	
-	public Issue() {
-		super(sprite, 10);
+	public Issue(Score score) {
+		super(score, sprite, 10);
 		this.health = 2000;
 		this.shootDamage = 200;
 		this.healthDamage = 200;
 		this.points = 800;
+		this.attach(score);
 	}
 	
 	@Override

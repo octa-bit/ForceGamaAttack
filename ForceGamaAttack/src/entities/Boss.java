@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Observer.Observer;
+import score.Score;
 
 public class Boss extends AbstractEnemyFactory {
 
@@ -22,12 +23,13 @@ public class Boss extends AbstractEnemyFactory {
 	
 	private List<Observer> observers = new ArrayList<Observer>();
 	
-	public Boss() {
-		super(sprite, 15);
+	public Boss(Score score) {
+		super(score, sprite, 15);
 		this.health = 1000;
 		this.shootDamage = 100;
 		this.healthDamage = 100;
 		this.points = 5000;
+		this.attach(score);
 	}
 	
 	@Override

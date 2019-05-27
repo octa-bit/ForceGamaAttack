@@ -11,9 +11,10 @@ public abstract class AbstractEnemyFactory extends Sprite{
 	private int shootDamage;
 	private int healthDamage;
 	private int points;
-	private static final Boss BOSS = new Boss();
-	private static final Bug BUG = new Bug();
-	private static final Issue ISSUE = new Issue();
+	private static Score score;
+	private static final Boss BOSS = new Boss(score);
+	private static final Bug BUG = new Bug(score);
+	private static final Issue ISSUE = new Issue(score);
 	
 	private float positionX;
 	private float positionY;
@@ -34,8 +35,9 @@ public abstract class AbstractEnemyFactory extends Sprite{
 		this.points = points;
 	}
 	
-	public AbstractEnemyFactory(String sprite, int size) {
+	public AbstractEnemyFactory(Score score, String sprite, int size) {
 		super(sprite, size);
+		this.attach(score);
 	}
 
 	public static AbstractEnemyFactory getFactory(EnemyType type) {
