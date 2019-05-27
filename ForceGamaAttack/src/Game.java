@@ -5,6 +5,9 @@ import jplay.Mouse;
 
 
 public class Game {
+	public enum GameState{
+		Running, Paused, Stopped;
+	}
 	GameState state;
 	Window window;
 	GameImage background;
@@ -12,9 +15,7 @@ public class Game {
 	GameImage spaceBackground;
 	Mouse mouse;
 	
-	public enum GameState{
-		Running, Paused, Stopped;
-	}
+	
 	
 	public Game() {
 		this.window = new Window(800,600);

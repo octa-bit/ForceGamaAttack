@@ -1,5 +1,8 @@
 package scenes.game;
 import scenes.Scene;
+import entities.AbstractEnemy;
+import entities.AbstractEnemyFactory;
+import entities.EnemyType;
 import jplay.GameImage;
 import jplay.Sprite;
 import player.Player;
@@ -8,6 +11,7 @@ import jplay.Keyboard;
 public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
+	private AbstractEnemy enemy;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -24,16 +28,21 @@ public class GameScene extends Scene {
 		playerImage.y = 550.0;
 		playerImage.height = 90;
 		playerImage.width = 40;
+		enemy = AbstractEnemyFactory.getFactory(EnemyType.ISSUE);
+		enemy.setPosition(100.0, 100.0);
+		enemy.setSize(300, 400);
 	}
 	
 	private void draw() {
 		background.draw();
 		playerImage.draw();
+		enemy.draw();
 	}
 
 	public void update(){
 		draw();
 		((Sprite) playerImage).moveY(2.5);
 		((Sprite) playerImage).moveX(2.5);
+		enemy.move();
 	}
 }
