@@ -6,7 +6,7 @@ import java.util.List;
 import Observer.Observer;
 import score.Score;
 
-public class Boss extends AbstractEnemyFactory {
+public class Boss extends AbstractEnemy {
 
 	private int health;
 	private int shootDamage;

@@ -1,5 +1,5 @@
 package score;
-import entities.AbstractEnemyFactory;
+import entities.AbstractEnemy;
 
 public class Score extends Observer.Observer {
 	private int score=0;
@@ -8,11 +8,11 @@ public class Score extends Observer.Observer {
 	
 	private Score () {}
 	
-	public void notifier(AbstractEnemyFactory enemy) {
+	public void notifier(AbstractEnemy enemy) {
 		score+=enemy.value;
 	}
 	
-	public void addEnemy(AbstractEnemyFactory enemy) {
+	public void addEnemy(AbstractEnemy enemy) {
 		enemy.attach(this);
 	}
 	
