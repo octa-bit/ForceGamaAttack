@@ -59,6 +59,17 @@ public abstract class AbstractEnemyFactory extends Sprite{
         return enemy;
     }
 	
+	
+	public void setPosition(double x, double y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	public void setSize(int height, int width) {
+		this.height = height;
+		this.width = width;
+	}
+	
 	public void attach(Observer obs) {
 		this.observers.add(obs);
 	}
