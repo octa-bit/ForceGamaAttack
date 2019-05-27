@@ -28,10 +28,8 @@ public class GameScene extends Scene {
 		playerImage.height = 90;
 		playerImage.width = 40;
 		enemy = AbstractEnemyFactory.getFactory(EnemyType.BUG);
-		enemy.x = 100.0;
-		enemy.y = 100.0;
-		enemy.height = 300;
-		enemy.width = 400;
+		enemy.setPosition(100.0, 100.0);
+		enemy.setSize(300, 400);
 	}
 	
 	private void draw() {
