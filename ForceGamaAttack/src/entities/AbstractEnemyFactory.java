@@ -42,12 +42,15 @@ public abstract class AbstractEnemyFactory extends Sprite{
 		AbstractEnemyFactory enemy = null;
         switch (type) {
             case BOSS:
+            	System.out.println("BOSS");
                 enemy = BOSS;
                 break;
             case BUG:
+            	System.out.println("BUG");
                 enemy = BUG;
                 break;
             case ISSUE:
+            	System.out.println("ISSUE");
                 enemy = ISSUE;
                 break;
         }
@@ -64,6 +67,6 @@ public abstract class AbstractEnemyFactory extends Sprite{
 	
 	void getHit(int dmg) {}
 	void die() {}
-	void move() {}
+	public void move() {}
 	void shoot() {}
 }

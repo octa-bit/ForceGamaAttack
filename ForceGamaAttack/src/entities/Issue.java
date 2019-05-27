@@ -42,7 +42,7 @@ public class Issue extends AbstractEnemyFactory {
 		}
 	}
 	@Override
-	void move() {
+	public void move() {
 		this.positionY += 1;
 		this.positionX += 2;
 	}

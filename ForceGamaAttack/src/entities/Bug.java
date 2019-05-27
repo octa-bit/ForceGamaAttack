@@ -42,7 +42,7 @@ public class Bug extends AbstractEnemyFactory {
 		}
 	}
 	@Override
-	void move() {
+	public void move() {
 		this.positionY += 2;
 		this.positionX += 1;
 	}

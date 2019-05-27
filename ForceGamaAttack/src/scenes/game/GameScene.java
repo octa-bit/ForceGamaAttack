@@ -10,7 +10,7 @@ import jplay.Keyboard;
 public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
-	private GameImage enemy;
+	private AbstractEnemyFactory enemy;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -28,10 +28,10 @@ public class GameScene extends Scene {
 		playerImage.height = 90;
 		playerImage.width = 40;
 		enemy = AbstractEnemyFactory.getFactory(EnemyType.BUG);
-		enemy.x = 40.0;
-		enemy.y = 550.0;
-		playerImage.height = 200;
-		playerImage.width = 200;
+		enemy.x = 100.0;
+		enemy.y = 100.0;
+		enemy.height = 300;
+		enemy.width = 400;
 	}
 	
 	private void draw() {
@@ -44,7 +44,6 @@ public class GameScene extends Scene {
 		draw();
 		((Sprite) playerImage).moveY(2.5);
 		((Sprite) playerImage).moveX(2.5);
-		((Sprite) enemy).moveY(2.5);
-		((Sprite) enemy).moveX(2.5);
+		enemy.move();
 	}
 }

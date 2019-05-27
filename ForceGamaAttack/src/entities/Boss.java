@@ -44,9 +44,9 @@ public class Boss extends AbstractEnemyFactory {
 		}
 	}
 	@Override
-	void move() {
-		this.positionY += 2;
-		this.positionX += 0;
+	public void move() {
+		this.y += 2;
+		this.x += 2;
 	}
 	
 	@Override
