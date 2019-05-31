@@ -1,4 +1,4 @@
-package scenes.credits;
+package text;
 
 import java.awt.Color;
 import java.awt.Font;
