@@ -1,9 +1,11 @@
 package scenes.menu;
 
 import scenes.Scene;
+import scenes.credits.CreditsScene;
 
 public class CreditState implements MenuState {
-
+	public static Scene creditsScene;
+	
 	@Override
 	public void next(Menu menu) {
 		menu.setState(new ExitState());
@@ -26,7 +28,8 @@ public class CreditState implements MenuState {
 	
 	@Override
 	public Scene getScene() {
-		return null;
+		creditsScene = new CreditsScene();
+		return creditsScene;
 	}
 
 }
