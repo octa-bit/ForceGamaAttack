@@ -17,7 +17,7 @@ public class ConfigurationScene extends Scene {
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.ESCAPE_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		keyboard.addKey(KeyEvent.VK_BACK_SPACE, Keyboard.DETECT_INITIAL_PRESS_ONLY);
-		title = new Text(275,80,new Font("Comic Sans MS", Font.BOLD, 40), Color.WHITE, "CONFIGURAÇÕES");
+		title = new Text(235,80,new Font("Comic Sans MS", Font.BOLD, 40), Color.WHITE, "CONFIGURAÇÕES");
 	}
 	
 	protected void viewSetup(){
