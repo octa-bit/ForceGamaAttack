@@ -3,6 +3,7 @@ import scenes.Scene;
 import entities.AbstractEnemy;
 import entities.AbstractEnemyFactory;
 import entities.EnemyType;
+import player.PlayerSpaceship;
 import jplay.GameImage;
 import jplay.Sprite;
 import player.Player;
@@ -12,12 +13,14 @@ public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
 	private AbstractEnemy enemy;
+	private PlayerSpaceship pship;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(Keyboard.UP_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(Keyboard.LEFT_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(Keyboard.RIGHT_KEY, Keyboard.DETECT_EVERY_PRESS);
+		keyboard.setBehavior(keyboard.SPACE_KEY, keyboard.DETECT_EVERY_PRESS);
 	}
 	
 	protected void viewSetup(){
@@ -37,6 +40,7 @@ public class GameScene extends Scene {
 		background.draw();
 		playerImage.draw();
 		enemy.draw();
+		pship.draw();
 	}
 
 	public void update(){
@@ -44,5 +48,8 @@ public class GameScene extends Scene {
 		((Sprite) playerImage).moveY(2.5);
 		((Sprite) playerImage).moveX(2.5);
 		enemy.move();
+		pship.checkInput();
+		
+		System.out.println("aaaaaa");
 	}
 }

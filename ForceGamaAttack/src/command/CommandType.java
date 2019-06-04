@@ -1,5 +1,5 @@
 package command;
 
 public enum CommandType {
-	LEFT, RIGHT, UP, DOWN;
+	LEFT, RIGHT, UP, DOWN, SHOOT;
 }
