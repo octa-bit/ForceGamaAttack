@@ -12,15 +12,15 @@ public abstract class AbstractEnemy extends Sprite{
 //	private float positionX;
 //	private float positionY;
 
-	private int hitPoints;
+	protected int hitPoints;
+	protected int value;
+	protected int colisionDamage;
 	
-	public int value;
 	private static String sprite = "";
-	
 	private List<Observer> observers = new ArrayList<Observer>();
 	
 	
-	public AbstractEnemy(Score score, String sprite, int size, float x, float y) {
+	protected AbstractEnemy(Score score, String sprite, int size, float x, float y) {
 		super(sprite, size);
 		this.x = x;
 		this.y = y;
@@ -67,6 +67,11 @@ public abstract class AbstractEnemy extends Sprite{
 		if (this.hitPoints <= 0) {
 			this.die();
 		}
+	}
+	
+	
+	public int getColisionDmg() {
+		return this.colisionDamage;
 	}
 	
 	
