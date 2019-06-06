@@ -7,56 +7,76 @@ import jplay.Sprite;
 import score.Score;
 
 public abstract class AbstractEnemy extends Sprite{
-	private int health;
-	private int shootDamage;
-	private int healthDamage;
-	private int points;
-	private static Score score;
-	
-	private float positionX;
-	private float positionY;
+		
+//  // Sprite already has an attribute X
+//	private float positionX;
+//	private float positionY;
+
 	private int hitPoints;
 	
 	public int value;
-	private int time = 0;
 	private static String sprite = "";
 	
 	private List<Observer> observers = new ArrayList<Observer>();
 	
 	
-	public AbstractEnemy(int health, int shootDamage, int healthDamage, int points) {
-		super(sprite, 10);
-		this.health = health;
-		this.shootDamage = shootDamage;
-		this.healthDamage = healthDamage;
-		this.points = points;
-	}
-	
-	public AbstractEnemy(Score score, String sprite, int size) {
+	public AbstractEnemy(Score score, String sprite, int size, float x, float y) {
 		super(sprite, size);
+		this.x = x;
+		this.y = y;
 		this.attach(score);
 	}
+
 	
+  // Position should not be changed by another class
 	public void setPosition(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
+	
+	
+	public double getX () {
+		return this.x;
+	}
+	
+	
+	public double getY () {
+		return this.y;
+	}
+	
 	
 	public void setSize(int height, int width) {
 		this.height = height;
 		this.width = width;
 	}
 	
+	
 	public void attach(Observer obs) {
 		this.observers.add(obs);
 	}
+	
 	
 	public void deattach(Observer obs) {
 		this.observers.remove(obs);
 	}
 	
-	void getHit(int dmg) {}
-	void die() {}
+	
+	public void getHit(int dmg) {
+		this.hitPoints -= dmg;
+		
+		if (this.hitPoints <= 0) {
+			this.die();
+		}
+	}
+	
+	
+	private void die() {
+		for (Observer obs: observers) {
+			obs.notifier(this);
+		}
+	}
+	
+	
 	public void move() {}
 	void shoot() {}
 }
