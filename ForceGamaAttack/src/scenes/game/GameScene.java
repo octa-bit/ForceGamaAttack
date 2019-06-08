@@ -6,6 +6,8 @@ import entities.EnemyType;
 import jplay.GameImage;
 import jplay.Sprite;
 import player.Player;
+import player.StructureStrategyC;
+import player.StructureStrategyJava;
 import jplay.Keyboard;
 
 public class GameScene extends Scene {
@@ -22,7 +24,7 @@ public class GameScene extends Scene {
 	
 	protected void viewSetup(){
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-		playerImage = new Player(100, 100);
+		playerImage = new StructureStrategyJava(100, 100, keyboard);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
 		playerImage.x = 360.0;
 		playerImage.y = 550.0;
@@ -41,8 +43,8 @@ public class GameScene extends Scene {
 
 	public void update(){
 		draw();
-		((Sprite) playerImage).moveY(2.5);
-		((Sprite) playerImage).moveX(2.5);
+		((Player) playerImage).moveX(5);
+		((Player) playerImage).moveY(5);
 		enemy.move();
 	}
 }
