@@ -90,7 +90,9 @@ public class GameScene extends Scene {
 	}
 	
 	private void checkPausedMenuButtonsClick() {
+		
 		if(mouse.isLeftButtonPressed()) {
+			
 			if (mouse.isOverObject(restartImg)) {
 				currentLevel = new GameScene();
 				game.pressPause();
@@ -98,8 +100,8 @@ public class GameScene extends Scene {
 			} else if (mouse.isOverObject(exitImg)) {
 				menuScene = new MenuScene();
 				game.pressPause();
+				game.keyboard.removeKey(Keyboard.ENTER_KEY);
 				game.transitTo(menuScene);
-				System.out.println("Teste");
 			} else if (mouse.isOverObject(soundImg)) {
 				game.changeSoundStatus();
 				// Mute or unmute the sound of the game

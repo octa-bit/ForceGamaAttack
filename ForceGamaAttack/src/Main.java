@@ -10,7 +10,7 @@ import scenes.menu.MenuScene;
 import controller.Controller;
 
 public class Main {
-
+	
 	public static void main(String[] args) {
 		
 		System.out.println("It's running!");  
@@ -18,6 +18,7 @@ public class Main {
 		Mouse mouse = window.getMouse();
 		
 		Controller game = new Controller();
+		game.setWindow(window);
 		game.keyboard = window.getKeyboard();
 		game.setMouse(mouse);
 		

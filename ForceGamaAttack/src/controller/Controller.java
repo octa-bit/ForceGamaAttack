@@ -3,6 +3,7 @@ package controller;
 import scenes.Scene;
 import jplay.Keyboard;
 import jplay.Mouse;
+import jplay.Window;
 
 public class Controller {
 	
@@ -12,6 +13,7 @@ public class Controller {
 	private boolean isPaused = false;
 	private boolean soundStatus = true;
 	private Mouse mouse;
+	private Window window;
 	
 	public void transitTo(Scene scene) {	
 		
@@ -59,5 +61,13 @@ public class Controller {
 	
 	public boolean getSoundStatus() {
 		return soundStatus;
+	}
+	
+	public Window getWindow() {
+		return window;
+	}
+	
+	public void setWindow(Window window) {
+		this.window = window;
 	}
 }
