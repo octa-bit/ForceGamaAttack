@@ -9,7 +9,7 @@ public class Score extends Observer.Observer {
 	private Score () {}
 	
 	public void notifier(AbstractEnemy enemy) {
-		score+=enemy.value;
+		score+=enemy.getValue();
 	}
 	
 	public void addEnemy(AbstractEnemy enemy) {

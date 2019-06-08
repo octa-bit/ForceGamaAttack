@@ -81,6 +81,9 @@ public abstract class AbstractEnemy extends Sprite{
 		}
 	}
 	
+	public int getValue() {
+		return this.value;
+	}
 	
 	public void move() {}
 	void shoot() {}
