@@ -35,7 +35,8 @@ public class GameScene extends Scene {
 		enemy = AbstractEnemyFactory.getFactory(EnemyType.ISSUE);
 		enemy.setPosition(100.0, 100.0);
 		enemy.setSize(300, 400);
-		backgroundSound = new Sound("src/sounds/blackhole_sound.wav");
+		
+		backgroundSound = new Sound("src/sounds/hbfs.wav");
 		backgroundSound.play();
 	}
 	

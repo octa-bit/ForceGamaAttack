@@ -41,6 +41,7 @@ public class MenuScene extends Scene {
 		arrow.y = 10;
 		
 		backgroundSoundMenu = new Sound("src/sounds/take_on_me.wav");
+		//backgroundSoundMenu.setRepeat(true); 
 		backgroundSoundMenu.play();
 	}
 	
@@ -101,6 +102,7 @@ public class MenuScene extends Scene {
 			if(selectedMenu.getOrdinal() == OptionMenu.Exit) {
 				game.quit();
 			} else {
+				backgroundSoundMenu.stop();
 				game.transitTo(selectedMenu.getScene());
 			}
 		}
@@ -119,6 +121,6 @@ public class MenuScene extends Scene {
 		checkButtonSelection();
 		draw();
 		playBackgroundSoundMenu(backgroundSoundMenu);
-		
 	}
+	
 }
