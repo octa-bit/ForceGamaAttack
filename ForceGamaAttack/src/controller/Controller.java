@@ -2,12 +2,16 @@ package controller;
 
 import scenes.Scene;
 import jplay.Keyboard;
+import jplay.Mouse;
 
 public class Controller {
 	
 	public Scene currentScene = null;
 	public Keyboard keyboard = null;
 	private boolean isRunning = true; 
+	private boolean isPaused = false;
+	private boolean soundStatus = true;
+	private Mouse mouse;
 	
 	public void transitTo(Scene scene) {	
 		
@@ -31,5 +35,29 @@ public class Controller {
 	
 	public void quit(){
 		isRunning = false;
+	}
+	
+	public void pressPause() {
+		isPaused = !isPaused;
+	}
+	
+	public boolean getIsPaused() {
+		return isPaused;
+	}
+	
+	public void setMouse(Mouse mouse) {
+		this.mouse = mouse;
+	}
+	
+	public Mouse getMouse() {
+		return mouse; 
+	}
+	
+	public void changeSoundStatus() {
+		soundStatus = !soundStatus;
+	}
+	
+	public boolean getSoundStatus() {
+		return soundStatus;
 	}
 }

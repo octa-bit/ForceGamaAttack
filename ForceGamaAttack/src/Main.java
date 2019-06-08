@@ -1,5 +1,6 @@
 
 import jplay.Window; 
+import jplay.Mouse;
 
 import java.awt.Color;
 
@@ -14,9 +15,11 @@ public class Main {
 		
 		System.out.println("It's running!");  
 		Window window = new Window(WindowConstants.WIDTH,WindowConstants.HEIGHT);
+		Mouse mouse = window.getMouse();
 		
 		Controller game = new Controller();
 		game.keyboard = window.getKeyboard();
+		game.setMouse(mouse);
 		
 		Scene scene = new MenuScene();
 		game.transitTo(scene);
