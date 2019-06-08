@@ -1,19 +1,37 @@
 package player;
 
+import java.awt.event.KeyEvent;
+
+import jplay.Keyboard;
 import player.Player;
 
 public class StructureStrategyPython extends Player {
 	
 	private Player player;
 	double speed;
-	private final static String sprite = "src/graphics/img/spaceshipPython.png";
+	private final static String sprite = "src/graphics/img/spaceship.png";
 
-	public StructureStrategyPython(int x, int y) {
-		super(x, y, sprite);
+	public StructureStrategyPython(int x, int y, Keyboard keyboard) {
+		super(x, y, sprite, keyboard);
 	}
 	
-	public void move() {
-		player.moveY(this.speed);
-		player.moveX(this.speed);
+	@Override
+	public void moveX(double x) {
+		if(this.keyboard.keyDown(KeyEvent.VK_RIGHT)) {
+			this.x += x;
+		}
+		else if(this.keyboard.keyDown(KeyEvent.VK_LEFT)) {
+			this.x -= x;
+		}
+	}
+	
+	@Override
+	public void moveY(double y) {
+		if(this.keyboard.keyDown(KeyEvent.VK_DOWN)) {
+			this.y += y;
+		}
+		else if(this.keyboard.keyDown(KeyEvent.VK_UP)) {
+			this.y -= y;
+		}
 	}
 }
