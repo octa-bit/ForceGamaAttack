@@ -8,6 +8,10 @@ public class Score extends Observer.Observer {
 	
 	private Score () {}
 	
+	public static Score getInstance() {
+		return INSTANCE;
+	}
+	
 	public void notifier(Enemy enemy) {
 		score+=enemy.getValue();
 	}

@@ -7,8 +7,8 @@ public class Tasker extends Enemy {
 		
 	private int time = 0;
 	
-	public Tasker (float x, float y, Score score) {
-		super(score, "TODO", 20, x, y);
+	public Tasker (float x, float y) {
+		super("TODO", 20, x, y);
 		this.hitPoints = 10;
 		this.value = 5;
 		this.colisionDamage = 5;

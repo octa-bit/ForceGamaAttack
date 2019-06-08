@@ -18,13 +18,13 @@ public abstract class Enemy extends Sprite{
 	
 	private static String sprite = "";
 	private List<Observer> observers = new ArrayList<Observer>();
+	private static final Score s = Score.getInstance();
 	
-	
-	protected Enemy(Score score, String sprite, int size, float x, float y) {
+	protected Enemy(String sprite, int size, float x, float y) {
 		super(sprite, size);
 		this.x = x;
 		this.y = y;
-		this.attach(score);
+		this.attach(s);
 	}
 
 	
