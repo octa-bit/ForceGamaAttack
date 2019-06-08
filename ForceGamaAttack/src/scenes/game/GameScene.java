@@ -9,10 +9,12 @@ import jplay.GameImage;
 import jplay.Sprite;
 import player.Player;
 import jplay.Keyboard;
+import jplay.Collision;
 
 public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
+	private Collision collision;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
 	private Factory fac = new FactoryPhase1();
 	
@@ -49,7 +51,11 @@ public class GameScene extends Scene {
 		}
 		for (Enemy enemy: enemies) {
 			enemy.move();
+			if(Collision.collided(playerImage,enemy)) {
+				System.out.println("oi");
+			}
 		}
+		
 		draw();
 	}
 }
