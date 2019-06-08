@@ -3,7 +3,7 @@ import java.lang.Math;
 
 import score.Score;
 
-public class Tasker extends AbstractEnemy {
+public class Tasker extends Enemy {
 		
 	private int time = 0;
 	

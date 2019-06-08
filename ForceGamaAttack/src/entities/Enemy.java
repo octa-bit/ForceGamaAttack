@@ -6,7 +6,7 @@ import Observer.Observer;
 import jplay.Sprite;
 import score.Score;
 
-public abstract class AbstractEnemy extends Sprite{
+public abstract class Enemy extends Sprite{
 		
 //  // Sprite already has an attribute X
 //	private float positionX;
@@ -20,7 +20,7 @@ public abstract class AbstractEnemy extends Sprite{
 	private List<Observer> observers = new ArrayList<Observer>();
 	
 	
-	protected AbstractEnemy(Score score, String sprite, int size, float x, float y) {
+	protected Enemy(Score score, String sprite, int size, float x, float y) {
 		super(sprite, size);
 		this.x = x;
 		this.y = y;

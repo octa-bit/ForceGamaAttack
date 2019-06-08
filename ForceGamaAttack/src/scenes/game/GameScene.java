@@ -1,6 +1,6 @@
 package scenes.game;
 import scenes.Scene;
-import entities.AbstractEnemy;
+import entities.Enemy;
 import entities.AbstractEnemyFactory;
 import entities.EnemyType;
 import jplay.GameImage;
@@ -11,7 +11,7 @@ import jplay.Keyboard;
 public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
-	private AbstractEnemy enemy;
+	private Enemy enemy;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
