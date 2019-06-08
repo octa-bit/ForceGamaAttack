@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class FactoryPhase1 extends Factory {
 
-	private int time=0;
+	private int time=300;
 	
 	public FactoryPhase1() {
 	}
