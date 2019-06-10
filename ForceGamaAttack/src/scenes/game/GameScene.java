@@ -109,11 +109,13 @@ public class GameScene extends Scene {
 				currentLevel = new GameScene();
 				game.pressPause();
 				game.transitTo(currentLevel);
+				backgroundSound.stop();
 			} else if (mouse.isOverObject(exitImg)) {
 				menuScene = new MenuScene();
 				game.pressPause();
 				game.keyboard.removeKey(Keyboard.ENTER_KEY);
 				game.transitTo(menuScene);
+				backgroundSound.stop();
 			} else if (mouse.isOverObject(soundImg)) {
 				game.changeSoundStatus();
 				// Mute or unmute the sound of the game
@@ -137,7 +139,7 @@ public class GameScene extends Scene {
 	public void update(){
 		draw();
 		checkPausePress();
-		PlayBackgroundSound(backgroundSound);
+		// PlayBackgroundSound(backgroundSound);
 		if (!game.getIsPaused()) {
 			((Sprite) playerImage).moveY(2.5);
 			((Sprite) playerImage).moveX(2.5);

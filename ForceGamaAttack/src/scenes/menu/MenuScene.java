@@ -122,7 +122,6 @@ public class MenuScene extends Scene {
 		moveArrow();
 		checkButtonSelection();
 		draw();
-		playBackgroundSoundMenu(backgroundSoundMenu);
 	}
 	
 }
