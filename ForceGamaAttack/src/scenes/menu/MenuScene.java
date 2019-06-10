@@ -2,6 +2,8 @@ package scenes.menu;
 import scenes.Scene;
 import jplay.GameImage;
 import jplay.Keyboard;
+import jplay.Sound;
+
 import java.util.ArrayList;
 import constants.WindowConstants;
 import jplay.Sprite;
@@ -16,6 +18,7 @@ public class MenuScene extends Scene {
 	private Sprite title;
 	private Sprite arrow;
 	private ArrayList<Sprite> buttons = new ArrayList<Sprite>();
+	private Sound backgroundSoundMenu;
 	
 	protected void initialSetup(){
 		selectedMenu = new Menu(new StartState());
@@ -38,6 +41,10 @@ public class MenuScene extends Scene {
 		arrow = new Sprite("src/graphics/img/seta.png");
 		arrow.x = 10;
 		arrow.y = 10;
+		
+		backgroundSoundMenu = new Sound("src/sounds/take_on_me.wav");
+		//backgroundSoundMenu.setRepeat(true); 
+		backgroundSoundMenu.play();
 	}
 	
 	private void appendButtons() {
@@ -97,8 +104,16 @@ public class MenuScene extends Scene {
 			if(selectedMenu.getOrdinal() == OptionMenu.Exit) {
 				game.quit();
 			} else {
+				backgroundSoundMenu.stop();
 				game.transitTo(selectedMenu.getScene());
 			}
+		}
+	}
+	
+	private void playBackgroundSoundMenu(Sound backgroundSoundMenu) {
+		if (!backgroundSoundMenu.isExecuting()) {
+			backgroundSoundMenu.play();
+			System.out.println("Take Me On");
 		}
 	}
 	
@@ -108,4 +123,5 @@ public class MenuScene extends Scene {
 		checkButtonSelection();
 		draw();
 	}
+	
 }

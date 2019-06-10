@@ -2,6 +2,7 @@ package scenes.game;
 import java.util.List;
 import java.util.ArrayList;
 import scenes.Scene;
+
 import entities.Enemy;
 import entities.Factory;
 import entities.FactoryPhase1;
@@ -18,12 +19,14 @@ import jplay.GameImage;
 import jplay.Sprite;
 import player.Player;
 import jplay.Keyboard;
+import jplay.Sound;
 import jplay.Collision;
 import jplay.Mouse;
 
 public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
+	private Sound backgroundSound;
 	private Collision collision;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
 	private Factory fac = new FactoryPhase1();
@@ -41,6 +44,7 @@ public class GameScene extends Scene {
 		keyboard.setBehavior(Keyboard.UP_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(Keyboard.LEFT_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(Keyboard.RIGHT_KEY, Keyboard.DETECT_EVERY_PRESS);
+		keyboard.addKey(Keyboard.SPACE_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		keyboard.addKey(KeyEvent.VK_P, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		mouse = game.getMouse();
 	}
@@ -53,6 +57,9 @@ public class GameScene extends Scene {
 		playerImage.y = 550.0;
 		playerImage.height = 90;
 		playerImage.width = 40;
+		
+		backgroundSound = new Sound("src/sounds/hbfs.wav");
+		backgroundSound.play();
 	}
 	
 	private void draw() {
@@ -102,21 +109,37 @@ public class GameScene extends Scene {
 				currentLevel = new GameScene();
 				game.pressPause();
 				game.transitTo(currentLevel);
+				backgroundSound.stop();
 			} else if (mouse.isOverObject(exitImg)) {
 				menuScene = new MenuScene();
 				game.pressPause();
 				game.keyboard.removeKey(Keyboard.ENTER_KEY);
 				game.transitTo(menuScene);
+				backgroundSound.stop();
 			} else if (mouse.isOverObject(soundImg)) {
 				game.changeSoundStatus();
 				// Mute or unmute the sound of the game
 			}
 		}
 	}
+	
+	private void CheckKeyboardPress() {
+		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
+			new Sound("src/sounds/shoot_laser.wav").play();
+		}
+	}
+	
+	private void PlayBackgroundSound(Sound backgroundSound) {
+		if (!backgroundSound.isExecuting()) {
+			backgroundSound.play();
+			System.out.println("Play sound");
+		}
+	}
 
 	public void update(){
 		draw();
 		checkPausePress();
+		// PlayBackgroundSound(backgroundSound);
 		if (!game.getIsPaused()) {
 			((Sprite) playerImage).moveY(2.5);
 			((Sprite) playerImage).moveX(2.5);
