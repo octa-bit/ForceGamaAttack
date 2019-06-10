@@ -1,5 +1,10 @@
 package scenes.game;
+import java.util.List;
+import java.util.ArrayList;
 import scenes.Scene;
+import entities.Enemy;
+import entities.Factory;
+import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
 import text.Text;
 
@@ -8,19 +13,20 @@ import java.awt.Font;
 import java.awt.event.KeyEvent;
 
 import constants.WindowConstants;
-import entities.AbstractEnemy;
-import entities.AbstractEnemyFactory;
 import entities.EnemyType;
 import jplay.GameImage;
 import jplay.Sprite;
 import player.Player;
 import jplay.Keyboard;
+import jplay.Collision;
 import jplay.Mouse;
 
 public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
-	private AbstractEnemy enemy;
+	private Collision collision;
+	private List<Enemy> enemies = new ArrayList<Enemy>();
+	private Factory fac = new FactoryPhase1();
 	private Text pausedText;
 	private Sprite restartImg;
 	private Sprite soundImg;
@@ -47,15 +53,14 @@ public class GameScene extends Scene {
 		playerImage.y = 550.0;
 		playerImage.height = 90;
 		playerImage.width = 40;
-		enemy = AbstractEnemyFactory.getFactory(EnemyType.ISSUE);
-		enemy.setPosition(100.0, 100.0);
-		enemy.setSize(300, 400);
 	}
 	
 	private void draw() {
 		background.draw();
 		playerImage.draw();
-		enemy.draw();
+		for (Enemy enemy: enemies) {
+			enemy.draw();
+		}
 	}
 	
 	private void checkPausePress() {
@@ -115,7 +120,15 @@ public class GameScene extends Scene {
 		if (!game.getIsPaused()) {
 			((Sprite) playerImage).moveY(2.5);
 			((Sprite) playerImage).moveX(2.5);
-			enemy.move();
+			if (fac.isSpawnTime()) {
+				enemies.addAll(fac.factoryMethod());
+			}
+			for (Enemy enemy: enemies) {
+				enemy.move();
+				if(Collision.collided(playerImage,enemy)) {
+					System.out.println("oi");
+				}
+			}
 		} else {
 			drawPausedButtons();
 			checkPausedMenuButtonsClick();
