@@ -67,9 +67,9 @@ public class Controller {
 		changeSoundStatus();
 		for (Sound sound : sounds) {
 			if (soundStatus) {
-				sound.setVolume(0);
+				sound.play();
 			} else {
-				sound.setVolume(100);
+				sound.stop();
 			}
 		}
 	}
