@@ -1,9 +1,13 @@
 package controller;
 
 import scenes.Scene;
+
+import java.util.ArrayList;
+
 import jplay.Keyboard;
 import jplay.Mouse;
 import jplay.Window;
+import jplay.Sound;
 
 public class Controller {
 	
@@ -57,6 +61,17 @@ public class Controller {
 	
 	public void changeSoundStatus() {
 		soundStatus = !soundStatus;
+	}
+	
+	public void changeSoundStatus(ArrayList<Sound> sounds) {
+		changeSoundStatus();
+		for (Sound sound : sounds) {
+			if (soundStatus) {
+				sound.setVolume(0);
+			} else {
+				sound.setVolume(100);
+			}
+		}
 	}
 	
 	public boolean getSoundStatus() {

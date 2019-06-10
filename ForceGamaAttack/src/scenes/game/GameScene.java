@@ -58,8 +58,10 @@ public class GameScene extends Scene {
 		playerImage.height = 90;
 		playerImage.width = 40;
 		
-		backgroundSound = new Sound("src/sounds/hbfs.wav");
-		backgroundSound.play();
+		if (game.getSoundStatus()) {
+			backgroundSound = new Sound("src/sounds/hbfs.wav");
+			backgroundSound.play();
+		}
 	}
 	
 	private void draw() {
@@ -111,15 +113,18 @@ public class GameScene extends Scene {
 				game.transitTo(menuScene);
 				backgroundSound.stop();
 			} else if (mouse.isOverObject(soundImg)) {
-				game.changeSoundStatus();
-				// Mute or unmute the sound of the game
+				ArrayList<Sound> sounds = new ArrayList<>();
+				sounds.add(backgroundSound);
+				game.changeSoundStatus(sounds);
 			}
 		}
 	}
 	
 	private void checkKeyboardPress() {
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
-			new Sound("src/sounds/shoot_laser.wav").play();
+			if (game.getSoundStatus()) {
+				new Sound("src/sounds/shoot_laser.wav").play();
+			}
 		} else if ( keyboard.keyDown(KeyEvent.VK_P)) {
 			game.pressPause();
 		}
