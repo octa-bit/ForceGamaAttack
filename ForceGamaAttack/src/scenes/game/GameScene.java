@@ -70,12 +70,6 @@ public class GameScene extends Scene {
 		}
 	}
 	
-	private void checkPausePress() {
-		if ( keyboard.keyDown(KeyEvent.VK_P)) {
-			game.pressPause();
-		}
-	}
-	
 	private void drawPausedButtons () {
 		pausedText = new Text(255,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "PAUSADO");
 		pausedText.draw();
@@ -123,23 +117,17 @@ public class GameScene extends Scene {
 		}
 	}
 	
-	private void CheckKeyboardPress() {
+	private void checkKeyboardPress() {
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
 			new Sound("src/sounds/shoot_laser.wav").play();
-		}
-	}
-	
-	private void PlayBackgroundSound(Sound backgroundSound) {
-		if (!backgroundSound.isExecuting()) {
-			backgroundSound.play();
-			System.out.println("Play sound");
+		} else if ( keyboard.keyDown(KeyEvent.VK_P)) {
+			game.pressPause();
 		}
 	}
 
 	public void update(){
 		draw();
-		checkPausePress();
-		// PlayBackgroundSound(backgroundSound);
+		checkKeyboardPress();
 		if (!game.getIsPaused()) {
 			((Sprite) playerImage).moveY(2.5);
 			((Sprite) playerImage).moveX(2.5);
