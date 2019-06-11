@@ -2,6 +2,7 @@ package scenes.game;
 import scenes.Scene;
 import entities.AbstractEnemy;
 import entities.AbstractEnemyFactory;
+import entities.Bullet;
 import entities.EnemyType;
 import player.PlayerSpaceship;
 import jplay.GameImage;
@@ -13,7 +14,7 @@ public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
 	private AbstractEnemy enemy;
-	private PlayerSpaceship pship;
+	private Bullet bullet;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -34,13 +35,14 @@ public class GameScene extends Scene {
 		enemy = AbstractEnemyFactory.getFactory(EnemyType.ISSUE);
 		enemy.setPosition(100.0, 100.0);
 		enemy.setSize(300, 400);
+		bullet = new Bullet("src/graphics/img/bullet_player.png");
 	}
 	
 	private void draw() {
 		background.draw();
 		playerImage.draw();
 		enemy.draw();
-		pship.draw();
+
 	}
 
 	public void update(){
@@ -48,7 +50,7 @@ public class GameScene extends Scene {
 		((Sprite) playerImage).moveY(2.5);
 		((Sprite) playerImage).moveX(2.5);
 		enemy.move();
-		pship.checkInput();
+		bullet.update();
 		
 		System.out.println("aaaaaa");
 	}

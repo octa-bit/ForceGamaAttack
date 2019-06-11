@@ -1,33 +1,31 @@
 package entities;
 
+import jplay.Sprite;
 import player.PlayerSpaceship;
 
-public class Bullet extends GameEntity{
+public class Bullet extends Sprite{
 	private static String imageFile = "src/graphics/img/bullet_player.png";
-	public GameEntity owner = null;
+	public double velocity_x, velocity_y;
 	
-	public Bullet() {
+	public Bullet(String imageFile) {
 		super(imageFile);
 	}
 	
-	public void fireBy(GameEntity owner, double vely){
-		this.owner = owner;
-		this.vely = vely;
+	public Bullet(String imageFile, double x, double y, double velocity_x, double velocity_y) {
+		super(imageFile);
 		
-		Integer horizontalCorrection = (this.width - owner.width)/2;
-		
-		this.x = owner.x - horizontalCorrection;
-		if (owner.getClass().equals(PlayerSpaceship.class)){
-			this.y = owner.y;
-		}else {
-			this.y = owner.y + owner.height;
-		}
+		 this.x = x;
+	     this.y = y - this.height/2.0;
+	     this.velocity_x = velocity_x;
+	     this.velocity_y = velocity_y;
 	}
 	
-	@Override
-	public void reborn(){
-		super.reborn();
-		this.owner = null;
+	public void Action(long elapsed) {
+		this.Move((double)elapsed/1000.0);
 	}
-	
+
+    public void Move(double elapsed) { // You may discover what this method does just reading the method name
+    	this.x += velocity_x*elapsed;
+	    this.y += velocity_y*elapsed;
+    }
 }
