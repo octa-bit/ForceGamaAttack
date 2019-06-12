@@ -44,7 +44,7 @@ public class MenuScene extends Scene {
 		
 		backgroundSoundMenu = new Sound("src/sounds/take_on_me.wav");
 		//backgroundSoundMenu.setRepeat(true); 
-		backgroundSoundMenu.play();
+//		backgroundSoundMenu.play();
 	}
 	
 	private void appendButtons() {
@@ -112,7 +112,7 @@ public class MenuScene extends Scene {
 	
 	private void playBackgroundSoundMenu(Sound backgroundSoundMenu) {
 		if (!backgroundSoundMenu.isExecuting()) {
-			backgroundSoundMenu.play();
+//			backgroundSoundMenu.play();
 			System.out.println("Take Me On");
 		}
 	}

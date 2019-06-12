@@ -8,7 +8,7 @@ public class Tasker extends Enemy {
 	private int time = 0;
 	
 	public Tasker (float x, float y) {
-		super("src/graphics/img/ship-enemy.png", 1, x, y);
+		super("src/graphics/img/sprites/TaskerSprite.png", 1, x, y);
 		this.hitPoints = 10;
 		this.value = 5;
 		this.colisionDamage = 5;

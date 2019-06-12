@@ -59,7 +59,7 @@ public class GameScene extends Scene {
 		playerImage.width = 40;
 		
 		backgroundSound = new Sound("src/sounds/hbfs.wav");
-		backgroundSound.play();
+//		backgroundSound.play();
 	}
 	
 	private void draw() {
