@@ -51,10 +51,8 @@ public class GameScene extends Scene {
 	
 	protected void viewSetup(){
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-		playerImage = new Player(100, 100);
+		playerImage = Player.getInstance();
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
-		playerImage.x = 360.0;
-		playerImage.y = 550.0;
 		playerImage.height = 90;
 		playerImage.width = 40;
 		
