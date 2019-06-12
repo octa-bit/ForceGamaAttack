@@ -135,7 +135,7 @@ public class GameScene extends Scene {
 			for (Enemy enemy: enemies) {
 				enemy.move();
 				if(Collision.collided(playerImage,enemy)) {
-					System.out.println("oi");
+					// System.out.println("collided");
 				}
 			}
 		} else {

@@ -24,12 +24,12 @@ public class FactoryPhase1 extends Factory {
 	
 	public List<Enemy> factoryMethod() {
 		Random r = new Random();
-		int sort = r.nextInt(5);
+		int sort = r.nextInt(3);
 		List<Enemy> wave = new ArrayList<Enemy>();
 		
 		if (sort < 3) {
-			wave.add(new Issuelizer(100, -100));
-			wave.add(new Issuelizer(150, -100));
+			wave.add(new Buging(100, 100));
+			// wave.add(new Issuelizer(150, -100));
 			return wave;
 		} else {
 			wave.add(new Tasker(100, 0));
