@@ -25,8 +25,17 @@ class Buging extends Enemy {
 		Double yNormal = yDistance / distance;
 		
 		// Move
-		this.x += xNormal * 3;
-		this.y += yNormal * 3;
+		this.x += xNormal * 2;
+		this.y += yNormal * 2;
+		
+		// Rotate (calculate angle between (0,1) and target)
+		// This is sorcery! And probably a dummy sorcery
+		Double yAngle = Math.acos(yNormal);
+		if (this.x > target.x) {
+			this.setRotation(yAngle);
+		} else {
+			this.setRotation(-yAngle);
+		}
 	}
 
 }

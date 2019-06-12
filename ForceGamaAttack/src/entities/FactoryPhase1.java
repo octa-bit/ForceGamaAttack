@@ -14,7 +14,7 @@ public class FactoryPhase1 extends Factory {
 	
 	public boolean isSpawnTime() {
 		if (time < 300) {
-			time++;
+			// time++;
 			return false;
 		} else {
 			time=0;
