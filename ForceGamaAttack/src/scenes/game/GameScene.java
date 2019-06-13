@@ -135,23 +135,22 @@ public class GameScene extends Scene {
 	}
 	
 	private void CheckKeyboardPress() {
-		
+		bullet.draw();
+		playerImage.draw();
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
-            int sentido = ((Player) playerImage).getSentido();
-            System.out.println(sentido);
-            if (sentido == Constants.RIGHT)
+            //int sentido = ((Player) playerImage).getSentido();
+            //System.out.println(sentido);
+            if (keyboard.keyDown(Keyboard.RIGHT_KEY))
             {
             	System.out.println("sentido == right");
-                bullet.addBullet(playerImage.x + playerImage.width -40, playerImage.y + playerImage.height/2 - 5, 
-                		((Player) playerImage).getSentido(), floor);
+                bullet.addBullet(playerImage.x + playerImage.width -40, playerImage.y + playerImage.height/2 - 5, floor);
             }
             else
             {
             	System.out.println("sentido == left");
-                bullet.addBullet(player.x +10, player.y + player.height/2 -5, 
-                        player.getSentido(), floor);
+                bullet.addBullet(playerImage.x +10, playerImage.y + playerImage.height/2 -5, floor);
             }
-            bullet.draw();
+           
 		}
 		bullet.step(floor);
 	}

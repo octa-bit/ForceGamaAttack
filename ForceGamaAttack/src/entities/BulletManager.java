@@ -8,8 +8,8 @@ import jplay.Window;
 public class BulletManager {
 	LinkedList<Bullet> objects = new LinkedList<Bullet>();
 	
-	public void addBullet(double x, double y, int sentido, int floor) {
-		Bullet bullet = new Bullet(x, y, sentido);
+	public void addBullet(double x, double y, int floor) {
+		Bullet bullet = new Bullet(x, y);
 		bullet.setFloor(floor);
 		
 		objects.addFirst(bullet);
@@ -34,8 +34,7 @@ public class BulletManager {
               }
               else
               {
-                      //O tiro não passou em alguns dos testes .
-                      System.out.println("erro");
+            	  System.out.println("erro");
               }
 		  }
 	  }
@@ -47,7 +46,7 @@ public class BulletManager {
 	                    Bullet bullet = objects.removeFirst();
 	                    bullet.draw();
 	                    objects.addLast(bullet);
-	                    System.out.println("bullettt");
+	                    System.out.println("bullettt: " + objects);
 	            }
 	    }
 	  
