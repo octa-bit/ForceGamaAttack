@@ -2,6 +2,10 @@ package controller;
 
 import scenes.Scene;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 import jplay.Keyboard;
@@ -60,7 +64,9 @@ public class Controller {
 	}
 	
 	public void changeSoundStatus() {
+		soundStatus = getSoundStatus();
 		soundStatus = !soundStatus;
+		saveSoundConfig(soundStatus);
 	}
 	
 	public void changeSoundStatus(ArrayList<Sound> sounds) {
@@ -72,6 +78,42 @@ public class Controller {
 				sound.stop();
 			}
 		}
+	}
+
+	public void saveSoundConfig(boolean sound) {
+		try {
+			BufferedWriter file = new BufferedWriter(new FileWriter("src/config/Config.txt"));
+			if(sound) {
+				file.write("Sound: True");
+			} else {
+				file.write("Sound: False");
+			}
+			file.close();
+		} catch (Exception e) {
+			System.err.format("Exception occurred trying to read Config.txt");
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean getSoundConfig() {
+		String line = null;
+		boolean soundStatus = false;
+		try {
+			BufferedReader file = new BufferedReader(new FileReader("src/config/Config.txt"));
+			// soundStatus = !soundStatus;
+			while((line = file.readLine()) != null) {
+                if(line.indexOf("Sound") !=-1) {
+                	 soundStatus = line.equals("Sound: True");
+                	 file.close();
+                	 break;
+                }
+            }   
+			file.close();
+		} catch (Exception e) {
+			System.err.format("Exception occurred trying to read Config.txt");
+			e.printStackTrace();
+		}
+		return soundStatus;
 	}
 	
 	public boolean getSoundStatus() {
