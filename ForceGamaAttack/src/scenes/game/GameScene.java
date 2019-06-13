@@ -57,9 +57,8 @@ public class GameScene extends Scene {
 		playerImage.y = 550.0;
 		playerImage.height = 90;
 		playerImage.width = 40;
-		
-		if (game.getSoundStatus()) {
-			backgroundSound = new Sound("src/sounds/hbfs.wav");
+		backgroundSound = new Sound("src/sounds/hbfs.wav");
+		if(game.getSoundStatus()) {
 			backgroundSound.play();
 		}
 	}

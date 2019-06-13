@@ -19,7 +19,7 @@ public class Controller {
 	public Keyboard keyboard = null;
 	private boolean isRunning = true; 
 	private boolean isPaused = false;
-	private boolean soundStatus = true;
+	private boolean soundStatus = getSoundStatus();;
 	private Mouse mouse;
 	private Window window;
 	
@@ -64,7 +64,6 @@ public class Controller {
 	}
 	
 	public void changeSoundStatus() {
-		soundStatus = getSoundStatus();
 		soundStatus = !soundStatus;
 		saveSoundConfig(soundStatus);
 	}
@@ -72,9 +71,9 @@ public class Controller {
 	public void changeSoundStatus(ArrayList<Sound> sounds) {
 		changeSoundStatus();
 		for (Sound sound : sounds) {
-			if (soundStatus) {
+			if (soundStatus && sound != null) {
 				sound.play();
-			} else {
+			} else if(sound != null) {
 				sound.stop();
 			}
 		}
