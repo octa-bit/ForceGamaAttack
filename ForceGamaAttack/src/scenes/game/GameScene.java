@@ -2,10 +2,8 @@ package scenes.game;
 import java.util.List;
 import java.util.ArrayList;
 import scenes.Scene;
-import entities.AbstractEnemy;
-import entities.AbstractEnemyFactory;
 import entities.Bullet;
-
+import entities.BulletManager;
 import entities.Enemy;
 import entities.Factory;
 import entities.FactoryPhase1;
@@ -16,11 +14,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 
+import constants.Constants;
 import constants.WindowConstants;
 import entities.EnemyType;
 import player.PlayerSpaceship;
 import jplay.GameImage;
 import jplay.Sprite;
+import jplay.Window;
 import player.Player;
 import jplay.Keyboard;
 import jplay.Sound;
@@ -30,8 +30,6 @@ import jplay.Mouse;
 public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
-	private AbstractEnemy enemy;
-	private Bullet bullet;
 	private Sound backgroundSound;
 	private Collision collision;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
@@ -43,7 +41,10 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
-	
+	private Player player;
+	private BulletManager bullet;
+	int floor = 500;  
+	private List<Bullet> bullets = new ArrayList<Bullet>();
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -64,23 +65,20 @@ public class GameScene extends Scene {
 		playerImage.y = 550.0;
 		playerImage.height = 90;
 		playerImage.width = 40;
-		enemy = AbstractEnemyFactory.getFactory(EnemyType.ISSUE);
-		enemy.setPosition(100.0, 100.0);
-		enemy.setSize(300, 400);
-		bullet = new Bullet("src/graphics/img/bullet_player.png");
-		
 		backgroundSound = new Sound("src/sounds/hbfs.wav");
 		backgroundSound.play();
+		
+		bullet = new BulletManager();
+		
 	}
 	
 	private void draw() {
 		background.draw();
 		playerImage.draw();
-		enemy.draw();
-
 		for (Enemy enemy: enemies) {
 			enemy.draw();
 		}
+		
 	}
 	
 	private void checkPausePress() {
@@ -137,10 +135,25 @@ public class GameScene extends Scene {
 	}
 	
 	private void CheckKeyboardPress() {
+		
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
-			new Sound("src/sounds/shoot_laser.wav").play();
-			bullet.update();
+            int sentido = ((Player) playerImage).getSentido();
+            System.out.println(sentido);
+            if (sentido == Constants.RIGHT)
+            {
+            	System.out.println("sentido == right");
+                bullet.addBullet(playerImage.x + playerImage.width -40, playerImage.y + playerImage.height/2 - 5, 
+                		((Player) playerImage).getSentido(), floor);
+            }
+            else
+            {
+            	System.out.println("sentido == left");
+                bullet.addBullet(player.x +10, player.y + player.height/2 -5, 
+                        player.getSentido(), floor);
+            }
+            bullet.draw();
 		}
+		bullet.step(floor);
 	}
 	
 	private void PlayBackgroundSound(Sound backgroundSound) {
@@ -153,6 +166,7 @@ public class GameScene extends Scene {
 	public void update(){
 		draw();
 		checkPausePress();
+		
 		// PlayBackgroundSound(backgroundSound);
 		if (!game.getIsPaused()) {
 			((Sprite) playerImage).moveY(2.5);
@@ -165,10 +179,12 @@ public class GameScene extends Scene {
 				if(Collision.collided(playerImage,enemy)) {
 					System.out.println("oi");
 				}
+				CheckKeyboardPress();
 			}
 		} else {
 			drawPausedButtons();
 			checkPausedMenuButtonsClick();
+			
 		}
 	}
 }
