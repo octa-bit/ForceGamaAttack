@@ -22,7 +22,7 @@ public class Bullet extends Sprite{
 	
 		public void move()
 	    {            
-	   	    this.y -= 7;    
+	   	    this.y -= 15;    
 	    }
 
 	    

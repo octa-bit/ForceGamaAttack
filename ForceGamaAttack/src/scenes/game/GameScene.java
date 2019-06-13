@@ -136,10 +136,10 @@ public class GameScene extends Scene {
 	
 	private void CheckKeyboardPress() {
 		bullet.draw();
-		playerImage.draw();
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
             //int sentido = ((Player) playerImage).getSentido();
             //System.out.println(sentido);
+			new Sound("src/sounds/shoot_laser.wav").play();
             if (keyboard.keyDown(Keyboard.RIGHT_KEY))
             {
             	System.out.println("sentido == right");

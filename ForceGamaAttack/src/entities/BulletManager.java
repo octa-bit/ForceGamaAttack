@@ -26,9 +26,8 @@ public class BulletManager {
 			  System.out.println("X: " + bullet.x);
 			  
 			  
-			  if ( bullet.isOnFloor() == false && bullet.x > 1)
+			  if ( bullet.x > 1)
               {
-                      bullet.fall();
                       objects.addLast(bullet);
                       System.out.println("bulletFall");
               }
