@@ -85,6 +85,16 @@ public abstract class Enemy extends Sprite{
 		return this.value;
 	}
 	
+	
 	public void move() {}
-	void shoot() {}
+	
+	
+	public Obstacle shoot() {
+		return null;
+	}
+	
+	
+	public boolean isShooting() {
+		return false;
+	}
 }

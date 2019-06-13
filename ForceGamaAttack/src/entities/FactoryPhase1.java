@@ -28,8 +28,8 @@ public class FactoryPhase1 extends Factory {
 		List<Enemy> wave = new ArrayList<Enemy>();
 		
 		if (sort < 3) {
-			wave.add(new Buging(100, 100));
-			// wave.add(new Issuelizer(150, -100));
+			// wave.add(new Buging(100, 100));
+		    wave.add(new Issuelizer(150, -100));
 			return wave;
 		} else {
 			wave.add(new Tasker(100, 0));

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import scenes.Scene;
 
 import entities.Enemy;
+import entities.Obstacle;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
@@ -27,8 +28,8 @@ public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
 	private Sound backgroundSound;
-	private Collision collision;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
+	private List<Obstacle> obstacles = new ArrayList<Obstacle>();
 	private Factory fac = new FactoryPhase1();
 	private Text pausedText;
 	private Sprite restartImg;
@@ -65,6 +66,9 @@ public class GameScene extends Scene {
 		playerImage.draw();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
+		}
+		for (Obstacle obst: obstacles) {
+			 obst.draw();
 		}
 	}
 	
@@ -126,17 +130,26 @@ public class GameScene extends Scene {
 	public void update(){
 		draw();
 		checkKeyboardPress();
-		if (!game.getIsPaused()) {
+		
+		if (!game.getIsPaused()) {			
 			((Sprite) playerImage).moveY(2.5);
 			((Sprite) playerImage).moveX(2.5);
 			if (fac.isSpawnTime()) {
 				enemies.addAll(fac.factoryMethod());
 			}
+			
 			for (Enemy enemy: enemies) {
-				enemy.move();
+				enemy.move();		
 				if(Collision.collided(playerImage,enemy)) {
 					// System.out.println("collided");
+				}				
+				if(enemy.isShooting()) {
+					obstacles.add(enemy.shoot());
 				}
+			}
+			
+			for (Obstacle obstacle: obstacles) {
+				obstacle.move();
 			}
 		} else {
 			drawPausedButtons();
