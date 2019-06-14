@@ -43,8 +43,9 @@ public class GameScene extends Scene {
 	private Scene menuScene;
 	private Player player;
 	private BulletManager bullet;
-	int floor = 500;  
-	private List<Bullet> bullets = new ArrayList<Bullet>();
+	//private List<Bullet> bullets = new ArrayList<Bullet>();
+
+	
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -67,7 +68,6 @@ public class GameScene extends Scene {
 		playerImage.width = 40;
 		backgroundSound = new Sound("src/sounds/hbfs.wav");
 		backgroundSound.play();
-		
 		bullet = new BulletManager();
 		
 	}
@@ -134,25 +134,25 @@ public class GameScene extends Scene {
 		}
 	}
 	
-	private void CheckKeyboardPress() {
+	
+	private void firedBullet() {
+		int floor = 500; 
 		bullet.draw();
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
-            //int sentido = ((Player) playerImage).getSentido();
-            //System.out.println(sentido);
-			new Sound("src/sounds/shoot_laser.wav").play();
-            if (keyboard.keyDown(Keyboard.RIGHT_KEY))
-            {
-            	System.out.println("sentido == right");
+            if (keyboard.keyDown(Keyboard.RIGHT_KEY)){
                 bullet.addBullet(playerImage.x + playerImage.width -40, playerImage.y + playerImage.height/2 - 5, floor);
             }
-            else
-            {
-            	System.out.println("sentido == left");
+            else{
                 bullet.addBullet(playerImage.x +10, playerImage.y + playerImage.height/2 -5, floor);
             }
            
 		}
 		bullet.step(floor);
+	}
+	
+	
+	private void CheckKeyboardPress() {
+		firedBullet();
 	}
 	
 	private void PlayBackgroundSound(Sound backgroundSound) {

@@ -10,20 +10,20 @@ import constants.WindowConstants;
 
 public class Bullet extends Sprite{
 	
-		int sentido = Constants.STOP;
-		
-		public Bullet(double x, double y) {
-			super("src/graphics/img/bullet_player.png", 1);
-			
-	         this.x = x;
-	         this.y = y;
-			
-		}
+	int sentido = Constants.STOP;
 	
-		public void move()
-	    {            
-	   	    this.y -= 15;    
-	    }
+	public Bullet(double x, double y) {
+		super("src/graphics/img/bullet_player.png", 1);
+		
+		this.x = x;
+		this.y = y;
+		
+	}
+
+	public void move()
+	{            
+		this.y -= 15;    
+	}
 
 	    
 }

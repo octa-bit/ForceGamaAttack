@@ -13,40 +13,36 @@ public class BulletManager {
 		bullet.setFloor(floor);
 		
 		objects.addFirst(bullet);
-		 System.out.println("ADD");
+		System.out.println("ADD");
 	}
 	
-	  public void step(int floor){
-		  for(int i = 0; i < objects.size(); i++) {
-			  Bullet bullet = objects.removeFirst();
-			  System.out.println("Step");
-			  bullet.move();
-			  bullet.update();
-			  
-			  System.out.println("X: " + bullet.x);
-			  
-			  
-			  if ( bullet.x > 1)
-              {
-                      objects.addLast(bullet);
-                      System.out.println("bulletFall");
-              }
-              else
-              {
-            	  System.out.println("erro");
-              }
-		  }
-	  }
+	public void step(int floor){
+		for(int i = 0; i < objects.size(); i++) {
+			Bullet bullet = objects.removeFirst();
+			System.out.println("Step");
+			bullet.move();
+			bullet.update();
+			
+			System.out.println("X: " + bullet.x);
+			
+			
+			if ( bullet.x > 1){
+				objects.addLast(bullet);
+				System.out.println("bulletFall");
+			}
+			else{
+				System.out.println("erro");
+			}
+		}
+	}
 	  
-	  public void draw()
-	    {
-	            for(int i=0; i < objects.size(); i++)
-	            {
-	                    Bullet bullet = objects.removeFirst();
-	                    bullet.draw();
-	                    objects.addLast(bullet);
-	                    System.out.println("bullettt: " + objects);
-	            }
-	    }
+	public void draw(){
+		for(int i=0; i < objects.size(); i++){
+			Bullet bullet = objects.removeFirst();
+			bullet.draw();
+			objects.addLast(bullet);
+			System.out.println("bullettt: " + objects);
+		}
+	}
 	  
 }
