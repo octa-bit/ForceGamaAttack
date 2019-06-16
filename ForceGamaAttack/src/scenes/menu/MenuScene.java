@@ -43,8 +43,10 @@ public class MenuScene extends Scene {
 		arrow.y = 10;
 		
 		backgroundSoundMenu = new Sound("src/sounds/take_on_me.wav");
-		//backgroundSoundMenu.setRepeat(true); 
-		backgroundSoundMenu.play();
+		//backgroundSoundMenu.setRepeat(true);
+		if(game.getSoundStatus()) {
+			backgroundSoundMenu.play();
+		}
 	}
 	
 	private void appendButtons() {

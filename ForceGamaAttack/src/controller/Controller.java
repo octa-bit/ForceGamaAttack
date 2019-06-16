@@ -19,7 +19,7 @@ public class Controller {
 	public Keyboard keyboard = null;
 	private boolean isRunning = true; 
 	private boolean isPaused = false;
-	private boolean soundStatus = getSoundStatus();;
+	private boolean soundStatus = getSoundConfig();
 	private Mouse mouse;
 	private Window window;
 	
