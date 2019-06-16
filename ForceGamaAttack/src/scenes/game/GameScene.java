@@ -43,8 +43,6 @@ public class GameScene extends Scene {
 	private Scene menuScene;
 	private Player player;
 	private BulletManager bullet;
-	//private List<Bullet> bullets = new ArrayList<Bullet>();
-
 	
 	
 	protected void initialSetup(){

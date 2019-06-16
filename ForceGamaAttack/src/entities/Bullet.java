@@ -10,7 +10,7 @@ import constants.WindowConstants;
 
 public class Bullet extends Sprite{
 	
-	int sentido = Constants.STOP;
+	int direction = Constants.STOP;
 	
 	public Bullet(double x, double y) {
 		super("src/graphics/img/bullet_player.png", 1);
