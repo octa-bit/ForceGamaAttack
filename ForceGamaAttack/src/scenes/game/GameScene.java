@@ -18,6 +18,7 @@ import entities.EnemyType;
 import jplay.GameImage;
 import jplay.Sprite;
 import player.Player;
+import player.StructureStrategyJava;
 import jplay.Keyboard;
 import jplay.Sound;
 import jplay.Collision;
@@ -51,7 +52,7 @@ public class GameScene extends Scene {
 	
 	protected void viewSetup(){
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-		playerImage = new Player(100, 100);
+		((Player) playerImage).setKeyboard(keyboard);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
 		playerImage.x = 360.0;
 		playerImage.y = 550.0;
@@ -70,6 +71,11 @@ public class GameScene extends Scene {
 		}
 	}
 	
+	public GameScene(GameImage playerImage) {
+		super();
+		this.playerImage = playerImage;
+	}
+
 	private void drawPausedButtons () {
 		pausedText = new Text(255,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "PAUSADO");
 		pausedText.draw();
@@ -100,7 +106,7 @@ public class GameScene extends Scene {
 		if(mouse.isLeftButtonPressed()) {
 			
 			if (mouse.isOverObject(restartImg)) {
-				currentLevel = new GameScene();
+				currentLevel = new GameScene(this.playerImage);
 				game.pressPause();
 				game.transitTo(currentLevel);
 				backgroundSound.stop();

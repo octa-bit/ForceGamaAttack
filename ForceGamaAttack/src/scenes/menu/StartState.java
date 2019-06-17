@@ -2,6 +2,7 @@ package scenes.menu;
 
 import scenes.Scene;
 import scenes.game.GameScene;
+import scenes.spaceShipMenu.SpaceShipMenuScene;
 
 public class StartState implements MenuState {
 	private static Scene startLevel;
@@ -28,7 +29,7 @@ public class StartState implements MenuState {
 
 	@Override
 	public Scene getScene() {
-		startLevel = new GameScene();
+		startLevel = new SpaceShipMenuScene();
 		return startLevel;
 	}
 
