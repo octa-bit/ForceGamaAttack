@@ -6,30 +6,30 @@ import jplay.Keyboard;
 public class StructureStrategyJava extends Player {
 	
 	private Player player;
-	double speed;
-	private final static String sprite = "src/graphics/img/spaceship.png";
+	double speed = 0.5;
+	private final static String sprite = "src/graphics/img/java-ship.png";
 
-	public StructureStrategyJava(int x, int y, Keyboard keyboard) {
-		super(x, y, sprite, keyboard);
+	public StructureStrategyJava(int x, int y) {
+		super(x, y, sprite);
 	}
 	
 	@Override
 	public void moveX(double x) {
-		if(this.keyboard.keyDown(KeyEvent.VK_RIGHT)) {
-			this.x += x;
+		if(this.getKeyboard().keyDown(KeyEvent.VK_RIGHT)) {
+			this.x += x * speed;
 		}
-		else if(this.keyboard.keyDown(KeyEvent.VK_LEFT)) {
-			this.x -= x;
+		else if(this.getKeyboard().keyDown(KeyEvent.VK_LEFT)) {
+			this.x -= x * speed;
 		}
 	}
 	
 	@Override
 	public void moveY(double y) {
-		if(this.keyboard.keyDown(KeyEvent.VK_DOWN)) {
-			this.y += y;
+		if(this.getKeyboard().keyDown(KeyEvent.VK_DOWN)) {
+			this.y += y * speed;
 		}
-		else if(this.keyboard.keyDown(KeyEvent.VK_UP)) {
-			this.y -= y;
+		else if(this.getKeyboard().keyDown(KeyEvent.VK_UP)) {
+			this.y -= y * speed;
 		}
 	}
 }

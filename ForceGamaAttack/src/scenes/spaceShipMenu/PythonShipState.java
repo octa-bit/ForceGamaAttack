@@ -1,11 +1,14 @@
 package scenes.spaceShipMenu;
 
+import player.StructureStrategyJava;
+import player.StructureStrategyPython;
 import scenes.Scene;
 import scenes.credits.CreditsScene;
+import scenes.game.GameScene;
 
 public class PythonShipState implements MenuState {
-	public static Scene creditsScene;
-	
+	private static Scene startLevel;
+
 	@Override
 	public void next(Menu menu) {
 		menu.setState(new JavaShipState());
@@ -28,8 +31,8 @@ public class PythonShipState implements MenuState {
 	
 	@Override
 	public Scene getScene() {
-		creditsScene = new CreditsScene();
-		return creditsScene;
+		startLevel = new GameScene(new StructureStrategyPython(100, 100));
+		return startLevel;
 	}
 
 }
