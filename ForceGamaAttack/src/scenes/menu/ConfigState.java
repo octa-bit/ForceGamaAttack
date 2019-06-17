@@ -1,8 +1,10 @@
 package scenes.menu;
 
 import scenes.Scene;
+import scenes.configuration.ConfigurationScene;
 
 public class ConfigState implements MenuState {
+	public static Scene configurationScene;
 
 	@Override
 	public void next(Menu menu) {
@@ -26,7 +28,8 @@ public class ConfigState implements MenuState {
 	
 	@Override
 	public Scene getScene() {
-		return null;
+		configurationScene = new ConfigurationScene();
+		return configurationScene;
 	}
 
 }
