@@ -260,6 +260,11 @@ O objetivo deste diagrama é facilitar e documentar a implantação de um sistem
 
 ### 7.2.1 Camada 1
 
+
+### 7.2.2 Camada 2
+
+### 7.2.3 Camada 3
+
 ## 8. Tamanho e Desempenho
 ### 8.1 Visão Geral
 Aqui é descrito os objetivos de desempenho assim como o dimensionamento das características do jogo que impactam na arquitetura.
