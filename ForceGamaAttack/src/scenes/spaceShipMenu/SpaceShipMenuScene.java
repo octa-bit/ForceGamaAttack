@@ -34,8 +34,8 @@ public class SpaceShipMenuScene extends Scene {
 		background = new GameImage("src/graphics/img/temporary.png");
 		appendButtons();
 
-		arrow = new Sprite("src/graphics/img/seta.png");
-		arrow.x = 10;
+		arrow = new Sprite("src/graphics/img/seta-up.png");
+		arrow.x = 250;
 		arrow.y = 10;
 		
 		backgroundSoundMenu = new Sound("src/sounds/take_on_me.wav");
@@ -44,32 +44,32 @@ public class SpaceShipMenuScene extends Scene {
 	}
 	
 	private void appendButtons() {
-		Sprite startButton = new Sprite("src/graphics/img/new-game.png");
-		Sprite settingsButton = new Sprite("src/graphics/img/config.png");
-		Sprite creditButton = new Sprite("src/graphics/img/credits.png");
+		Sprite javaButton = new Sprite("src/graphics/img/java-menu.png");
+		Sprite cButton = new Sprite("src/graphics/img/c-menu.png");
+		Sprite pythonButton = new Sprite("src/graphics/img/python-menu.png");
 		
-		buttons.add(startButton);
-		buttons.add(settingsButton);
-		buttons.add(creditButton);
+		buttons.add(javaButton);
+		buttons.add(cButton);
+		buttons.add(pythonButton);
 		
 		for(OptionMenu option : OptionMenu.values()) {
 			int currentButtonIndex = option.ordinal();
 			if(currentButtonIndex == 0) {
-				buttons.get(currentButtonIndex).x = WindowConstants.WIDTH/2 - startButton.width/2;
-				buttons.get(currentButtonIndex).y = DISTANCE_TITLE_BUTTON;
+				buttons.get(currentButtonIndex).x = WindowConstants.WIDTH/2 - javaButton.width/2 - cButton.width/2 - pythonButton.width/2;
+				buttons.get(currentButtonIndex).y = WindowConstants.HEIGHT/2 - javaButton.height/2;
 			} else {
-				buttons.get(currentButtonIndex).x = buttons.get(currentButtonIndex - 1).x;
-				buttons.get(currentButtonIndex).y = buttons.get(currentButtonIndex - 1).y + buttons.get(currentButtonIndex - 1).height + DISTANCE_BETWEEN_BUTTONS;
+				buttons.get(currentButtonIndex).y = buttons.get(currentButtonIndex - 1).y;
+				buttons.get(currentButtonIndex).x = buttons.get(currentButtonIndex - 1).x + buttons.get(currentButtonIndex - 1).width + DISTANCE_BETWEEN_BUTTONS;
 			}
 		}
 	}
 	
 	private void checkMenuOption() {
-		if (keyboard.keyDown(Keyboard.DOWN_KEY)){
+		if (keyboard.keyDown(Keyboard.RIGHT_KEY)){
 			selectedMenu.nextState();
 		}
 		
-		if (keyboard.keyDown(Keyboard.UP_KEY)){
+		if (keyboard.keyDown(Keyboard.LEFT_KEY)){
 			selectedMenu.previousState();
 		}
 	}
@@ -78,8 +78,8 @@ public class SpaceShipMenuScene extends Scene {
 		int currentButtonIndex = this.selectedMenu.getOrdinal().ordinal();
 		Sprite currentButton = this.buttons.get(currentButtonIndex);
 		
-		this.arrow.x = currentButton.x - arrow.width - DISTANCE_BETWEEN_BUTTONS;
-		this.arrow.y = currentButton.y;
+		this.arrow.x = currentButton.x + currentButton.width/2 - arrow.width/2;
+		this.arrow.y = currentButton.y + currentButton.height;
 		
 	}
 	
