@@ -5,7 +5,7 @@
 
 # Diagrama de Estados
 
-## Versão 0.2
+## Versão 0.1
 
 ![Diagrama de Estados](https://i.imgur.com/20VpsLn.png)
 
