@@ -51,6 +51,7 @@ public class GameScene extends Scene {
 	}
 	
 	protected void viewSetup(){
+		pauseSetup();
 		background = new GameImage("src/graphics/img/space_bg.jpg");
 		((Player) playerImage).setKeyboard(keyboard);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
@@ -58,9 +59,20 @@ public class GameScene extends Scene {
 		playerImage.y = 550.0;
 		playerImage.height = 90;
 		playerImage.width = 40;
-		
 		backgroundSound = new Sound("src/sounds/hbfs.wav");
-		backgroundSound.play();
+		if(game.getSoundStatus()) {
+			backgroundSound.play();
+		}
+	}
+
+	private void pauseSetup() {
+		pausedText = new Text(255,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "PAUSADO");
+		restartImg = new Sprite("src/graphics/guiPack/white_restart.png");
+		restartImg.x = WindowConstants.WIDTH/2 - restartImg.width/2 - restartImg.width - 20;
+		restartImg.y = WindowConstants.HEIGHT/2 - restartImg.height/2 + 50;
+		exitImg = new Sprite("src/graphics/guiPack/white_home.png");
+		exitImg.x = WindowConstants.WIDTH/2 - exitImg.width/2  + restartImg.width + 20;
+		exitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
 	}
 	
 	private void draw() {
@@ -77,24 +89,15 @@ public class GameScene extends Scene {
 	}
 
 	private void drawPausedButtons () {
-		pausedText = new Text(255,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "PAUSADO");
 		pausedText.draw();
 		
-		restartImg = new Sprite("src/graphics/guiPack/white_restart.png");
-		restartImg.x = WindowConstants.WIDTH/2 - restartImg.width/2 - restartImg.width - 20;
-		restartImg.y = WindowConstants.HEIGHT/2 - restartImg.height/2 + 50;
-		
 		if (game.getSoundStatus()) {
-			soundImg = new Sprite("src/graphics/guiPack/white_musicOff.png");
-		} else {
 			soundImg = new Sprite("src/graphics/guiPack/white_musicOn.png");
+		} else {
+			soundImg = new Sprite("src/graphics/guiPack/white_musicOff.png");
 		}
 		soundImg.x = WindowConstants.WIDTH/2 - soundImg.width/2;
 		soundImg.y = WindowConstants.HEIGHT/2 - soundImg.height/2 + 50;
-		
-		exitImg = new Sprite("src/graphics/guiPack/white_home.png");
-		exitImg.x = WindowConstants.WIDTH/2 - exitImg.width/2  + restartImg.width + 20;
-		exitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
 		
 		restartImg.draw();
 		soundImg.draw();
@@ -117,15 +120,18 @@ public class GameScene extends Scene {
 				game.transitTo(menuScene);
 				backgroundSound.stop();
 			} else if (mouse.isOverObject(soundImg)) {
-				game.changeSoundStatus();
-				// Mute or unmute the sound of the game
+				ArrayList<Sound> sounds = new ArrayList<>();
+				sounds.add(backgroundSound);
+				game.changeSoundStatus(sounds);
 			}
 		}
 	}
 	
 	private void checkKeyboardPress() {
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
-			new Sound("src/sounds/shoot_laser.wav").play();
+			if (game.getSoundStatus()) {
+				new Sound("src/sounds/shoot_laser.wav").play();
+			}
 		} else if ( keyboard.keyDown(KeyEvent.VK_P)) {
 			game.pressPause();
 		}
@@ -143,7 +149,7 @@ public class GameScene extends Scene {
 			for (Enemy enemy: enemies) {
 				enemy.move();
 				if(Collision.collided(playerImage,enemy)) {
-					System.out.println("oi");
+					// do something after colliding
 				}
 			}
 		} else {
