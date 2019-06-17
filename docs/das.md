@@ -152,6 +152,10 @@ Versão utilizada no começo da implementação.
 ![Diagrama JPlay](https://i.imgur.com/Aoflhxh.jpg)
 
 ### 5.4 Diagrama de Pacotes
+Um pacote é um conjunto de elementos agrupados. O diagrama fornece uma visão conceitual no geral um mesmo pacote contém o mesmo tipo de item.
+
+O uso mais comum desse diagrama é para organizar elementos e outras
+partes do modelo UML.
 
 #### 5.4.1 Versão 0.1
 ![Diagrama de pacotes v0.1](https://i.imgur.com/oxrEYie.png)
@@ -160,6 +164,11 @@ Versão utilizada no começo da implementação.
 ![Diagrama de pacotes v1.0](https://i.imgur.com/hIGukUR.png)
 
 ### 5.5 Diagrama de Componentes
+Ele representa um modelamento físico dos componentes de software de um
+determinado Sistema no qual um componente realiza um conjunto de interfaces e contém em seu
+interior classes e interfaces, esse componente pode conter em seu projeto um ou mais padrões de projeto.
+
+Um componente pode possuir dependências de outros componentes a solução de software pode conter componentes próprios ou de terceiros no caso do jogo o JPlay
 
 #### 5.5.1 Versão 0.1
 ![Diagrama_Componente_V1](https://i.ibb.co/2NQPJnF/component-diagram-V1.png)
@@ -169,8 +178,6 @@ Versão utilizada no começo da implementação.
 
 
 ## 6. Visualização do Processo
-[This section describes the system's decomposition into lightweight processes (single threads of control) and heavyweight processes (groupings of lightweight processes). Organize the section by groups of processes that communicate or interact. Describe the main modes of communication between processes, such as message passing, interrupts, and rendezvous.]
-
 
 ### 6.1 Diagrama de Sequência
 
@@ -240,6 +247,12 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 ## 7. Visualização de Implementação
 
 ### 8.1 Visão Geral
+Nesta seção tem como objetivo realizar um mapeamento do software na infraestrutura disponível normalmente os sistemas são distribuídos e contém vários componentes também espalhados ao longo da infraestrutura. 
+
+O diagrama contém Nós e eventualmente os componentes em cada Nó as ligações entre nós representam as ligações de rede com portas e parâmetros necessários
+
+O objetivo deste diagrama é facilitar e documentar a implantação de um
+sistema de software
 
 ### 8.2 Camadas
 
