@@ -20,7 +20,7 @@ GDD - Game Design Document
 Scott Rogers, Level Up the Guide to Great Game Design, 2010. John Wiley & Sons.
 
 ### 1.5 Visão Geral
-O documento é divido em seções sendo a 2
+O documento é divido em seções sendo a 2 a representação da arquitetura, a 3 o objetivos e restrições da arquitetura, 4 a visualização de casos de uso, 5 a visualização lógica, 6 a visualização do processo, 7 a de implementação, 8 tamanho e desempenho e a seção 9 a qualidade.
 
 ## 2. Representação da Arquitetura
 Este documento apresenta a arquitetura como uma série de visualizações; visualização caso de uso visualização lógica, visualização do processo e visualização da implementação. Elas são visualizações em um modelo UML (linguagem de modelagem unificada).
@@ -273,5 +273,6 @@ Aqui é descrito os objetivos de desempenho assim como o dimensionamento das car
 ### 8.3 Tempo de Resposta
 O tempo de resposta para o input de ações dentro do jogo foi decidido baseado no tempo que o monitor leva para mudar de uma cor para outra. Normalmente, isso é medido em termos de passar de preto para branco para preto novamente, em termos de milissegundos. Um tempo de resposta típico do LCD é inferior a dez milissegundos (10 ms) sendo esse o tempo definido.
 
-## 9. Qualidade 
+## 9. Qualidade
+
 ### 8.1 Visão Geral
