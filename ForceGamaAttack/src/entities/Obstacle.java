@@ -14,8 +14,6 @@ public class Obstacle extends Sprite {
 		this.collisionDamage = dmg;
 		this.spdX = spdX;
 		this.spdY = spdY;
-		
-		System.out.println("created!");
 	}
 	
 	public void move() {

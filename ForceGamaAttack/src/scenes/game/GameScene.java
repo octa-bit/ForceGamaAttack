@@ -1,6 +1,8 @@
 package scenes.game;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import scenes.Scene;
 
 import entities.Enemy;
@@ -127,6 +129,15 @@ public class GameScene extends Scene {
 		}
 	}
 
+	private boolean isInside(Sprite sprite) {
+		boolean isInside = sprite.x > -20 &&
+				           sprite.x < WindowConstants.WIDTH + 20 &&
+				           sprite.y > -20 &&
+				           sprite.y < WindowConstants.HEIGHT + 20;
+		
+		return isInside;
+	}
+	
 	public void update(){
 		draw();
 		checkKeyboardPress();
@@ -138,8 +149,19 @@ public class GameScene extends Scene {
 				enemies.addAll(fac.factoryMethod());
 			}
 			
-			for (Enemy enemy: enemies) {
-				enemy.move();		
+			// Enemy things
+			Iterator<Enemy> itrEnemy = enemies.iterator();
+			while (itrEnemy.hasNext()) {
+				Enemy enemy = itrEnemy.next();
+				
+				enemy.move();	
+				
+				if (!isInside(enemy)) {
+					itrEnemy.remove();
+					System.out.println("Remove");
+					continue;
+				}
+				
 				if(Collision.collided(playerImage,enemy)) {
 					// System.out.println("collided");
 				}				
@@ -148,6 +170,7 @@ public class GameScene extends Scene {
 				}
 			}
 			
+			// Obstacle things
 			for (Obstacle obstacle: obstacles) {
 				obstacle.move();
 			}
