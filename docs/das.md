@@ -220,6 +220,13 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 
 ### 6.4 Diagrama de Estados
 
+#### Versão 0.1
+
+![Diagrama de Estados](https://i.imgur.com/20VpsLn.png)
+
+#### Versão 1.0
+
+![Diagrama de Estados](https://i.imgur.com/LH2qlvz.png)
 
 ## 7. Visualização de Implementação
 
