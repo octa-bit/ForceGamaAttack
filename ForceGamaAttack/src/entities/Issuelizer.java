@@ -23,7 +23,6 @@ class Issuelizer extends Enemy {
 	public boolean isShooting() {
 		if (this.reloadTime > 100) {
 			this.reloadTime = 0;
-			System.out.println("shooted!");
 			return true;
 		}
 		this.reloadTime++;

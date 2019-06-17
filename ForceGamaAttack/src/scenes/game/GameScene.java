@@ -132,7 +132,7 @@ public class GameScene extends Scene {
 	private boolean isInside(Sprite sprite) {
 		boolean isInside = sprite.x > -20 &&
 				           sprite.x < WindowConstants.WIDTH + 20 &&
-				           sprite.y > -20 &&
+				           sprite.y > -120 &&
 				           sprite.y < WindowConstants.HEIGHT + 20;
 		
 		return isInside;
@@ -158,7 +158,6 @@ public class GameScene extends Scene {
 				
 				if (!isInside(enemy)) {
 					itrEnemy.remove();
-					System.out.println("Remove");
 					continue;
 				}
 				
@@ -171,8 +170,15 @@ public class GameScene extends Scene {
 			}
 			
 			// Obstacle things
-			for (Obstacle obstacle: obstacles) {
+			Iterator<Obstacle> itrObs = obstacles.iterator();
+			while (itrObs.hasNext()) {
+				Obstacle obstacle = itrObs.next();
+				
 				obstacle.move();
+				
+				if(!isInside(obstacle)) {
+					itrObs.remove();
+				}
 			}
 		} else {
 			drawPausedButtons();
