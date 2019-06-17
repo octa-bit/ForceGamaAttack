@@ -41,9 +41,9 @@ public class ConfigurationScene extends Scene {
 
 	private void drawConfigButtons() {
 		if (game.getSoundStatus()) {
-			soundImg = new Sprite("src/graphics/guiPack/white_musicOff.png");
-		} else {
 			soundImg = new Sprite("src/graphics/guiPack/white_musicOn.png");
+		} else {
+			soundImg = new Sprite("src/graphics/guiPack/white_musicOff.png");
 		}
 		soundImg.x = WindowConstants.WIDTH/2 - soundImg.width/2;
 		soundImg.y = WindowConstants.HEIGHT/2 - soundImg.height/2 + 50;

@@ -50,6 +50,7 @@ public class GameScene extends Scene {
 	}
 	
 	protected void viewSetup(){
+		pauseSetup();
 		background = new GameImage("src/graphics/img/space_bg.jpg");
 		playerImage = new Player(100, 100);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
@@ -62,6 +63,16 @@ public class GameScene extends Scene {
 			backgroundSound.play();
 		}
 	}
+
+	private void pauseSetup() {
+		pausedText = new Text(255,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "PAUSADO");
+		restartImg = new Sprite("src/graphics/guiPack/white_restart.png");
+		restartImg.x = WindowConstants.WIDTH/2 - restartImg.width/2 - restartImg.width - 20;
+		restartImg.y = WindowConstants.HEIGHT/2 - restartImg.height/2 + 50;
+		exitImg = new Sprite("src/graphics/guiPack/white_home.png");
+		exitImg.x = WindowConstants.WIDTH/2 - exitImg.width/2  + restartImg.width + 20;
+		exitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
+	}
 	
 	private void draw() {
 		background.draw();
@@ -72,24 +83,15 @@ public class GameScene extends Scene {
 	}
 	
 	private void drawPausedButtons () {
-		pausedText = new Text(255,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "PAUSADO");
 		pausedText.draw();
 		
-		restartImg = new Sprite("src/graphics/guiPack/white_restart.png");
-		restartImg.x = WindowConstants.WIDTH/2 - restartImg.width/2 - restartImg.width - 20;
-		restartImg.y = WindowConstants.HEIGHT/2 - restartImg.height/2 + 50;
-		
 		if (game.getSoundStatus()) {
-			soundImg = new Sprite("src/graphics/guiPack/white_musicOff.png");
-		} else {
 			soundImg = new Sprite("src/graphics/guiPack/white_musicOn.png");
+		} else {
+			soundImg = new Sprite("src/graphics/guiPack/white_musicOff.png");
 		}
 		soundImg.x = WindowConstants.WIDTH/2 - soundImg.width/2;
 		soundImg.y = WindowConstants.HEIGHT/2 - soundImg.height/2 + 50;
-		
-		exitImg = new Sprite("src/graphics/guiPack/white_home.png");
-		exitImg.x = WindowConstants.WIDTH/2 - exitImg.width/2  + restartImg.width + 20;
-		exitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
 		
 		restartImg.draw();
 		soundImg.draw();
