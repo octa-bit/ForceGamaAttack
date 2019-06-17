@@ -18,6 +18,7 @@ import entities.EnemyType;
 import jplay.GameImage;
 import jplay.Sprite;
 import player.Player;
+import player.StructureStrategyJava;
 import jplay.Keyboard;
 import jplay.Sound;
 import jplay.Collision;
@@ -51,7 +52,7 @@ public class GameScene extends Scene {
 	
 	protected void viewSetup(){
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-		playerImage = new Player(100, 100);
+		playerImage = new StructureStrategyJava(100, 100, keyboard);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
 		playerImage.x = 360.0;
 		playerImage.y = 550.0;
