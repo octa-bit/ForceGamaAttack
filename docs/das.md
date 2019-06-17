@@ -41,21 +41,25 @@ Nesta seção é descrito os requisitos e os objetivos que possuem impacto no de
 - O GDD deve ser seguido 
 
 ## 4. Visualização de Casos de Uso
+
+### 4.1 Visão Geral
 Nesta seção é listado os casos de uso que representam uma funcionalidade central ou significante do sistema.
 
-## UC01 - Menu Principal
+O diagrama de Casos de Uso auxilia no levantamento dos requisitos funcionais do sistema, descrevendo um conjunto de funcionalidades do sistema e suas interações com elementos externos e entre si.
 
-### Diagrama
+### 4.2 UC01 - Menu Principal
+
+#### 4.2.1 Diagrama
 
 ![UC01 - Menu Principal](https://i.ibb.co/VYpx6Rx/UC01.png)
 
-## UC02 - Jogar
+### 4.3 UC02 - Jogar
 
-### Diagrama
+#### 4.3.1 Diagrama
 
 ![UC02 - Jogar](https://i.ibb.co/C69sBYv/UC02-Jogar.png)
 
-### Especificação
+#### 4.3.2 Especificação
 
 |  |  |
 |  ------: | :------ |
@@ -67,13 +71,12 @@ Nesta seção é listado os casos de uso que representam uma funcionalidade cent
 | **Fluxos de Exceção** | Não se aplica. |
 | **Pós Condições** | Usuário terá acesso a tela de jogo e opções do jogabilidade. |
 
-## UC03 - Customização
+### 4.4 UC03 - Customização
 
-### Diagrama
-
+#### 4.4.1 Diagrama
 ![UC03 - Customização](https://i.ibb.co/3SwxStg/UC03-Customiza-o.png)
 
-### Especificação
+#### 4.4.2 Especificação
 
 |  |  |
 |  ------: | :------ |
@@ -85,13 +88,13 @@ Nesta seção é listado os casos de uso que representam uma funcionalidade cent
 | **Fluxos de Exceção** | Não se aplica. |
 | **Pós Condições** | Nave do jogador customizada de acordo com as especificações. |
 
-## UC04 - Configurações
+### 4.5 UC04 - Configurações
 
-### Diagrama
+#### 4.5.1 Diagrama
 
 ![UC04 - Configurações](https://i.ibb.co/QbwVK70/UC04-Configura-es.png)
 
-### Especificação
+#### 4.5.2 Especificação
 
 |  |  |
 |  ------: | :------ |
@@ -177,13 +180,15 @@ Um componente pode possuir dependências de outros componentes a solução de so
 
 ## 6. Visualização do Processo
 
-### 6.1 Diagrama de Sequência
+### 6.1 Visão Geral
+
+### 6.2 Diagrama de Sequência
 
 O diagrama de sequência tem por objetivo exibir ciclos de vida dentro da execução de determinada parte de um programa de software e a maneira e sequência com a qual interagem. Tem uma noção de linearidade vertical, no sentido de que as interações que ocorrem antes estão acima das que ocorrem depois.
 
 Os ciclos de vida podem ser Classes, atores ou até mesmo abstrações que ocorrem entrem as classes.
 
-#### 6.1.1 O Game Loop
+#### 6.2.1 O Game Loop
 
 ![gameloop](assets/images/gameLoop.png)
 
@@ -191,7 +196,7 @@ Este diagrama tem por finalidade resumir todo o trabalho da Game Engine, delimit
 
 Além disso, esse diagrama nos conta um pouco sobre como a arquitetura do jogo vai funcionar, mostrando que o input gerado pelo jogador é interpretado pela Game Engine que, através de uma série de mecanismos aqui omitidos, comunicará com a Interface do Usuário, para que então este possa ter feedback sobre o que está acontecendo no jogo.
 
-#### 6.1.2 Experiência do Jogo
+#### 6.2.2 Experiência do Jogo
 
 ![gameExperience](assets/images/gameExperience.png)
 
@@ -203,7 +208,7 @@ Além dos inimigos, o jogador pode também interagir com objetos da classe Power
 
 Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a condição é o :Score ter um valor que supere pelo menos o quinto maior registrado do :ScoreBoard. Caso isso ocorra, o jogador então registrará seu nome no :ScoreBoard e obterá feedback sobre o sucesso da operação.
 
-### 6.2 Diagrama de Colaboração
+### 6.3 Diagrama de Colaboração
 
 #### Versão 0.1
 ##### Diagrama MenuGame
@@ -220,7 +225,7 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 ![Diagrama de colaboração - Sprite v0.2](https://i.imgur.com/6gbSLao.png)
 
 
-### 6.3 Diagrama de Atividades
+### 6.4 Diagrama de Atividades
 
 #### Diagrama de Level
 ##### Versão 1.0
@@ -234,7 +239,7 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 ![Versão 1.0](https://i.imgur.com/XRSEXy9.jpg)
 
 
-### 6.4 Diagrama de Estados
+### 6.5 Diagrama de Estados
 #### Versão 0.1
 ![Diagrama de Estados](https://i.imgur.com/20VpsLn.png)
 
@@ -243,19 +248,20 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 
 ## 7. Visualização de Implementação
 
-### 8.1 Visão Geral
+### 7.1 Visão Geral
 Nesta seção tem como objetivo realizar um mapeamento do software na infraestrutura disponível normalmente os sistemas são distribuídos e contém vários componentes também espalhados ao longo da infraestrutura. 
 
 O diagrama contém Nós e eventualmente os componentes em cada Nó as ligações entre nós representam as ligações de rede com portas e parâmetros necessários
 
 O objetivo deste diagrama é facilitar e documentar a implantação de um sistema de software
 
-### 8.2 Camadas
+### 7.2 Camadas
 
-## 9. Tamanho e Desempenho
+## 8. Tamanho e Desempenho
+### 8.1 Visão Geral
 Aqui é descrito os objetivos de desempenho assim como o dimensionamento das características do jogo qie impactam na arquitetura.
 
-Os requisitos mínimos são:
+### 8.2 Requisitos Mínimos
 - Processador: 2Ghz.
 - Memória RAM: 1 GB.
 - Memória de Vídeo: 128 MB.
@@ -264,4 +270,8 @@ Os requisitos mínimos são:
 - Sistemas Operacionais: Windows 7, Windows 10, Ubuntu 16, Debian 7, Arch
 - Espaço: 60 MB livres em disco.
 
-## 10. Qualidade 
+### 8.3 Tempo de Resposta
+O tempo de resposta para o input de ações dentro do jogo foi decidido baseado no tempo que o monitor leva para mudar de uma cor para outra. Normalmente, isso é medido em termos de passar de preto para branco para preto novamente, em termos de milissegundos. Um tempo de resposta típico do LCD é inferior a dez milissegundos (10 ms) sendo esse o tempo definido.
+
+## 9. Qualidade 
+### 8.1 Visão Geral
