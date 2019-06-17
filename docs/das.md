@@ -23,9 +23,7 @@ Scott Rogers, Level Up the Guide to Great Game Design, 2010. John Wiley & Sons.
 O documento é divido em seções sendo a 2
 
 ## 2. Representação da Arquitetura
-Aqui é descrito como é a arquitetura da arquitetura do software e como ela é representada.
-
-[This section describes what software architecture is for the current system, and how it is represented. Of the Use-Case, Logical, Process, Deployment, and Implementation Views, it enumerates the views that are necessary, and for each view, explains what types of model elements it contains.]
+Este documento apresenta a arquitetura como uma série de visualizações; visualização caso de uso visualização lógica, visualização do processo e visualização da implementação. Elas são visualizações em um modelo UML (linguagem de modelagem unificada).
 
 ## 3. Objetivos e Restrições da Arquitetura
 Nesta seção é descrito os requisitos e os objetivos que possuem impacto no desenvolvimento do jogo sendo eles:
@@ -223,13 +221,12 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 
 
 ### 6.3 Diagrama de Atividades
-#### Diagrama de Level
 
+#### Diagrama de Level
 ##### Versão 1.0
 ![Versão 1.0](https://i.ibb.co/K5Jxj0g/Level-Activity-Diagram.png)
 
 #### Diagrama de Colisões
-
 ##### Versão 0.1
 ![Versão 0.1](https://i.imgur.com/jTQBLTx.jpg)
 
@@ -251,8 +248,7 @@ Nesta seção tem como objetivo realizar um mapeamento do software na infraestru
 
 O diagrama contém Nós e eventualmente os componentes em cada Nó as ligações entre nós representam as ligações de rede com portas e parâmetros necessários
 
-O objetivo deste diagrama é facilitar e documentar a implantação de um
-sistema de software
+O objetivo deste diagrama é facilitar e documentar a implantação de um sistema de software
 
 ### 8.2 Camadas
 
@@ -265,7 +261,7 @@ Os requisitos mínimos são:
 - Memória de Vídeo: 128 MB.
 - Direct3D: Sim.
 - Versão do DirectX: 9.0c.
-- Sistemas Operacionais: Windows XP, Windows Vista, Windows 7, Ubuntu, Debian, Arch
+- Sistemas Operacionais: Windows 7, Windows 10, Ubuntu 16, Debian 7, Arch
 - Espaço: 60 MB livres em disco.
 
 ## 10. Qualidade 
