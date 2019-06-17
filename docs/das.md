@@ -215,12 +215,10 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 ![Diagrama de colaboração - Sprite v0.2](https://i.imgur.com/6gbSLao.png)
 
 
-
 ### 6.3 Diagrama de Atividades
 #### Diagrama de Level
 
 ##### Versão 1.0
-
 ![Versão 1.0](https://i.ibb.co/K5Jxj0g/Level-Activity-Diagram.png)
 
 #### Diagrama de Colisões
@@ -234,22 +232,16 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 
 ### 6.4 Diagrama de Estados
 #### Versão 0.1
-
 ![Diagrama de Estados](https://i.imgur.com/20VpsLn.png)
 
 #### Versão 1.0
-
 ![Diagrama de Estados](https://i.imgur.com/LH2qlvz.png)
 
 ## 7. Visualização de Implementação
 
-[This section describes the overall structure of the implementation model, the decomposition of the software into layers and subsystems in the implementation model, and any architecturally significant components.]
-
 ### 8.1 Visão Geral
-[This subsection names and defines the various layers and their contents, the rules that govern the inclusion to a given layer, and the boundaries between layers. Include a component diagram that shows the relations between layers. ]
 
 ### 8.2 Camadas
-[For each layer, include a subsection with its name, an enumeration of the subsystems located in the layer, and a component diagram.]
 
 ## 9. Tamanho e Desempenho
 Aqui é descrito os objetivos de desempenho assim como o dimensionamento das características do jogo qie impactam na arquitetura.
@@ -264,4 +256,3 @@ Os requisitos mínimos são:
 - Espaço: 60 MB livres em disco.
 
 ## 10. Qualidade 
-[A description of how the software architecture contributes to all capabilities (other than functionality) of the system: extensibility, reliability, portability, and so on. If these characteristics have special significance, such as safety, security or privacy implications, they must be clearly delineated.]
