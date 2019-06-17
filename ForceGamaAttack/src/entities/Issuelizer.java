@@ -32,18 +32,26 @@ class Issuelizer extends Enemy {
 	
 	
 	public Obstacle shoot() {
+		// get the Target
 		Player target = Player.getInstance();
 		
-		// Euclidian distance
+		// Euclidean distance
 		Double xDistance = target.x - this.x;
 		Double yDistance = target.y - this.y;
 		Double distance = Math.sqrt(xDistance * xDistance + yDistance * yDistance);
 		
-		// Normalization
+		// Normalization of distance
 		Double xNormal = xDistance / distance;
 		Double yNormal = yDistance / distance;
 		
-		return new Obstacle(FileNames.spritePath + "blueLaser.png",
-				            this.x, this.y, 10, xNormal*2, yNormal*2);
+		// Speed of the bullet
+		Double bulletSpd = 2.0;
+		
+		// Instantiate the bullet
+		Obstacle obj = new Obstacle(FileNames.spritePath + "fireShoot.png", 2,
+				                    this.x, this.y, 10, xNormal*bulletSpd, yNormal*bulletSpd);
+		obj.setTotalDuration(20);
+		
+		return obj;
 	}
 }
