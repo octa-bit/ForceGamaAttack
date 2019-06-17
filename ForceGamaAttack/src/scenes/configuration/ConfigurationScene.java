@@ -11,52 +11,70 @@ import jplay.Sprite;
 import scenes.Scene;
 import scenes.menu.MenuScene;
 import text.Text;
-import jplay.Mouse;
 
 public class ConfigurationScene extends Scene {
 	private GameImage background;
+	private Sprite arrow;
 	private Text title;
-	private Sprite soundImg;
-	private Mouse mouse;
+	private Text sound, soundStatus;
+	private String configOption;
 	
-	protected void initialSetup(){
+	protected void initialSetup() {
 		keyboard.setBehavior(Keyboard.ESCAPE_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		keyboard.addKey(KeyEvent.VK_BACK_SPACE, Keyboard.DETECT_INITIAL_PRESS_ONLY);
-		mouse = game.getMouse();
+		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
+		keyboard.setBehavior(Keyboard.UP_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
+		keyboard.addKey(Keyboard.ENTER_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		title = new Text(235,80,new Font("Comic Sans MS", Font.BOLD, 40), Color.WHITE, "CONFIGURAÇÕES");
+		sound = new Text(180,180,new Font("Comic Sans MS", Font.BOLD, 35), Color.WHITE, "SOM: ");
+		configOption = "sound";
 	}
 	
 	protected void viewSetup(){
 		background = new GameImage("src/graphics/img/space_bg.jpg");
+		arrow = new Sprite("src/graphics/img/seta.png");
+		arrow.x = 135;
+		arrow.y = 150;
 		drawConfigButtons();
-		soundImg.x = WindowConstants.WIDTH/2 - soundImg.width/2;
-		soundImg.y = WindowConstants.HEIGHT/2 - soundImg.height/2 + 50;
 	}
 	
 	private void draw() {
 		background.draw();
-		soundImg.draw();
 		title.draw();
+		sound.draw();
+		drawConfigButtons();
 	}
 
 	private void drawConfigButtons() {
-		if (game.getSoundStatus()) {
-			soundImg = new Sprite("src/graphics/guiPack/white_musicOn.png");
-		} else {
-			soundImg = new Sprite("src/graphics/guiPack/white_musicOff.png");
+		if (game != null) {
+			if (game.getSoundStatus()) {
+				soundStatus = new Text(280,180,new Font("Comic Sans MS", Font.BOLD, 35), Color.WHITE, "LIGADO");
+			} else {
+				soundStatus = new Text(280,180,new Font("Comic Sans MS", Font.BOLD, 35), Color.WHITE, "DESLIGADO");
+			}
+			if (soundStatus != null && arrow != null) {
+				soundStatus.draw();
+				arrow.draw();
+			}
 		}
-		soundImg.x = WindowConstants.WIDTH/2 - soundImg.width/2;
-		soundImg.y = WindowConstants.HEIGHT/2 - soundImg.height/2 + 50;
 	}
 
 	private void checkUserEntry() {
 		if (keyboard.keyDown(KeyEvent.VK_BACK_SPACE) || keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
 			game.transitTo(new MenuScene());
 		}
-		if(mouse.isLeftButtonPressed()) {
-			if (mouse.isOverObject(soundImg)) {
+//		if (keyboard.keyDown(Keyboard.DOWN_KEY)){
+//			nextState();
+//		}
+//		
+//		if (keyboard.keyDown(Keyboard.UP_KEY)){
+//			previousState();
+//		}
+		else if (keyboard.keyDown(Keyboard.ENTER_KEY)){
+			if(configOption.indexOf("sound") !=-1) {
 				game.changeSoundStatus();
-				drawConfigButtons();
+			} else {
+//				TODO
 			}
 		}
 	}

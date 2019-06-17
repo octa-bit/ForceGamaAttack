@@ -101,12 +101,12 @@ public class Controller {
 			BufferedReader file = new BufferedReader(new FileReader("src/config/Config.txt"));
 			// soundStatus = !soundStatus;
 			while((line = file.readLine()) != null) {
-                if(line.indexOf("Sound") !=-1) {
-                	 soundStatus = line.equals("Sound: True");
-                	 file.close();
-                	 break;
-                }
-            }   
+					if(line.indexOf("Sound") !=-1) {
+							soundStatus = line.equals("Sound: True");
+							file.close();
+							break;
+					}
+			}   
 			file.close();
 		} catch (Exception e) {
 			System.err.format("Exception occurred trying to read Config.txt");
