@@ -255,6 +255,8 @@ O diagrama contém Nós e eventualmente os componentes em cada Nó as ligações
 O objetivo deste diagrama é facilitar e documentar a implantação de um sistema de software
 
 ### 7.2 Diagrama
+#### Versão 0.1
+![Diagrama de Implantação](https://i.imgur.com/TV8qePy.png)
 
 ### 7.2.1 Camada 1
 
