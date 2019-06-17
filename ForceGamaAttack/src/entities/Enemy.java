@@ -86,7 +86,7 @@ public abstract class Enemy extends Sprite{
 	}
 	
 	
-	public void move() {}
+	public abstract void move();
 	
 	
 	public Obstacle shoot() {
