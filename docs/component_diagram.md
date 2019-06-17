@@ -5,10 +5,8 @@
 
 # Diagrama de Componentes
 
-## Versão 1
-
+## Versão 0.1
 ![Diagrama_Componente_V1](https://i.ibb.co/2NQPJnF/component-diagram-V1.png)
 
-## Versão 2
-
+## Versão 0.2
 ![Diagrama_Componente_V2](https://i.ibb.co/GRcsB0N/component-diagram-V2.png)
