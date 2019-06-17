@@ -132,7 +132,7 @@ public class GameScene extends Scene {
 	private boolean isInside(Sprite sprite) {
 		boolean isInside = sprite.x > -20 &&
 				           sprite.x < WindowConstants.WIDTH + 20 &&
-				           sprite.y > -120 &&
+				           sprite.y > -150 &&
 				           sprite.y < WindowConstants.HEIGHT + 20;
 		
 		return isInside;
