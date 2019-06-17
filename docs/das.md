@@ -156,9 +156,6 @@ Versão utilizada no começo da implementação.
 ### 5.4 Diagrama de Pacotes
 Um pacote é um conjunto de elementos agrupados. O diagrama fornece uma visão conceitual no geral um mesmo pacote contém o mesmo tipo de item.
 
-O uso mais comum desse diagrama é para organizar elementos e outras
-partes do modelo UML.
-
 #### 5.4.1 Versão 0.1
 ![Diagrama de pacotes v0.1](https://i.imgur.com/oxrEYie.png)
 
@@ -170,7 +167,7 @@ Ele representa um modelamento físico dos componentes de software de um
 determinado Sistema no qual um componente realiza um conjunto de interfaces e contém em seu
 interior classes e interfaces, esse componente pode conter em seu projeto um ou mais padrões de projeto.
 
-Um componente pode possuir dependências de outros componentes a solução de software pode conter componentes próprios ou de terceiros no caso do jogo o JPlay
+Um componente pode possuir dependências de outros componentes a solução de software pode conter componentes próprios ou de terceiros no caso do jogo o JPlay.
 
 #### 5.5.1 Versão 0.1
 ![Diagrama_Componente_V1](https://i.ibb.co/2NQPJnF/component-diagram-V1.png)
@@ -182,6 +179,7 @@ Um componente pode possuir dependências de outros componentes a solução de so
 ## 6. Visualização do Processo
 
 ### 6.1 Visão Geral
+A visão de processo descreve a estrutura de processo de sistemas. Nós processos apenas os processos que forem arquiteturalmente importante serão descritos. 
 
 ### 6.2 Diagrama de Sequência
 
@@ -256,11 +254,13 @@ O diagrama contém Nós e eventualmente os componentes em cada Nó as ligações
 
 O objetivo deste diagrama é facilitar e documentar a implantação de um sistema de software
 
-### 7.2 Camadas
+### 7.2 Diagrama
+
+### 7.2.1 Camada 1
 
 ## 8. Tamanho e Desempenho
 ### 8.1 Visão Geral
-Aqui é descrito os objetivos de desempenho assim como o dimensionamento das características do jogo qie impactam na arquitetura.
+Aqui é descrito os objetivos de desempenho assim como o dimensionamento das características do jogo que impactam na arquitetura.
 
 ### 8.2 Requisitos Mínimos
 - Processador: 2Ghz.
