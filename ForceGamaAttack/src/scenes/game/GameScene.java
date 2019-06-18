@@ -25,6 +25,7 @@ import jplay.Collision;
 import jplay.Mouse;
 
 public class GameScene extends Scene {
+	private GameImage score;
 	private GameImage background;
 	private GameImage playerImage;
 	private Sound backgroundSound;
@@ -52,9 +53,12 @@ public class GameScene extends Scene {
 	
 	protected void viewSetup(){
 		pauseSetup();
+		score = new GameImage("src/graphics/img/score1.png");
 		background = new GameImage("src/graphics/img/space_bg.jpg");
 		((Player) playerImage).setKeyboard(keyboard);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
+		score.x = 600.0;
+		score.y = 10.0;
 		playerImage.x = 360.0;
 		playerImage.y = 550.0;
 		playerImage.height = 90;
@@ -77,6 +81,7 @@ public class GameScene extends Scene {
 	
 	private void draw() {
 		background.draw();
+		score.draw();
 		playerImage.draw();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
