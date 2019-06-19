@@ -21,6 +21,7 @@ import entities.EnemyType;
 import jplay.GameImage;
 import jplay.Sprite;
 import player.Player;
+import player.Structure;
 import player.StructureStrategyJava;
 import jplay.Keyboard;
 import jplay.Sound;
@@ -56,8 +57,8 @@ public class GameScene extends Scene {
 	protected void viewSetup(){
 		pauseSetup();
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-		playerImage = Player.getInstance();
-		((Player) playerImage).setKeyboard(keyboard);
+//		playerImage = Player.getInstance();
+		((Structure) playerImage).setKeyboard(keyboard);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
 		playerImage.height = 90;
 		playerImage.width = 40;
@@ -88,9 +89,10 @@ public class GameScene extends Scene {
 		}
 	}
 	
-	public GameScene(GameImage playerImage) {
+	public GameScene(Structure structure) {
 		super();
-		this.playerImage = playerImage;
+		Player.getInstance().setStructure(structure);
+		this.playerImage = Player.getInstance().structure;
 	}
 
 	private void drawPausedButtons () {
@@ -114,7 +116,7 @@ public class GameScene extends Scene {
 		if(mouse.isLeftButtonPressed()) {
 			
 			if (mouse.isOverObject(restartImg)) {
-				currentLevel = new GameScene(this.playerImage);
+				currentLevel = new GameScene(((Player)this.playerImage).structure);
 				game.pressPause();
 				game.transitTo(currentLevel);
 				backgroundSound.stop();
@@ -156,8 +158,8 @@ public class GameScene extends Scene {
 		checkKeyboardPress();
 		
 		if (!game.getIsPaused()) {			
-			((Sprite) playerImage).moveY(2.5);
-			((Sprite) playerImage).moveX(2.5);
+			((Structure) playerImage).moveY(2.5);
+			((Structure) playerImage).moveX(2.5);
 			if (fac.isSpawnTime()) {
 				enemies.addAll(fac.factoryMethod());
 			}

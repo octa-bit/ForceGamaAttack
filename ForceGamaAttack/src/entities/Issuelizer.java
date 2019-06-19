@@ -1,6 +1,7 @@
 package entities;
 
 import player.Player;
+import player.Structure;
 import constants.FileNames;
 
 class Issuelizer extends Enemy {
@@ -32,7 +33,7 @@ class Issuelizer extends Enemy {
 	
 	public Obstacle shoot() {
 		// get the Target
-		Player target = Player.getInstance();
+		Structure target = Player.getInstance().structure;
 		
 		// Euclidean distance
 		Double xDistance = target.x - this.x;

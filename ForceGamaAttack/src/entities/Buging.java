@@ -1,6 +1,8 @@
 package entities;
 
 import player.Player;
+import player.Structure;
+
 import java.lang.Math;
 
 class Buging extends Enemy {
@@ -13,7 +15,7 @@ class Buging extends Enemy {
 	}
 	
 	public void move() {
-		Player target = Player.getInstance();
+		Structure target = Player.getInstance().structure;
 		
 		// Euclidian distance
 		Double xDistance = target.x - this.x;
