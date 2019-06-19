@@ -138,10 +138,10 @@ public class GameScene extends Scene {
 		bullet.draw();
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
             if (keyboard.keyDown(Keyboard.RIGHT_KEY)){
-                bullet.addBullet(playerImage.x + playerImage.width -40, playerImage.y + playerImage.height/2 - 5, floor);
+                bullet.addBullet(playerImage.x + playerImage.width -40, playerImage.y + playerImage.height/2, floor);
             }
             else{
-                bullet.addBullet(playerImage.x +10, playerImage.y + playerImage.height/2 -5, floor);
+                bullet.addBullet(playerImage.x +10, playerImage.y + playerImage.height/2, floor);
             }
            
 		}
@@ -163,6 +163,7 @@ public class GameScene extends Scene {
 	public void update(){
 		draw();
 		checkPausePress();
+		CheckKeyboardPress();
 		
 		// PlayBackgroundSound(backgroundSound);
 		if (!game.getIsPaused()) {
@@ -176,7 +177,7 @@ public class GameScene extends Scene {
 				if(Collision.collided(playerImage,enemy)) {
 					System.out.println("oi");
 				}
-				CheckKeyboardPress();
+				
 			}
 		} else {
 			drawPausedButtons();

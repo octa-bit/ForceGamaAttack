@@ -11,12 +11,14 @@ import constants.WindowConstants;
 public class Bullet extends Sprite{
 	
 	int direction = Constants.STOP;
+	private int vely;
 	
-	public Bullet(double x, double y) {
-		super("src/graphics/img/bullet_player.png", 1);
+	public Bullet(double x, double y, int vely) {
+		super("src/graphics/img/bullet_player.png");
 		
 		this.x = x;
-		this.y = y;
+		this.y = y - 50;
+		this.vely = vely;
 		
 	}
 
