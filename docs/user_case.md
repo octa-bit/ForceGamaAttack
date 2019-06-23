@@ -1,14 +1,19 @@
 |Versão|Autor|Descrição|
 |------|-----|---------|
 |1.0|Rossicler e Lucas|Casos de Usuário 1, 2, 3 e 4|
+|1.1|João Lucas| atualização do diagrama UC01 - Menu Principal|
 
 # Casos de Uso
 
 ## UC01 - Menu Principal
 
-### Diagrama
+### Diagrama Versão 0.1
 
 ![UC01 - Menu Principal](https://i.ibb.co/VYpx6Rx/UC01.png)
+
+### Diagrama Versão 1.0
+
+![UC01 - Menu Principal](https://i.ibb.co/Ctmxx2q/UC01.png)
 
 ## UC02 - Jogar
 

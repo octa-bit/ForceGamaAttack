@@ -3,7 +3,7 @@
 ## 1. Introdução
 
 ### 1.1 Objetivo
-Este documento foi feito com o objetivo de descrever a arquitetura do jogo desenvolvido durante a disciplina de Arquitetura e Desenho de Software ministrado pela professora Milene Serrano como parte do curso de graduação do curso de engenharia de software da Universidade de Brasília. 
+Este documento foi feito com o objetivo de descrever a arquitetura do jogo desenvolvido durante a disciplina de Arquitetura e Desenho de Software ministrado pela professora Milene Serrano como parte do curso de graduação do curso de engenharia de software da Universidade de Brasília.
 
 Ele tem como objetivo mostrar as principais decisões tomadas para o desenvolvimento do jogo referentes a sua arquitetura mostrando diferentes visões de arquitetura para mostrar aspectos diferentes do sistema.
 
@@ -38,7 +38,7 @@ Nesta seção é descrito os requisitos e os objetivos que possuem impacto no de
 
 - O jogo deve utilizar a biblioteca JPlay como base
 
-- O GDD deve ser seguido 
+- O GDD deve ser seguido
 
 ## 4. Visualização de Casos de Uso
 
@@ -49,9 +49,9 @@ O diagrama de Casos de Uso auxilia no levantamento dos requisitos funcionais do 
 
 ### 4.2 UC01 - Menu Principal
 
-#### 4.2.1 Diagrama
+#### 4.2.1 Diagrama V.1.0
 
-![UC01 - Menu Principal](https://i.ibb.co/VYpx6Rx/UC01.png)
+![UC01 - Menu Principal](https://i.ibb.co/Ctmxx2q/UC01.png)
 
 ### 4.3 UC02 - Jogar
 
@@ -110,17 +110,17 @@ O diagrama de Casos de Uso auxilia no levantamento dos requisitos funcionais do 
 ## 5. Visualização Lógica
 
 ### 5.1 Visão Geral
-Nesta seção é descrito as partes significantes da arquitetura como a decomposição em pacotes, componentes e classes do jogo. 
+Nesta seção é descrito as partes significantes da arquitetura como a decomposição em pacotes, componentes e classes do jogo.
 
-Nesta seção temos uma descrição da visualização lógica da arquitetura. Na qual as classes mais importantes, suas organizações nos pacotes de serviço e subsistemas é descrita, assim como a sua organização desses subsistemas em camadas. 
+Nesta seção temos uma descrição da visualização lógica da arquitetura. Na qual as classes mais importantes, suas organizações nos pacotes de serviço e subsistemas é descrita, assim como a sua organização desses subsistemas em camadas.
 
 ### 5.2 Modelo de Domínio
 Um modelo de domínio é a representação visual de classes conceituais ou objetos do mundo real em um domínio.
 ![Modelo de Domínio v0.1](https://i.imgur.com/DZohRZ0.png)
 
 ### 5.3 Diagrama de Classe
- 
-Um diagrama de classes é uma representação da estrutura e relações das classes que servem de modelo para objetos. Ou seja é um conjunto de objetos com as mesmas características, assim saberemos identificar objetos e agrupá-los, de forma a encontrar suas respectivas classes. 
+
+Um diagrama de classes é uma representação da estrutura e relações das classes que servem de modelo para objetos. Ou seja é um conjunto de objetos com as mesmas características, assim saberemos identificar objetos e agrupá-los, de forma a encontrar suas respectivas classes.
 
 Na Unified Modeling Language (UML) em diagrama de classe, uma classe é representada por um retângulo com três divisões, são elas: O nome da classe, seus atributos e por fim os métodos.
 
@@ -249,7 +249,7 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 ## 7. Visualização de Implementação
 
 ### 7.1 Visão Geral
-Nesta seção tem como objetivo realizar um mapeamento do software na infraestrutura disponível normalmente os sistemas são distribuídos e contém vários componentes também espalhados ao longo da infraestrutura. 
+Nesta seção tem como objetivo realizar um mapeamento do software na infraestrutura disponível normalmente os sistemas são distribuídos e contém vários componentes também espalhados ao longo da infraestrutura.
 
 O diagrama contém Nós e eventualmente os componentes em cada Nó as ligações entre nós representam as ligações de rede com portas e parâmetros necessários
 
