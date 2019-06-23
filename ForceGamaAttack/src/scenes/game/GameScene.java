@@ -2,7 +2,8 @@ package scenes.game;
 import java.util.List;
 import java.util.ArrayList;
 import scenes.Scene;
-
+import entities.Bullet;
+import entities.BulletManager;
 import entities.Enemy;
 import entities.Factory;
 import entities.FactoryPhase1;
@@ -13,10 +14,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 
+import constants.Constants;
 import constants.WindowConstants;
 import entities.EnemyType;
+import player.PlayerSpaceship;
 import jplay.GameImage;
 import jplay.Sprite;
+import jplay.Window;
 import player.Player;
 import player.StructureStrategyJava;
 import jplay.Keyboard;
@@ -38,6 +42,8 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
+	private Player player;
+	private BulletManager bullet;
 	
 	
 	protected void initialSetup(){
@@ -45,6 +51,7 @@ public class GameScene extends Scene {
 		keyboard.setBehavior(Keyboard.UP_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(Keyboard.LEFT_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(Keyboard.RIGHT_KEY, Keyboard.DETECT_EVERY_PRESS);
+		keyboard.setBehavior(keyboard.SPACE_KEY, keyboard.DETECT_EVERY_PRESS);
 		keyboard.addKey(Keyboard.SPACE_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		keyboard.addKey(KeyEvent.VK_P, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		mouse = game.getMouse();
@@ -63,6 +70,7 @@ public class GameScene extends Scene {
 		if(game.getSoundStatus()) {
 			backgroundSound.play();
 		}
+		bullet = new BulletManager();
 	}
 
 	private void pauseSetup() {
@@ -81,6 +89,8 @@ public class GameScene extends Scene {
 		for (Enemy enemy: enemies) {
 			enemy.draw();
 		}
+		bullet.draw();
+		
 	}
 	
 	public GameScene(GameImage playerImage) {
@@ -126,20 +136,32 @@ public class GameScene extends Scene {
 			}
 		}
 	}
-	
+
 	private void checkKeyboardPress() {
+		int floor = 500;
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
 			}
+			bullet.addBullet(playerImage.x + playerImage.width/2, playerImage.y + playerImage.height/2, floor);
 		} else if ( keyboard.keyDown(KeyEvent.VK_P)) {
 			game.pressPause();
+		}
+		bullet.step(floor);
+	}
+	
+	private void PlayBackgroundSound(Sound backgroundSound) {
+		if (!backgroundSound.isExecuting()) {
+			backgroundSound.play();
+			System.out.println("Play sound");
 		}
 	}
 
 	public void update(){
 		draw();
 		checkKeyboardPress();
+		
+		// PlayBackgroundSound(backgroundSound);
 		if (!game.getIsPaused()) {
 			((Sprite) playerImage).moveY(2.5);
 			((Sprite) playerImage).moveX(2.5);
@@ -150,11 +172,13 @@ public class GameScene extends Scene {
 				enemy.move();
 				if(Collision.collided(playerImage,enemy)) {
 					// do something after colliding
-				}
+				}				
 			}
+	
 		} else {
 			drawPausedButtons();
 			checkPausedMenuButtonsClick();
+			
 		}
 	}
 }
