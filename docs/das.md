@@ -259,11 +259,16 @@ O objetivo deste diagrama é facilitar e documentar a implantação de um sistem
 ![Diagrama de Implantação](https://i.imgur.com/TV8qePy.png)
 
 ### 7.2.1 Camada 1
-
+#### Personal Computer
+A primeira camada é representada pelo computador pessoal que será utilizado para rodar o jogo. Qualquer computador que atenda os requisitos mínimos defnidos na seção 8.2 poderá ser utilizado.
 
 ### 7.2.2 Camada 2
+#### JRE
+A segunda camada é representada pela JRE (Java Runtime Environment) que é o ambiente de execução utilizado para executar as aplicações java.
 
 ### 7.2.3 Camada 3
+#### JVM
+A terceira camada é representada pela JVM (Java Virtual Machine) que é a responsável por carregar e executar os aplicativos java, convertendo os bytecodes em código executável de máquina.
 
 ## 8. Tamanho e Desempenho
 ### 8.1 Visão Geral
