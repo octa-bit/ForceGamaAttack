@@ -23,8 +23,13 @@ public class Bullet extends Sprite{
 	}
 
 	public void move()
-	{            
-		this.y -= 15;    
+	{   
+		if(y > -10) {
+			this.y -= 15;
+		}else {
+			return;
+		}
+		
 	}
 
 	    
