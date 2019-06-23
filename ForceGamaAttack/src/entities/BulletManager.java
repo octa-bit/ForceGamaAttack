@@ -42,8 +42,6 @@ public class BulletManager {
 			//System.out.println("Draw: " + objects);
 			Bullet bullet = objects.get(i);
 			bullet.draw();
-			//System.out.println("size: " + objects.size());
-			//System.out.println("i: " + i);
 		}
 	}
 	  
