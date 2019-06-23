@@ -1,9 +1,12 @@
 package scenes.game;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import scenes.Scene;
 
 import entities.Enemy;
+import entities.Obstacle;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
@@ -18,6 +21,7 @@ import entities.EnemyType;
 import jplay.GameImage;
 import jplay.Sprite;
 import player.Player;
+import player.Structure;
 import player.StructureStrategyJava;
 import jplay.Keyboard;
 import jplay.Sound;
@@ -28,8 +32,8 @@ public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
 	private Sound backgroundSound;
-	private Collision collision;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
+	private List<Obstacle> obstacles = new ArrayList<Obstacle>();
 	private Factory fac = new FactoryPhase1();
 	private Text pausedText;
 	private Sprite restartImg;
@@ -53,10 +57,9 @@ public class GameScene extends Scene {
 	protected void viewSetup(){
 		pauseSetup();
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-		((Player) playerImage).setKeyboard(keyboard);
+//		playerImage = Player.getInstance();
+		((Structure) playerImage).setKeyboard(keyboard);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
-		playerImage.x = 360.0;
-		playerImage.y = 550.0;
 		playerImage.height = 90;
 		playerImage.width = 40;
 		backgroundSound = new Sound("src/sounds/hbfs.wav");
@@ -81,11 +84,15 @@ public class GameScene extends Scene {
 		for (Enemy enemy: enemies) {
 			enemy.draw();
 		}
+		for (Obstacle obst: obstacles) {
+			 obst.draw();
+		}
 	}
 	
-	public GameScene(GameImage playerImage) {
+	public GameScene(Structure structure) {
 		super();
-		this.playerImage = playerImage;
+		Player.getInstance().setStructure(structure);
+		this.playerImage = Player.getInstance().structure;
 	}
 
 	private void drawPausedButtons () {
@@ -109,7 +116,7 @@ public class GameScene extends Scene {
 		if(mouse.isLeftButtonPressed()) {
 			
 			if (mouse.isOverObject(restartImg)) {
-				currentLevel = new GameScene(this.playerImage);
+				currentLevel = new GameScene(((Player)this.playerImage).structure);
 				game.pressPause();
 				game.transitTo(currentLevel);
 				backgroundSound.stop();
@@ -137,19 +144,55 @@ public class GameScene extends Scene {
 		}
 	}
 
+	private boolean isInside(Sprite sprite) {
+		boolean isInside = sprite.x > -20 &&
+				           sprite.x < WindowConstants.WIDTH + 20 &&
+				           sprite.y > -150 &&
+				           sprite.y < WindowConstants.HEIGHT + 20;
+		
+		return isInside;
+	}
+	
 	public void update(){
 		draw();
 		checkKeyboardPress();
-		if (!game.getIsPaused()) {
-			((Sprite) playerImage).moveY(2.5);
-			((Sprite) playerImage).moveX(2.5);
+		
+		if (!game.getIsPaused()) {			
+			((Structure) playerImage).moveY(2.5);
+			((Structure) playerImage).moveX(2.5);
 			if (fac.isSpawnTime()) {
 				enemies.addAll(fac.factoryMethod());
 			}
-			for (Enemy enemy: enemies) {
-				enemy.move();
+			
+			// Enemy things
+			Iterator<Enemy> itrEnemy = enemies.iterator();
+			while (itrEnemy.hasNext()) {
+				Enemy enemy = itrEnemy.next();
+				
+				enemy.move();	
+				
+				if (!isInside(enemy)) {
+					itrEnemy.remove();
+					continue;
+				}
+				
 				if(Collision.collided(playerImage,enemy)) {
-					// do something after colliding
+					// System.out.println("collided");
+				}				
+				if(enemy.isShooting()) {
+					obstacles.add(enemy.shoot());
+				}
+			}
+			
+			// Obstacle things
+			Iterator<Obstacle> itrObs = obstacles.iterator();
+			while (itrObs.hasNext()) {
+				Obstacle obstacle = itrObs.next();
+				
+				obstacle.move();
+				
+				if(!isInside(obstacle)) {
+					itrObs.remove();
 				}
 			}
 		} else {
