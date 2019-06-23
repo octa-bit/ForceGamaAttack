@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 import jplay.Keyboard;
 
-public class StructureStrategyC extends Player {
+public class StructureStrategyC extends Structure {
 	
 	private Player player;
 	double speed = 2.0;

@@ -1,14 +1,16 @@
 package entities;
 import java.lang.Math;
 
+import constants.FileNames;
 import score.Score;
 
 public class Tasker extends Enemy {
 		
 	private int time = 0;
+	private int reloadTime = 0;
 	
 	public Tasker (float x, float y) {
-		super("src/graphics/img/ship-enemy.png", 1, x, y);
+		super("src/graphics/img/sprites/TaskerSprite.png", 1, x, y);
 		this.hitPoints = 10;
 		this.value = 5;
 		this.colisionDamage = 5;
@@ -31,4 +33,21 @@ public class Tasker extends Enemy {
 		}
 	}
 	
+	public boolean isShooting () {
+		if (reloadTime >= 150) {
+			reloadTime = 0;
+			return true;
+		}
+		reloadTime++;
+		return false;
+	}
+	
+	
+	public Obstacle shoot() {
+		int bulletSpd = 3;
+		int bulletDmg = 8;
+		Obstacle obj = new Obstacle(FileNames.spritePath + "blueLaser.png", 1,
+                this.x, this.y, bulletDmg, 0.0, (double) bulletSpd);
+		return obj;
+	}
 }

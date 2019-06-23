@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import jplay.Keyboard;
 import player.Player;
 
-public class StructureStrategyPython extends Player {
+public class StructureStrategyPython extends Structure {
 	
 	private Player player;
 	double speed = 1.0;
