@@ -2,6 +2,7 @@
 |------|-----|---------|
 |1.0|João Vítor|Adição do diagrama de classes da JPlay|
 |2.0|João Lucas|Adição dos diagramas de classes do projeto|
+|2.1|João Vítor|Correção do diagrama de classes da JPlay e adição de nova versão do diagrama de classes do projeto|
 
 # Diagramas de Classes
  
@@ -45,5 +46,12 @@ Versão atual do projeto.
 ## JPlay
 
 ### Versão 1.0
+Versão incorreta do diagrama.
 
 ![Diagrama JPlay](https://i.imgur.com/Aoflhxh.jpg)
+
+### Versão 2.0
+Versão correta do diagrama.
+
+![Diagrama JPlay](https://i.imgur.com/Tb9yNYZ.jpg)
+
