@@ -152,6 +152,10 @@ Versão utilizada no começo da implementação.
 
 ![Diagrama JPlay](https://i.imgur.com/Aoflhxh.jpg)
 
+### 5.3.6 JPlay Versão 2.0
+
+![Diagrama JPlay](https://i.imgur.com/Tb9yNYZ.jpg)
+
 ### 5.4 Diagrama de Pacotes
 Um pacote é um conjunto de elementos agrupados. O diagrama fornece uma visão conceitual no geral um mesmo pacote contém o mesmo tipo de item.
 
