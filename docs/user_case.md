@@ -2,6 +2,7 @@
 |------|-----|---------|
 |1.0|Rossicler e Lucas|Casos de Usuário 1, 2, 3 e 4|
 |1.1|João Lucas| atualização do diagrama UC01 - Menu Principal|
+|1.2|João Lucas| atualização do diagrama UC02 - Jogar|
 
 # Casos de Uso
 
