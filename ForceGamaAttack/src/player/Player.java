@@ -10,7 +10,7 @@ import jplay.Window;
 public class Player extends Sprite{
 	private Player player;
 	double speed;
-	public Structure structure;
+	private Structure structure;
 	static String sprite = "src/graphics/img/spaceship.png";
 	private Keyboard keyboard;
 	private int previousDirection;

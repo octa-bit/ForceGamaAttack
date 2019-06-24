@@ -102,7 +102,7 @@ public class GameScene extends Scene {
 	public GameScene(Structure structure) {
 		super();
 		Player.getInstance().setStructure(structure);
-		this.playerImage = Player.getInstance().structure;
+		this.playerImage = Player.getInstance().getStructure();
 	}
 
 	private void drawPausedButtons () {
@@ -126,7 +126,7 @@ public class GameScene extends Scene {
 		if(mouse.isLeftButtonPressed()) {
 			
 			if (mouse.isOverObject(restartImg)) {
-				currentLevel = new GameScene(((Player)this.playerImage).structure);
+				currentLevel = new GameScene(((Player)this.playerImage).getStructure());
 				game.pressPause();
 				game.transitTo(currentLevel);
 				backgroundSound.stop();
