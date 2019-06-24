@@ -163,8 +163,11 @@ Um pacote é um conjunto de elementos agrupados. O diagrama fornece uma visão c
 #### 5.4.1 Versão 0.1
 ![Diagrama de pacotes v0.1](https://i.imgur.com/oxrEYie.png)
 
-#### 5.4.2 Versão 1.0
+#### 5.4.2 Versão 0.2
 ![Diagrama de pacotes v1.0](https://i.imgur.com/hIGukUR.png)
+
+#### 5.4.3 Versão 1.0
+![Diagrama de pacotes v0.3](https://i.ibb.co/8mnb25n/package-Diagram-v0-3.png)
 
 ### 5.5 Diagrama de Componentes
 Ele representa um modelamento físico dos componentes de software de um
