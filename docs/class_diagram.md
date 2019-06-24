@@ -38,10 +38,14 @@ Versão apresentada na dinâmica.
 ![Diagrama de classes v1.0](https://i.imgur.com/TafcaHw.png)
 
 ### Versão 2.0
-Versão atual do projeto.
+Visão de alto nível de implementação.
 
 ![Diagrama de classes v1.0](https://i.imgur.com/7FS4DIi.jpg)
 
+### Versão 3.0
+Visão detalhada da implementação.
+
+![Diagrama de classes v3.0](images/Class%20Diagram.png)
 
 ## JPlay
 
