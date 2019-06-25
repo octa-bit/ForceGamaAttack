@@ -7,6 +7,7 @@ import entities.Enemy;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
+import text.ScoreText;
 import text.Text;
 
 import java.awt.Color;
@@ -40,6 +41,8 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
+	private int scori = 200;
+	private ScoreText scoris;
 	
 	
 	protected void initialSetup(){
@@ -55,7 +58,8 @@ public class GameScene extends Scene {
 	protected void viewSetup(){
 		pauseSetup();
 		score = new Text(550,20,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "HIGH SCORE: 000000");
-		scoreHigh = new Text(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "YOUR SCORE: ");	
+		scoris = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, scori);
+//		scoreHigh = new Text(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, scori );	
 		background = new GameImage("src/graphics/img/space_bg.jpg");
 		((Player) playerImage).setKeyboard(keyboard);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
@@ -84,7 +88,7 @@ public class GameScene extends Scene {
 	private void draw() {
 		background.draw();
 		score.draw();
-		scoreHigh.draw();
+		scoris.draw();
 		playerImage.draw();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
@@ -139,6 +143,7 @@ public class GameScene extends Scene {
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
+				scori=scori+200;
 			}
 		} else if ( keyboard.keyDown(KeyEvent.VK_P)) {
 			game.pressPause();

@@ -14,6 +14,7 @@ public class Text extends Time {
 		this.text = text;
 	}
 	
+	
 	public String toString() {
 		super.toString();
 		return this.text;
