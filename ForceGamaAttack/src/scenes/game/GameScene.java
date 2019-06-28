@@ -145,6 +145,7 @@ public class GameScene extends Scene {
 	}
 	
 	private void drawGameOverButtons () {
+		game.keyboard.removeKey(KeyEvent.VK_P);
 		gameOverText.draw();
 		gameOverRestartImg.draw();
 		gameOverExitImg.draw();
