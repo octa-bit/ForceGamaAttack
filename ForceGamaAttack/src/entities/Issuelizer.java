@@ -7,9 +7,10 @@ import constants.FileNames;
 class Issuelizer extends Enemy {
 	
 	private int reloadTime = 0;
+	public static int health = 100;
 	
 	public Issuelizer (float x, float y) {
-		super(FileNames.spritePath + "IssuelizerSprite.png", 1, x, y);
+		super(FileNames.spritePath + "IssuelizerSprite.png", 1, x, y, health);
 		this.hitPoints = 10;
 		this.value = 5;
 		this.colisionDamage = 5;

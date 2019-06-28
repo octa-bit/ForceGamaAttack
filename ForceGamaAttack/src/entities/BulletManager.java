@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import jplay.Window;
 
 public class BulletManager {
-	ArrayList<Bullet> objects = new ArrayList<Bullet>();
+	private ArrayList<Bullet> objects = new ArrayList<Bullet>();
 	
 	public void addBullet(double x, double y, int floor) {
 		Bullet bullet = new Bullet(x, y, 10);
@@ -19,6 +19,12 @@ public class BulletManager {
 			objects.add(bullet);
 		}
 		
+	}
+	
+	public void removeBullets(ArrayList<Integer> indexes) {
+		for (int index : indexes) {
+			objects.remove(index);
+		}
 	}
 	
 	public void step(int floor){
@@ -43,6 +49,14 @@ public class BulletManager {
 			Bullet bullet = objects.get(i);
 			bullet.draw();
 		}
+	}
+	
+	public ArrayList<Bullet> getBullets() {
+		return objects;
+	}
+	
+	public int getBulletIndex(Bullet bullet) {
+		return objects.indexOf(bullet);
 	}
 	  
 }

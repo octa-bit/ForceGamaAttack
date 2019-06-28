@@ -196,9 +196,23 @@ public class GameScene extends Scene {
 					continue;
 				}
 				
+				ArrayList<Integer> bulletsToBeRemoved = new ArrayList<Integer>();
+				
+				for (Bullet playerBullet : bullet.getBullets()) {
+					if(Collision.collided(playerBullet, enemy)) {
+						bulletsToBeRemoved.add(bullet.getBulletIndex(playerBullet));
+						int enemyHealth = enemy.takeDamage(30);
+						if (enemyHealth <= 0) {
+							itrEnemy.remove();
+							continue;
+						}
+					}
+				}
+				bullet.removeBullets(bulletsToBeRemoved);
+				
 				if(Collision.collided(playerImage,enemy)) {
 					// System.out.println("collided");
-				}				
+				}
 				if(enemy.isShooting()) {
 					obstacles.add(enemy.shoot());
 				}
