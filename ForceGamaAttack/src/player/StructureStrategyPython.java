@@ -9,11 +9,11 @@ public class StructureStrategyPython extends Structure {
 	
 	private Player player;
 	double speed = 1.0;
-	private int pythonHealth = 75;
+	private static int pythonHealth = 75;
 	private final static String sprite = "src/graphics/img/python-ship.png";
 
 	public StructureStrategyPython(int x, int y) {
-		super(x, y, sprite, this.pythonHealth);
+		super(x, y, sprite, pythonHealth);
 	}
 	
 	@Override

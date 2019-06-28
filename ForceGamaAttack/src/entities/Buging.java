@@ -15,7 +15,7 @@ class Buging extends Enemy {
 	}
 	
 	public void move() {
-		Structure target = Player.getInstance().structure;
+		Structure target = Player.getInstance().getStructure();
 		
 		// Euclidian distance
 		Double xDistance = target.x - this.x;

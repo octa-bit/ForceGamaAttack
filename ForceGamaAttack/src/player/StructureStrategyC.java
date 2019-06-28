@@ -8,11 +8,11 @@ public class StructureStrategyC extends Structure {
 
 	private Player player;
 	double speed = 2.0;
-	private int cHealth = 50;
+	private static int cHealth = 50;
 	private final static String sprite = "src/graphics/img/spaceship.png";
 
 	public StructureStrategyC(int x, int y) {
-		super(x, y, sprite, this.cHealth);
+		super(x, y, sprite, cHealth);
 	}
 	
 	@Override

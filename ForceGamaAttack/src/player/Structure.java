@@ -5,6 +5,7 @@ import jplay.Sprite;
 
 public abstract class Structure extends Sprite{
 	private int health;
+	private int maxHealth;
 	double speed;
 	int armor;
 	int size;
@@ -17,6 +18,7 @@ public abstract class Structure extends Sprite{
 		this.y = y;
 		this.speed = 10.0;
 		this.health = health;
+		this.maxHealth = health;
 	}
 	
 	protected Keyboard getKeyboard() {
@@ -29,6 +31,18 @@ public abstract class Structure extends Sprite{
 
 	public int getHealth() {
 		return this.health;
+	}
+	
+	public int getMaxHealth() {
+		return this.maxHealth;
+	}
+
+	public void resetHealth() {
+		this.health = this.maxHealth;
+	}
+	
+	public void takeDamage(int damage) {
+		this.health -= damage;
 	}
 	
 	public abstract void moveX(double x);
