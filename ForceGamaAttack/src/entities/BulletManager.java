@@ -3,6 +3,7 @@ package entities;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import constants.WindowConstants;
 import jplay.Window;
 
 public class BulletManager {
@@ -21,9 +22,13 @@ public class BulletManager {
 		
 	}
 	
-	public void removeBullets(ArrayList<Integer> indexes) {
-		for (int index : indexes) {
-			objects.remove(index);
+	public void removeBullets(ArrayList<Bullet> bullets) {
+		for (Bullet bullet : bullets) {
+			try {
+				objects.remove(bullet);
+			} catch(Exception e) {
+				System.out.println("Error when trying to remove bullet");
+			}
 		}
 	}
 	
@@ -33,11 +38,11 @@ public class BulletManager {
 			bullet.move();
 			bullet.update();
 			
-			if ( bullet.x > 1){
+			if ( bullet.x > 1 && bullet.y > 0){
 				objects.add(bullet);
 			}
 			else{
-				System.out.println("erro");
+				objects.remove(bullet);
 			}
 			
 		}
