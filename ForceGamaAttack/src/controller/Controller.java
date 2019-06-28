@@ -19,6 +19,7 @@ public class Controller {
 	public Keyboard keyboard = null;
 	private boolean isRunning = true; 
 	private boolean isPaused = false;
+	private boolean isGameOver = false;
 	private boolean soundStatus = getSoundConfig();
 	private Mouse mouse;
 	private Window window;
@@ -53,6 +54,18 @@ public class Controller {
 	
 	public boolean getIsPaused() {
 		return isPaused;
+	}
+	
+	public void setIsGameOver() {
+		isGameOver = true;
+	}
+	
+	public void setNewGame() {
+		isGameOver = false;
+	}
+	
+	public boolean getIsGameOver() {
+		return isGameOver;
 	}
 	
 	public void setMouse(Mouse mouse) {

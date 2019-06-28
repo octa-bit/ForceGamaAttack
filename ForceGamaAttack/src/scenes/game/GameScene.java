@@ -68,6 +68,7 @@ public class GameScene extends Scene {
 	
 	protected void viewSetup(){
 		pauseSetup();
+		gameOverSetup();
 		background = new GameImage("src/graphics/img/space_bg.jpg");
 //		playerImage = Player.getInstance();
 		((Structure) playerImage).setKeyboard(keyboard);
@@ -94,6 +95,16 @@ public class GameScene extends Scene {
 		exitImg = new Sprite("src/graphics/guiPack/white_home.png");
 		exitImg.x = WindowConstants.WIDTH/2 - exitImg.width/2  + restartImg.width + 20;
 		exitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
+	}
+	
+	private void gameOverSetup() {
+		gameOverText = new Text(230,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "GAME OVER");
+		gameOverRestartImg = new Sprite("src/graphics/guiPack/white_restart.png");
+		gameOverRestartImg.x = WindowConstants.WIDTH/2 - restartImg.width/2 - restartImg.width - 20;
+		gameOverRestartImg.y = WindowConstants.HEIGHT/2 - restartImg.height/2 + 50;
+		gameOverExitImg = new Sprite("src/graphics/guiPack/white_home.png");
+		gameOverExitImg.x = WindowConstants.WIDTH/2 - exitImg.width/2  + restartImg.width + 20;
+		gameOverExitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
 	}
 	
 	private void draw() {
@@ -133,6 +144,12 @@ public class GameScene extends Scene {
 		exitImg.draw();
 	}
 	
+	private void drawGameOverButtons () {
+		gameOverText.draw();
+		gameOverRestartImg.draw();
+		gameOverExitImg.draw();
+	}
+	
 	private void checkPausedMenuButtonsClick() {
 		
 		if(mouse.isLeftButtonPressed()) {
@@ -152,6 +169,26 @@ public class GameScene extends Scene {
 				ArrayList<Sound> sounds = new ArrayList<>();
 				sounds.add(backgroundSound);
 				game.changeSoundStatus(sounds);
+			}
+		}
+	}
+	
+	private void checkGameOverMenuButtonsClick() {
+		
+		if(mouse.isLeftButtonPressed()) {
+			
+			if (mouse.isOverObject(gameOverRestartImg)) {
+				currentLevel = new GameScene(Player.getInstance().getStructure());
+				game.setNewGame();
+				((Structure) playerImage).resetHealth();
+				game.transitTo(currentLevel);
+				backgroundSound.stop();
+			} else if (mouse.isOverObject(gameOverExitImg)) {
+				menuScene = new MenuScene();
+				game.setNewGame();
+				game.keyboard.removeKey(Keyboard.ENTER_KEY);
+				game.transitTo(menuScene);
+				backgroundSound.stop();
 			}
 		}
 	}
