@@ -42,12 +42,17 @@ public class GameScene extends Scene {
 	private Text pausedText;
 	private Sprite restartImg;
 	private Sprite soundImg;
+	private Text gameOverText;
+	private Sprite gameOverExitImg;
+	private Sprite gameOverRestartImg;
 	private Sprite exitImg;
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
 	private Player player;
 	private BulletManager bullet;
+	private Sprite lifeBarBackground;
+	private Sprite lifeBar;
 	
 	
 	protected void initialSetup(){
@@ -66,7 +71,12 @@ public class GameScene extends Scene {
 		background = new GameImage("src/graphics/img/space_bg.jpg");
 //		playerImage = Player.getInstance();
 		((Structure) playerImage).setKeyboard(keyboard);
-//		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
+		lifeBar = new Sprite("src/graphics/guiPack/lifebar2.png");
+		lifeBarBackground = new Sprite("src/graphics/guiPack/lifebar_1.png");
+		lifeBarBackground.x = 39;
+		lifeBarBackground.y = 40;
+		lifeBar.x = 40;
+		lifeBar.y = 40;
 		playerImage.height = 90;
 		playerImage.width = 40;
 		backgroundSound = new Sound("src/sounds/hbfs.wav");
@@ -89,6 +99,8 @@ public class GameScene extends Scene {
 	private void draw() {
 		background.draw();
 		playerImage.draw();
+		lifeBarBackground.draw();
+		renderLifeBar();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
 		}
@@ -126,7 +138,7 @@ public class GameScene extends Scene {
 		if(mouse.isLeftButtonPressed()) {
 			
 			if (mouse.isOverObject(restartImg)) {
-				currentLevel = new GameScene(((Player)this.playerImage).getStructure());
+				currentLevel = new GameScene(Player.getInstance().getStructure());
 				game.pressPause();
 				game.transitTo(currentLevel);
 				backgroundSound.stop();
@@ -141,6 +153,14 @@ public class GameScene extends Scene {
 				sounds.add(backgroundSound);
 				game.changeSoundStatus(sounds);
 			}
+		}
+	}
+	
+	private void renderLifeBar() {
+		lifeBar.width = (((Structure) playerImage).getHealth() * 200)/((Structure) playerImage).getMaxHealth();
+		lifeBar.draw();
+		if (((Structure) playerImage).getHealth() <= 0) {
+			game.setIsGameOver();
 		}
 	}
 
@@ -177,7 +197,7 @@ public class GameScene extends Scene {
 		draw();
 		checkKeyboardPress();
 		
-		if (!game.getIsPaused()) {			
+		if (!game.getIsPaused() && !game.getIsGameOver()) {	
 			((Structure) playerImage).moveY(2.5);
 			((Structure) playerImage).moveX(2.5);
 			if (fac.isSpawnTime()) {
@@ -196,8 +216,8 @@ public class GameScene extends Scene {
 					continue;
 				}
 				
-				if(Collision.collided(playerImage,enemy)) {
-					// System.out.println("collided");
+				if(Collision.collided(playerImage, enemy)) {
+					((Structure) playerImage).takeDamage(1);
 				}				
 				if(enemy.isShooting()) {
 					obstacles.add(enemy.shoot());
@@ -216,10 +236,13 @@ public class GameScene extends Scene {
 				}
 			}
 	
-		} else {
+		} else if (game.getIsPaused()) {
 			drawPausedButtons();
 			checkPausedMenuButtonsClick();
 			
+		} else if (game.getIsGameOver()) {
+			drawGameOverButtons();
+			checkGameOverMenuButtonsClick();
 		}
 	}
 }
