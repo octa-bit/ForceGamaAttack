@@ -5,15 +5,6 @@
   "imageSize": 100,
   "commit": false,
   "contributors": [
-    {
-      "login": "Hiroshi18",
-      "name": "Lucas Hiroshi Horinouchi",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/26282955?v=4",
-      "profile": "https://github.com/Hiroshi18",
-      "contributions": [
-        "doc"
-      ]
-    }
   ],
   "contributorsPerLine": 7,
   "projectName": "ForceGamaAttack",
