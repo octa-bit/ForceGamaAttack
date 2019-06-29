@@ -77,7 +77,7 @@ public class GameScene extends Scene {
 		scoris = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);
 //		scoreHigh = new Text(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, scori );	
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-		//((Player) playerImage).setKeyboard(keyboard);
+		((Structure) playerImage).setKeyboard(keyboard);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
 	//	score.x = 600.0;
 	//	score.y = 10.0;
