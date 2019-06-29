@@ -286,7 +286,10 @@ public class GameScene extends Scene {
 				Obstacle obstacle = itrObs.next();
 				
 				obstacle.move();
-				
+				if(Collision.collided(playerImage, obstacle)) {
+					((Structure) playerImage).takeDamage(obstacle.getDamage());
+					itrObs.remove();
+				}
 				if(!isInside(obstacle)) {
 					itrObs.remove();
 				}
