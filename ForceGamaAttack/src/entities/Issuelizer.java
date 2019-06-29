@@ -34,7 +34,7 @@ class Issuelizer extends Enemy {
 	
 	public Obstacle shoot() {
 		// get the Target
-		Structure target = Player.getInstance().structure;
+		Structure target = Player.getInstance().getStructure();
 		
 		// Euclidean distance
 		Double xDistance = target.x - this.x;
