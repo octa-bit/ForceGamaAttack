@@ -63,13 +63,13 @@ public class ConfigurationScene extends Scene {
 		if (keyboard.keyDown(KeyEvent.VK_BACK_SPACE) || keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
 			game.transitTo(new MenuScene());
 		}
-//		if (keyboard.keyDown(Keyboard.DOWN_KEY)){
-//			nextState();
-//		}
-//		
-//		if (keyboard.keyDown(Keyboard.UP_KEY)){
-//			previousState();
-//		}
+		if (keyboard.keyDown(Keyboard.DOWN_KEY)){
+			//nextState();
+		}
+
+		if (keyboard.keyDown(Keyboard.UP_KEY)){
+			//previousState();
+		}
 		else if (keyboard.keyDown(Keyboard.ENTER_KEY)){
 			if(configOption.indexOf("sound") !=-1) {
 				game.changeSoundStatus();
