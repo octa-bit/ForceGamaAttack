@@ -15,15 +15,17 @@ public abstract class Enemy extends Sprite{
 	protected int hitPoints;
 	protected int value;
 	protected int colisionDamage;
+	private int health;
 	
 	private static String sprite = "";
 	private List<Observer> observers = new ArrayList<Observer>();
 	private static final Score s = Score.getInstance();
 	
-	protected Enemy(String sprite, int size, float x, float y) {
+	protected Enemy(String sprite, int size, float x, float y, int health) {
 		super(sprite, size);
 		this.x = x;
 		this.y = y;
+		this.health = health;
 		this.attach(s);
 	}
 
@@ -96,5 +98,10 @@ public abstract class Enemy extends Sprite{
 	
 	public boolean isShooting() {
 		return false;
+	}
+	
+	public int takeDamage(int damage) {
+		health -= damage;
+		return health;
 	}
 }
