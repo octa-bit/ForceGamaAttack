@@ -58,6 +58,7 @@ public class GameScene extends Scene {
 	private BulletManager bullet;
 	private Sprite lifeBarBackground;
 	private Sprite lifeBar;
+	private Score gameScore;
 	
 	
 	protected void initialSetup(){
@@ -94,6 +95,7 @@ public class GameScene extends Scene {
 			backgroundSound.play();
 		}
 		bullet = new BulletManager();
+		gameScore = new Score();
 	}
 
 	private void pauseSetup() {
@@ -218,10 +220,12 @@ public class GameScene extends Scene {
 	private void checkKeyboardPress() {
 		int floor = 500;
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
+			gameScore.notifyObservers();
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
 				actualScore=actualScore+100;
 				score.setScore(actualScore);
+				
 			}
 			bullet.addBullet(playerImage.x + playerImage.width/2, playerImage.y + playerImage.height/2, floor);
 		} else if ( keyboard.keyDown(KeyEvent.VK_P)) {
