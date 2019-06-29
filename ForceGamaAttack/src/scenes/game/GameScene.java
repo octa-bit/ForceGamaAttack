@@ -79,7 +79,7 @@ public class GameScene extends Scene {
 		lifeBar.x = 40;
 		lifeBar.y = 40;
 		playerImage.height = 90;
-		playerImage.width = 40;
+		playerImage.width = 50;
 		backgroundSound = new Sound("src/sounds/hbfs.wav");
 		if(game.getSoundStatus()) {
 			backgroundSound.play();
@@ -158,6 +158,7 @@ public class GameScene extends Scene {
 			if (mouse.isOverObject(restartImg)) {
 				currentLevel = new GameScene(Player.getInstance().getStructure());
 				game.pressPause();
+				Player.getInstance().width = 50;
 				game.transitTo(currentLevel);
 				backgroundSound.stop();
 			} else if (mouse.isOverObject(exitImg)) {
