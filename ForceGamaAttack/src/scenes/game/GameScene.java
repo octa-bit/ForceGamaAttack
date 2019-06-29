@@ -11,22 +11,18 @@ import entities.Obstacle;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
+import scenes.spaceShipMenu.SpaceShipMenuScene;
 import text.Text;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 
-import constants.Constants;
 import constants.WindowConstants;
-import entities.EnemyType;
-import player.PlayerSpaceship;
 import jplay.GameImage;
 import jplay.Sprite;
-import jplay.Window;
 import player.Player;
 import player.Structure;
-import player.StructureStrategyJava;
 import jplay.Keyboard;
 import jplay.Sound;
 import jplay.Collision;
@@ -70,7 +66,6 @@ public class GameScene extends Scene {
 		pauseSetup();
 		gameOverSetup();
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-//		playerImage = Player.getInstance();
 		((Structure) playerImage).setKeyboard(keyboard);
 		lifeBar = new Sprite("src/graphics/guiPack/lifebar2.png");
 		lifeBarBackground = new Sprite("src/graphics/guiPack/lifebar_1.png");
@@ -110,8 +105,6 @@ public class GameScene extends Scene {
 	private void draw() {
 		background.draw();
 		playerImage.draw();
-		lifeBarBackground.draw();
-		renderLifeBar();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
 		}
@@ -120,6 +113,8 @@ public class GameScene extends Scene {
 		for (Obstacle obst: obstacles) {
 			 obst.draw();
 		}
+		lifeBarBackground.draw();
+		renderLifeBar();
 	}
 	
 	public GameScene(Structure structure) {
@@ -156,7 +151,8 @@ public class GameScene extends Scene {
 		if(mouse.isLeftButtonPressed()) {
 			
 			if (mouse.isOverObject(restartImg)) {
-				currentLevel = new GameScene(Player.getInstance().getStructure());
+				currentLevel = new SpaceShipMenuScene();
+				// currentLevel = new GameScene(Player.getInstance().getStructure());
 				game.pressPause();
 				Player.getInstance().width = 50;
 				game.transitTo(currentLevel);
@@ -202,16 +198,20 @@ public class GameScene extends Scene {
 			game.setIsGameOver();
 		}
 	}
-
+	
 	private void checkKeyboardPress() {
+		if ( keyboard.keyDown(KeyEvent.VK_P)) {
+			game.pressPause();
+		}
+	}
+
+	private void checkShootPress() {
 		int floor = 500;
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
 			}
 			bullet.addBullet(playerImage.x + playerImage.width/2, playerImage.y + playerImage.height/2, floor);
-		} else if ( keyboard.keyDown(KeyEvent.VK_P)) {
-			game.pressPause();
 		}
 		bullet.step(floor);
 	}
@@ -234,11 +234,12 @@ public class GameScene extends Scene {
 	
 	public void update(){
 		draw();
+		checkKeyboardPress();
 		
 		if (!game.getIsPaused() && !game.getIsGameOver()) {	
 			((Structure) playerImage).moveY(2.5);
 			((Structure) playerImage).moveX(2.5);
-			checkKeyboardPress();
+			checkShootPress();
 			if (fac.isSpawnTime()) {
 				enemies.addAll(fac.factoryMethod());
 			}
@@ -248,7 +249,7 @@ public class GameScene extends Scene {
 			while (itrEnemy.hasNext()) {
 				Enemy enemy = itrEnemy.next();
 				
-				enemy.move();	
+				enemy.move();
 				
 				if (!isInside(enemy)) {
 					itrEnemy.remove();
@@ -260,24 +261,28 @@ public class GameScene extends Scene {
 				for (Bullet playerBullet : bullet.getBullets()) {
 					if(Collision.collided(playerBullet, enemy)) {
 						bulletsToBeRemoved.add(playerBullet);
-						int enemyHealth = enemy.takeDamage(30);
-						if (enemyHealth <= 0) {
-							try {
-								itrEnemy.remove();
-							} catch (Exception e) {
-								System.out.println("Error when trying to remove an enemy");
-							}
-							continue;
-						}
+						enemy.takeDamage(30);
 					}
 				}
 				bullet.removeBullets(bulletsToBeRemoved);
 				
 				if(Collision.collided(playerImage, enemy)) {
 					((Structure) playerImage).takeDamage(1);
+					enemy.takeDamage(1);
 				}				
 				if(enemy.isShooting()) {
 					obstacles.add(enemy.shoot());
+				}
+				
+				int enemyHealth = enemy.getHealth();
+				
+				if (enemyHealth <= 0) {
+					try {
+						itrEnemy.remove();
+					} catch (Exception e) {
+						System.out.println("Error when trying to remove an enemy");
+					}
+					continue;
 				}
 			}
 			
