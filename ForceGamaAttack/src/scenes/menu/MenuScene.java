@@ -4,6 +4,7 @@ import jplay.GameImage;
 import jplay.Keyboard;
 import jplay.Sound;
 
+import java.io.File;
 import java.util.ArrayList;
 import constants.WindowConstants;
 import jplay.Sprite;
@@ -41,8 +42,12 @@ public class MenuScene extends Scene {
 		arrow = new Sprite("src/graphics/img/seta.png");
 		arrow.x = 10;
 		arrow.y = 10;
-		
-		backgroundSoundMenu = new Sound("src/sounds/take_on_me.wav");
+
+		File myFile = new File("src/sounds/take_on_me.wav");
+		myFile.setReadable(true);
+		System.out.println("Attempting to read from file in: "+myFile.canRead());
+
+		backgroundSoundMenu = new Sound(myFile.getAbsolutePath());
 		//backgroundSoundMenu.setRepeat(true);
 		if(game.getSoundStatus()) {
 			backgroundSoundMenu.play();
