@@ -29,12 +29,14 @@ import jplay.Keyboard;
 import jplay.Sound;
 import jplay.Collision;
 import jplay.Mouse;
+import jplay.Parallax;
 
 public class GameScene extends Scene {
 	private Text highScore;
 	private ScoreText scoreHigh;
 	private GameImage background;
 	private GameImage playerImage;
+	private GameImage backgroundGameOver;
 	private Sound backgroundSound;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
 	private List<Obstacle> obstacles = new ArrayList<Obstacle>();
@@ -49,13 +51,15 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
+  
 	private int actualScore=0;
 	private Player player;
 	private BulletManager bullet;
 	private Sprite lifeBarBackground;
 	private Sprite lifeBar;
 	private Score gameScore;
-	
+	private Sound gameOverSound;
+	private Parallax parallax;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -69,13 +73,15 @@ public class GameScene extends Scene {
 	}
 	
 	protected void viewSetup(){
+		parallax = new Parallax();
+		parallax.add("src/graphics/img/back_transp.png");
+		parallax.getLayer(0).setVelY(2.0);
 		pauseSetup();
 		highScore = new Text(550,20,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "HIGH SCORE: 000000");
 		scoreHigh = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);	
 		background = new GameImage("src/graphics/img/space_bg.jpg");
 		((Structure) playerImage).setKeyboard(keyboard);
 		gameOverSetup();
-		background = new GameImage("src/graphics/img/space_bg.jpg");
 		((Structure) playerImage).setKeyboard(keyboard);
 		lifeBar = new Sprite("src/graphics/guiPack/lifebar2.png");
 		lifeBarBackground = new Sprite("src/graphics/guiPack/lifebar_1.png");
@@ -83,9 +89,9 @@ public class GameScene extends Scene {
 		lifeBarBackground.y = 40;
 		lifeBar.x = 40;
 		lifeBar.y = 40;
-		playerImage.height = 90;
-		playerImage.width = 50;
-		backgroundSound = new Sound("src/sounds/hbfs.wav");
+		playerImage.height = ((Structure) playerImage).getHeight();
+		playerImage.width = ((Structure) playerImage).getWidth();
+		backgroundSound = new Sound("src/sounds/hbsf.wav");
 		if(game.getSoundStatus()) {
 			backgroundSound.play();
 		}
@@ -104,13 +110,15 @@ public class GameScene extends Scene {
 	}
 	
 	private void gameOverSetup() {
-		gameOverText = new Text(230,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "GAME OVER");
+		backgroundGameOver = new GameImage("src/graphics/img/gameover.png");
+		gameOverText = new Text(230,240,new Font("Comic Sans MS", Font.BOLD, 55), Color.WHITE, "GAME OVER");
 		gameOverRestartImg = new Sprite("src/graphics/guiPack/white_restart.png");
 		gameOverRestartImg.x = WindowConstants.WIDTH/2 - restartImg.width/2 - restartImg.width - 20;
 		gameOverRestartImg.y = WindowConstants.HEIGHT/2 - restartImg.height/2 + 50;
 		gameOverExitImg = new Sprite("src/graphics/guiPack/white_home.png");
 		gameOverExitImg.x = WindowConstants.WIDTH/2 - exitImg.width/2  + restartImg.width + 20;
 		gameOverExitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
+		gameOverSound = new Sound("src/sounds/gameover.wav");
 	}
 	
 	private void draw() {
@@ -118,6 +126,8 @@ public class GameScene extends Scene {
 		background.draw();
 		highScore.draw();
 		scoreHigh.draw();
+		updateParallax();
+
 		playerImage.draw();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
@@ -131,6 +141,12 @@ public class GameScene extends Scene {
 		lifeBarBackground.draw();
 		renderLifeBar();
 	}
+	
+	public void updateParallax(){
+  		parallax.drawLayers();
+  		parallax.repeatLayers(800, 600, false);
+  		parallax.moveLayersStandardY(false);
+  	}
 	
 	public GameScene(Structure structure) {
 		super();
@@ -156,6 +172,7 @@ public class GameScene extends Scene {
 	
 	private void drawGameOverButtons () {
 		game.keyboard.removeKey(KeyEvent.VK_P);
+		backgroundGameOver.draw();
 		gameOverText.draw();
 		gameOverRestartImg.draw();
 		gameOverExitImg.draw();
@@ -195,12 +212,14 @@ public class GameScene extends Scene {
 				game.setNewGame();
 				((Structure) playerImage).resetHealth();
 				game.transitTo(currentLevel);
+				gameOverSound.stop();
 				backgroundSound.stop();
 			} else if (mouse.isOverObject(gameOverExitImg)) {
 				menuScene = new MenuScene();
 				game.setNewGame();
 				game.keyboard.removeKey(Keyboard.ENTER_KEY);
 				game.transitTo(menuScene);
+				gameOverSound.stop();
 				backgroundSound.stop();
 			}
 		}
@@ -233,13 +252,13 @@ public class GameScene extends Scene {
 		bullet.step(floor);
 	}
 	
-	private void PlayBackgroundSound(Sound backgroundSound) {
+/*	private void PlayBackgroundSound(Sound backgroundSound) {
 		if (!backgroundSound.isExecuting()) {
 			backgroundSound.play();
 			System.out.println("Play sound");
 		}
 	}
-
+*/
 	private boolean isInside(Sprite sprite) {
 		boolean isInside = sprite.x > -20 &&
 				           sprite.x < WindowConstants.WIDTH + 20 &&
@@ -325,6 +344,11 @@ public class GameScene extends Scene {
 			checkPausedMenuButtonsClick();
 			
 		} else if (game.getIsGameOver()) {
+			if (game.getSoundStatus() && !gameOverSound.isExecuting()) {
+				backgroundSound.stop();
+				gameOverSound.play();
+				
+			}
 			drawGameOverButtons();
 			checkGameOverMenuButtonsClick();
 			gameScore.clearScore();

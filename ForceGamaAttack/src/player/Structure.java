@@ -10,6 +10,8 @@ public abstract class Structure extends Sprite{
 	int armor;
 	int size;
 	int powerUp;
+	protected int height;
+	protected int width;
 	private Keyboard keyboard = new Keyboard();
 
 	public Structure(int x, int y, String sprite, int health) {	
@@ -47,6 +49,11 @@ public abstract class Structure extends Sprite{
 	
 	public abstract void moveX(double x);
 	public abstract void moveY(double y);
-	
-	
+
+	public int getHeight() {
+		return this.height;
+	}
+	public int getWidth() {
+		return this.width;
+	}
 }
