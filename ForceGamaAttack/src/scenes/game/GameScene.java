@@ -254,6 +254,24 @@ public class GameScene extends Scene {
 					continue;
 				}
 				
+				ArrayList<Bullet> bulletsToBeRemoved = new ArrayList<Bullet>();
+				
+				for (Bullet playerBullet : bullet.getBullets()) {
+					if(Collision.collided(playerBullet, enemy)) {
+						bulletsToBeRemoved.add(playerBullet);
+						int enemyHealth = enemy.takeDamage(30);
+						if (enemyHealth <= 0) {
+							try {
+								itrEnemy.remove();
+							} catch (Exception e) {
+								System.out.println("Error when trying to remove an enemy");
+							}
+							continue;
+						}
+					}
+				}
+				bullet.removeBullets(bulletsToBeRemoved);
+				
 				if(Collision.collided(playerImage, enemy)) {
 					((Structure) playerImage).takeDamage(1);
 				}				
