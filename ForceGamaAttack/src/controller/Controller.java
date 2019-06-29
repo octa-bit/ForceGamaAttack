@@ -119,7 +119,7 @@ public class Controller {
 					file.close();
 					break;
 				}
-			}   
+			}
 			file.close();
 		} catch (Exception e) {
 			System.err.format("Exception occurred trying to read Config.txt");
