@@ -3,10 +3,11 @@ package entities;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import constants.WindowConstants;
 import jplay.Window;
 
 public class BulletManager {
-	ArrayList<Bullet> objects = new ArrayList<Bullet>();
+	private ArrayList<Bullet> objects = new ArrayList<Bullet>();
 	
 	public void addBullet(double x, double y, int floor) {
 		Bullet bullet = new Bullet(x, y, 10);
@@ -21,17 +22,27 @@ public class BulletManager {
 		
 	}
 	
+	public void removeBullets(ArrayList<Bullet> bullets) {
+		for (Bullet bullet : bullets) {
+			try {
+				objects.remove(bullet);
+			} catch(Exception e) {
+				System.out.println("Error when trying to remove bullet");
+			}
+		}
+	}
+	
 	public void step(int floor){
 		for(int i = 0; i < objects.size(); i++) {
 			Bullet bullet = objects.remove(i);
 			bullet.move();
 			bullet.update();
 			
-			if ( bullet.x > 1){
+			if ( bullet.x > 1 && bullet.y > 0){
 				objects.add(bullet);
 			}
 			else{
-				System.out.println("erro");
+				objects.remove(bullet);
 			}
 			
 		}
@@ -43,6 +54,14 @@ public class BulletManager {
 			Bullet bullet = objects.get(i);
 			bullet.draw();
 		}
+	}
+	
+	public ArrayList<Bullet> getBullets() {
+		return objects;
+	}
+	
+	public int getBulletIndex(Bullet bullet) {
+		return objects.indexOf(bullet);
 	}
 	  
 }

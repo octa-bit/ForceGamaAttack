@@ -6,9 +6,11 @@ import player.Structure;
 import java.lang.Math;
 
 class Buging extends Enemy {
+	
+	public static int health = 10;
 
 	public Buging (float x, float y) {
-		super("src/graphics/img/sprites/BugingSprite.png", 1, x, y);
+		super("src/graphics/img/sprites/BugingSprite.png", 1, x, y, health);
 		this.hitPoints = 10;
 		this.value = 5;
 		this.colisionDamage = 5;
@@ -39,5 +41,4 @@ class Buging extends Enemy {
 			this.setRotation(-yAngle);
 		}
 	}
-
 }
