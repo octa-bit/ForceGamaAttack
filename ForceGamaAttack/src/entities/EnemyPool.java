@@ -2,13 +2,11 @@ package entities;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class EnemyPool {
 	
 	private List<Enemy> pool = new ArrayList<Enemy>();
-	private int useds = 0;
-	private int firstAvailable = 0;
-
 	
 	public EnemyPool() {}
 	
@@ -35,28 +33,46 @@ public class EnemyPool {
 	
 	public void giveBack(Enemy enemy) {
 		enemy.reset();
-		this.useds -= 1;
-	}
-	
-	
-	private void incrementFirst() {
-		firstAvailable = (firstAvailable + 1) % pool.size();
+		pool.add(enemy);
 	}
 
 	
-	public List<Enemy> getFromEnemy(int quantity) {
+	public List<Enemy> getEnemies(int quantity, int x, int y, int dist, String orientation) {
 		List<Enemy> list = new ArrayList<Enemy>();
 		
-		if (useds >= pool.size() || quantity > pool.size() - useds) {
-			throw new UnsupportedOperationException("Empty pool");
+		if (quantity > pool.size()) {
+			throw new UnsupportedOperationException("Insufficient Pool");
 		}
 		
-		for (int i=0; i<quantity; i++) {
-			list.add(pool.get(firstAvailable));
-			incrementFirst();
+		if (orientation == "vertical") orientation = "V";
+		if (orientation == "horizontal") orientation = "H";
+		
+		if (orientation != "V" && orientation != "H") {
+			throw new IllegalArgumentException("Orientation must be V ou H");
 		}
 		
-		useds += quantity;
+		int i=0;
+		Iterator<Enemy> itr = pool.iterator();
+		
+		if (orientation == "H") {
+			while(itr.hasNext()) {
+				Enemy enemy = itr.next();
+				enemy.setX(x + dist*i);
+				enemy.setY(y);
+				list.add(enemy);
+				itr.remove();
+				i++;
+			}
+		} else {
+			while(itr.hasNext()) {
+				Enemy enemy = itr.next();
+				enemy.setX(x);
+				enemy.setY(y - dist*i);
+				list.add(enemy);
+				itr.remove();
+				i++;
+			}
+		}
 		
 		return list;
 	}

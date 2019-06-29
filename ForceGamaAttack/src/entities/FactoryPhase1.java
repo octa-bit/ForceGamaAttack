@@ -8,8 +8,28 @@ import constants.WindowConstants;
 public class FactoryPhase1 extends Factory {
 
 	private int time=300;
+	private EnemyPool taskerPool;
+	private EnemyPool bugingPool;
+	private EnemyPool issuelizerPool;
 	
 	public FactoryPhase1() {
+		List<Enemy> taskerList = new ArrayList<Enemy>();
+		for (int i=0; i<15; i++) {
+			taskerList.add(new Tasker(0, 0));
+		}
+		this.taskerPool = new EnemyPool(taskerList);
+		
+		List<Enemy> issuelizerList = new ArrayList<Enemy>();
+		for (int i=0; i<15; i++) {
+			issuelizerList.add(new Issuelizer(0, 0));
+		}
+		this.issuelizerPool = new EnemyPool(issuelizerList);
+		
+		List<Enemy> bugingList = new ArrayList<Enemy>();
+		for (int i=0; i<18; i++) {
+			bugingList.add(new Tasker(0, 0));
+		}
+		this.bugingPool = new EnemyPool(bugingList);
 	}
 
 	
