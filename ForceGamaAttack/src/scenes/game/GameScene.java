@@ -27,6 +27,7 @@ import jplay.Keyboard;
 import jplay.Sound;
 import jplay.Collision;
 import jplay.Mouse;
+import jplay.Parallax;
 
 public class GameScene extends Scene {
 	private GameImage background;
@@ -49,7 +50,7 @@ public class GameScene extends Scene {
 	private BulletManager bullet;
 	private Sprite lifeBarBackground;
 	private Sprite lifeBar;
-	
+	private Parallax parallax;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -63,9 +64,11 @@ public class GameScene extends Scene {
 	}
 	
 	protected void viewSetup(){
+		parallax = new Parallax();
+		parallax.add("src/graphics/img/back_transp.png");
+		parallax.getLayer(0).setVelY(2.0);
 		pauseSetup();
 		gameOverSetup();
-		background = new GameImage("src/graphics/img/space_bg.jpg");
 		((Structure) playerImage).setKeyboard(keyboard);
 		lifeBar = new Sprite("src/graphics/guiPack/lifebar2.png");
 		lifeBarBackground = new Sprite("src/graphics/guiPack/lifebar_1.png");
@@ -103,7 +106,7 @@ public class GameScene extends Scene {
 	}
 	
 	private void draw() {
-		background.draw();
+		updateParallax();
 		playerImage.draw();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
@@ -116,6 +119,12 @@ public class GameScene extends Scene {
 		lifeBarBackground.draw();
 		renderLifeBar();
 	}
+	
+	public void updateParallax(){
+  		parallax.drawLayers();
+  		parallax.repeatLayers(800, 600, false);
+  		parallax.moveLayersStandardY(false);
+  	}
 	
 	public GameScene(Structure structure) {
 		super();
