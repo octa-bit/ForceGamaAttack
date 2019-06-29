@@ -111,14 +111,7 @@ public class MenuScene extends Scene {
 			}
 		}
 	}
-	
-	private void playBackgroundSoundMenu(Sound backgroundSoundMenu) {
-		if (!backgroundSoundMenu.isExecuting()) {
-//			backgroundSoundMenu.play();
-			System.out.println("Take Me On");
-		}
-	}
-	
+
 	public void update(){
 		checkMenuOption();
 		moveArrow();
