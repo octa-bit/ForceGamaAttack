@@ -151,9 +151,10 @@ Versão utilizada no começo da implementação.
 
 ### 5.3.5 JPlay Versão 1.0
 
-![Diagrama JPlay](https://i.imgur.com/Aoflhxh.jpg)
+![Diagrama JPlay](https://i.imgur.com/uU9rK4g.jpg)
 
 ### 5.3.6 JPlay Versão 2.0
+Nessa nova versão do diagrama foi corrigido o erro da inversão das setas na generalização.
 
 ![Diagrama JPlay](https://i.imgur.com/Tb9yNYZ.jpg)
 
