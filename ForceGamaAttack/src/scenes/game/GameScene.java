@@ -156,7 +156,6 @@ public class GameScene extends Scene {
 			
 			if (mouse.isOverObject(restartImg)) {
 				currentLevel = new SpaceShipMenuScene();
-				// currentLevel = new GameScene(Player.getInstance().getStructure());
 				game.pressPause();
 				Player.getInstance().width = 50;
 				game.transitTo(currentLevel);
@@ -180,7 +179,7 @@ public class GameScene extends Scene {
 		if(mouse.isLeftButtonPressed()) {
 			
 			if (mouse.isOverObject(gameOverRestartImg)) {
-				currentLevel = new GameScene(Player.getInstance().getStructure());
+				currentLevel = new SpaceShipMenuScene();
 				game.setNewGame();
 				((Structure) playerImage).resetHealth();
 				game.transitTo(currentLevel);
