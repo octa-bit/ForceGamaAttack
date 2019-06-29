@@ -6,7 +6,7 @@ import Observer.Observer;
 import entities.Enemy;
 
 public class Score extends Observer {
-	private int score=0;
+	public static int score=0;
 	private List<Observer> observers = new ArrayList<Observer>();
 	
 	public static final Score INSTANCE = new Score();
@@ -35,9 +35,9 @@ public class Score extends Observer {
 
 
 	@Override
-	public void notifyObservers() {
+	public void notifyObservers(Enemy enemy) {
 		for(Observer ob: observers) {
-			System.out.println(ob);
+			score=score+enemy.getValue();
 		}
 	}
 
@@ -49,6 +49,10 @@ public class Score extends Observer {
 	@Override
 	public void removeObserver(Observer o) {
 		this.observers.remove(o);
+	}
+	
+	public void clearScore() {
+		score=0;
 	}
 
 }

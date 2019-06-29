@@ -32,6 +32,7 @@ import jplay.Mouse;
 
 public class GameScene extends Scene {
 	private Text highScore;
+	private ScoreText scoreHigh;
 	private GameImage background;
 	private GameImage playerImage;
 	private Sound backgroundSound;
@@ -48,7 +49,6 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
-	private ScoreText score;
 	private int actualScore=0;
 	private Player player;
 	private BulletManager bullet;
@@ -71,8 +71,7 @@ public class GameScene extends Scene {
 	protected void viewSetup(){
 		pauseSetup();
 		highScore = new Text(550,20,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "HIGH SCORE: 000000");
-		score = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);
-//		scoreHigh = new Text(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, scori );	
+		scoreHigh = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);	
 		background = new GameImage("src/graphics/img/space_bg.jpg");
 		((Structure) playerImage).setKeyboard(keyboard);
 		gameOverSetup();
@@ -118,7 +117,7 @@ public class GameScene extends Scene {
 		
 		background.draw();
 		highScore.draw();
-		score.draw();
+		scoreHigh.draw();
 		playerImage.draw();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
@@ -224,11 +223,9 @@ public class GameScene extends Scene {
 	private void checkShootPress() {
 		int floor = 500;
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
-			gameScore.notifyObservers();
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
-				actualScore=actualScore+100;
-				score.setScore(actualScore);
+				
 				
 			}
 			bullet.addBullet(playerImage.x + playerImage.width/2, playerImage.y + playerImage.height/2, floor);
@@ -282,6 +279,8 @@ public class GameScene extends Scene {
 					if(Collision.collided(playerBullet, enemy)) {
 						bulletsToBeRemoved.add(playerBullet);
 						enemy.takeDamage(30);
+						gameScore.notifyObservers(enemy);
+						scoreHigh.setScore(Score.score);
 					}
 				}
 				bullet.removeBullets(bulletsToBeRemoved);
@@ -328,6 +327,7 @@ public class GameScene extends Scene {
 		} else if (game.getIsGameOver()) {
 			drawGameOverButtons();
 			checkGameOverMenuButtonsClick();
+			gameScore.clearScore();
 		}
 	}
 }
