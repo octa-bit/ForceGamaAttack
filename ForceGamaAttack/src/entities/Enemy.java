@@ -100,8 +100,11 @@ public abstract class Enemy extends Sprite{
 		return false;
 	}
 	
-	public int takeDamage(int damage) {
+	public void takeDamage(int damage) {
 		health -= damage;
+	}
+	
+	public int getHealth() {
 		return health;
 	}
 }
