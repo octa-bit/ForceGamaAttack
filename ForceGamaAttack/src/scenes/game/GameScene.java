@@ -234,11 +234,11 @@ public class GameScene extends Scene {
 	
 	public void update(){
 		draw();
-		checkKeyboardPress();
 		
 		if (!game.getIsPaused() && !game.getIsGameOver()) {	
 			((Structure) playerImage).moveY(2.5);
 			((Structure) playerImage).moveX(2.5);
+			checkKeyboardPress();
 			if (fac.isSpawnTime()) {
 				enemies.addAll(fac.factoryMethod());
 			}
@@ -254,6 +254,24 @@ public class GameScene extends Scene {
 					itrEnemy.remove();
 					continue;
 				}
+				
+				ArrayList<Bullet> bulletsToBeRemoved = new ArrayList<Bullet>();
+				
+				for (Bullet playerBullet : bullet.getBullets()) {
+					if(Collision.collided(playerBullet, enemy)) {
+						bulletsToBeRemoved.add(playerBullet);
+						int enemyHealth = enemy.takeDamage(30);
+						if (enemyHealth <= 0) {
+							try {
+								itrEnemy.remove();
+							} catch (Exception e) {
+								System.out.println("Error when trying to remove an enemy");
+							}
+							continue;
+						}
+					}
+				}
+				bullet.removeBullets(bulletsToBeRemoved);
 				
 				if(Collision.collided(playerImage, enemy)) {
 					((Structure) playerImage).takeDamage(1);

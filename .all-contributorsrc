@@ -1,12 +1,102 @@
 {
   "files": [
-    "docs/README.md"
+    "README.md"
   ],
   "imageSize": 100,
   "commit": false,
   "contributors": [
+    {
+      "login": "Hiroshi18",
+      "name": "Lucas Hiroshi Horinouchi",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/26282955?v=4",
+      "profile": "https://github.com/Hiroshi18",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "filipetoyoshima",
+      "name": "Filipe Toyoshima",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/29482983?v=4",
+      "profile": "https://gitlab.com/filipetoyoshima",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rossicler",
+      "name": "Rossicler",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/29635581?v=4",
+      "profile": "https://github.com/rossicler",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Lucas362",
+      "name": "Lucas Vitor de Paula",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/27078392?v=4",
+      "profile": "https://github.com/Lucas362",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jlucassr",
+      "name": "João Lucas Sousa Reis",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/23347866?v=4",
+      "profile": "https://github.com/jlucassr",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "isaacborges",
+      "name": "Isaac Borges",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4079459?v=4",
+      "profile": "https://github.com/isaacborges",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "joaovitorml",
+      "name": "João Vítor Lemos",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/23479533?v=4",
+      "profile": "https://github.com/joaovitorml",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "GabrielDViana",
+      "name": "Gabriel Viana",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/11458506?v=4",
+      "profile": "https://github.com/GabrielDViana",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "lucianosz7",
+      "name": "Luciano Dos Santos",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/23368207?v=4",
+      "profile": "https://github.com/lucianosz7",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Eduardolimr",
+      "name": "Eduardo Lima",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/26698993?v=4",
+      "profile": "https://github.com/Eduardolimr",
+      "contributions": [
+        "code"
+      ]
+    }
   ],
-  "contributorsPerLine": 7,
+  "contributorsPerLine": 5,
   "projectName": "ForceGamaAttack",
   "projectOwner": "octa-bit",
   "repoType": "github",
