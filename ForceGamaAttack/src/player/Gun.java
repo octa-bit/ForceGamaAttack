@@ -5,14 +5,14 @@ import java.time.Instant;
 
 public class Gun {
 	int type;
-	int damage;
-	int shootDamage;
+	private int shootDamage;
 	int shootingSpeed;
 	int powerUp;
 	private Instant lastShootTime;
 	
-	public Gun(int shootingSpeed) {
+	public Gun(int shootingSpeed, int shootDamage) {
 		this.shootingSpeed = shootingSpeed;
+		this.shootDamage = shootDamage;
 		lastShootTime = Instant.now();
 	}
 	public void activePowerUp() {
@@ -20,6 +20,10 @@ public class Gun {
 
 	public Instant getLastShootTime() {
 		return lastShootTime;
+	}
+
+	public int getShootDamage() {
+		return shootDamage;
 	}
 	
 	public boolean canShoot() {

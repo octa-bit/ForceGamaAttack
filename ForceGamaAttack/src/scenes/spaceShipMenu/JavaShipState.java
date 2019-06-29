@@ -30,7 +30,7 @@ public class JavaShipState implements MenuState {
 
 	@Override
 	public Scene getScene() {
-		startLevel = new GameScene(new StructureStrategyJava(100, 100), new Gun(333));
+		startLevel = new GameScene(new StructureStrategyJava(100, 100), new Gun(333,50));
 		return startLevel;
 	}
 

@@ -32,7 +32,7 @@ public class PythonShipState implements MenuState {
 	
 	@Override
 	public Scene getScene() {
-		startLevel = new GameScene(new StructureStrategyPython(100, 100), new Gun(222));
+		startLevel = new GameScene(new StructureStrategyPython(100, 100), new Gun(222, 30));
 		return startLevel;
 	}
 

@@ -31,7 +31,7 @@ public class CShipState implements MenuState {
 	
 	@Override
 	public Scene getScene() {
-		startLevel = new GameScene(new StructureStrategyC(100, 100), new Gun(111));
+		startLevel = new GameScene(new StructureStrategyC(100, 100), new Gun(111, 15));
 		return startLevel;
 	}
 

@@ -261,7 +261,7 @@ public class GameScene extends Scene {
 				for (Bullet playerBullet : bullet.getBullets()) {
 					if(Collision.collided(playerBullet, enemy)) {
 						bulletsToBeRemoved.add(playerBullet);
-						enemy.takeDamage(30);
+						enemy.takeDamage(Player.getInstance().getGun().getShootDamage());
 					}
 				}
 				bullet.removeBullets(bulletsToBeRemoved);
