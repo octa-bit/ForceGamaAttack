@@ -73,8 +73,8 @@ public class GameScene extends Scene {
 		lifeBarBackground.y = 40;
 		lifeBar.x = 40;
 		lifeBar.y = 40;
-		playerImage.height = 90;
-		playerImage.width = 50;
+		playerImage.height = ((Structure) playerImage).getHeight();
+		playerImage.width = ((Structure) playerImage).getWidth();
 		backgroundSound = new Sound("src/sounds/hbfs.wav");
 		if(game.getSoundStatus()) {
 			backgroundSound.play();
