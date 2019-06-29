@@ -11,6 +11,7 @@ import entities.Obstacle;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
+import score.Score;
 import text.ScoreText;
 import text.Text;
 
@@ -34,8 +35,7 @@ import jplay.Collision;
 import jplay.Mouse;
 
 public class GameScene extends Scene {
-	private Text score;
-	private Text scoreHigh;
+	private Text highScore;
 	private GameImage background;
 	private GameImage playerImage;
 	private Sound backgroundSound;
@@ -52,8 +52,8 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
-	private ScoreText scoris;
-	private int scori=0;
+	private ScoreText score;
+	private int actualScore=0;
 	private Player player;
 	private BulletManager bullet;
 	private Sprite lifeBarBackground;
@@ -73,17 +73,13 @@ public class GameScene extends Scene {
 	
 	protected void viewSetup(){
 		pauseSetup();
-		score = new Text(550,20,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "HIGH SCORE: 000000");
-		scoris = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);
+		highScore = new Text(550,20,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "HIGH SCORE: 000000");
+		score = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);
 //		scoreHigh = new Text(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, scori );	
 		background = new GameImage("src/graphics/img/space_bg.jpg");
 		((Structure) playerImage).setKeyboard(keyboard);
-//		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
-	//	score.x = 600.0;
-	//	score.y = 10.0;
 		gameOverSetup();
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-//		playerImage = Player.getInstance();
 		((Structure) playerImage).setKeyboard(keyboard);
 		lifeBar = new Sprite("src/graphics/guiPack/lifebar2.png");
 		lifeBarBackground = new Sprite("src/graphics/guiPack/lifebar_1.png");
@@ -121,15 +117,17 @@ public class GameScene extends Scene {
 	}
 	
 	private void draw() {
+		
 		background.draw();
+		highScore.draw();
 		score.draw();
-		scoris.draw();
 		playerImage.draw();
 		lifeBarBackground.draw();
 		renderLifeBar();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
 		}
+		
 		bullet.draw();
 		
 		for (Obstacle obst: obstacles) {
@@ -222,8 +220,8 @@ public class GameScene extends Scene {
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
-				scori=scori+100;
-				scoris.setScore(scori);
+				actualScore=actualScore+100;
+				score.setScore(actualScore);
 			}
 			bullet.addBullet(playerImage.x + playerImage.width/2, playerImage.y + playerImage.height/2, floor);
 		} else if ( keyboard.keyDown(KeyEvent.VK_P)) {
@@ -263,7 +261,6 @@ public class GameScene extends Scene {
 			Iterator<Enemy> itrEnemy = enemies.iterator();
 			while (itrEnemy.hasNext()) {
 				Enemy enemy = itrEnemy.next();
-				
 				enemy.move();	
 				
 				if (!isInside(enemy)) {
