@@ -11,10 +11,16 @@ public class Tasker extends Enemy {
 	
 	public Tasker (float x, float y) {
 		super("src/graphics/img/sprites/TaskerSprite.png", 1, x, y);
+		this.reset();
+	}
+	
+	
+	public void reset() {
 		this.hitPoints = 10;
 		this.value = 5;
 		this.colisionDamage = 5;
 	}
+	
 	
 	public void move() {
 		this.y += 1;

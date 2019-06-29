@@ -3,29 +3,39 @@ package entities;
 import java.util.List;
 import java.util.ArrayList;
 
-public class EnemyPool<Type> {
+public class EnemyPool {
 	
-	
-	private List<Type> pool = new ArrayList<Type>();
+	private List<Enemy> pool = new ArrayList<Enemy>();
 	private int useds = 0;
 	private int firstAvailable = 0;
 
 	
 	public EnemyPool() {}
-
 	
-	public void add(Type enemy) {
+	
+	public EnemyPool(Enemy enemy) {
+		this.add(enemy);
+	}
+	
+	
+	public EnemyPool(List<Enemy> enemies) {
+		this.add(enemies);
+	}
+	
+	
+	public void add(Enemy enemy) {
 		pool.add(enemy);
 	}
 	
 	
-	public void add(List<Type> enemies) {
+	public void add(List<Enemy> enemies) {
 		pool.addAll(enemies);
 	}
 	
 	
-	public void giveBack(Type enemy) {
-		// reset status of enemy
+	public void giveBack(Enemy enemy) {
+		enemy.reset();
+		this.useds -= 1;
 	}
 	
 	
@@ -34,8 +44,8 @@ public class EnemyPool<Type> {
 	}
 
 	
-	public List<Type> getFromType(int quantity) {
-		List<Type> list = new ArrayList<Type>();
+	public List<Enemy> getFromEnemy(int quantity) {
+		List<Enemy> list = new ArrayList<Enemy>();
 		
 		if (useds >= pool.size() || quantity > pool.size() - useds) {
 			throw new UnsupportedOperationException("Empty pool");

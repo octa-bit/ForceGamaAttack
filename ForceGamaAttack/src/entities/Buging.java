@@ -9,9 +9,7 @@ class Buging extends Enemy {
 
 	public Buging (float x, float y) {
 		super("src/graphics/img/sprites/BugingSprite.png", 1, x, y);
-		this.hitPoints = 10;
-		this.value = 5;
-		this.colisionDamage = 5;
+		this.reset();
 	}
 	
 	public void move() {
@@ -40,4 +38,10 @@ class Buging extends Enemy {
 		}
 	}
 
+	
+	public void reset() {
+		this.hitPoints = 10;
+		this.value = 5;
+		this.colisionDamage = 5;
+	}
 }

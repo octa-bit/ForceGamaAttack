@@ -97,4 +97,7 @@ public abstract class Enemy extends Sprite{
 	public boolean isShooting() {
 		return false;
 	}
+	
+	
+	public abstract void reset();
 }

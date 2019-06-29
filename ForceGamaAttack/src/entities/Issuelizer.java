@@ -10,6 +10,11 @@ class Issuelizer extends Enemy {
 	
 	public Issuelizer (float x, float y) {
 		super(FileNames.spritePath + "IssuelizerSprite.png", 1, x, y);
+		this.reset();
+	}
+	
+	
+	public void reset() {
 		this.hitPoints = 10;
 		this.value = 5;
 		this.colisionDamage = 5;
