@@ -85,6 +85,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "contributors",
+      "name": "contributors",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/750792?v=4",
+      "profile": "https://github.com/contributors",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 5,
