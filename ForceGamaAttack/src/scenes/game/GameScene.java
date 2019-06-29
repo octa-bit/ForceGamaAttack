@@ -233,11 +233,11 @@ public class GameScene extends Scene {
 	
 	public void update(){
 		draw();
-		checkKeyboardPress();
 		
 		if (!game.getIsPaused() && !game.getIsGameOver()) {	
 			((Structure) playerImage).moveY(2.5);
 			((Structure) playerImage).moveX(2.5);
+			checkKeyboardPress();
 			if (fac.isSpawnTime()) {
 				enemies.addAll(fac.factoryMethod());
 			}
