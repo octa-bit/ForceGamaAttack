@@ -49,7 +49,7 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
-	private Player player;
+	private Sound gameoverSound;
 	private BulletManager bullet;
 	private Sprite lifeBarBackground;
 	private Sprite lifeBar;
@@ -79,7 +79,7 @@ public class GameScene extends Scene {
 		lifeBar.x = 40;
 		lifeBar.y = 40;
 		playerImage.height = 90;
-		playerImage.width = 40;
+		playerImage.width = 50;
 		backgroundSound = new Sound("src/sounds/hbfs.wav");
 		if(game.getSoundStatus()) {
 			backgroundSound.play();
@@ -98,13 +98,17 @@ public class GameScene extends Scene {
 	}
 	
 	private void gameOverSetup() {
-		gameOverText = new Text(230,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "GAME OVER");
+		gameOverText = new Text(230,240,new Font("Comic Sans MS", Font.BOLD, 55), Color.WHITE, "GAME OVER");
 		gameOverRestartImg = new Sprite("src/graphics/guiPack/white_restart.png");
 		gameOverRestartImg.x = WindowConstants.WIDTH/2 - restartImg.width/2 - restartImg.width - 20;
 		gameOverRestartImg.y = WindowConstants.HEIGHT/2 - restartImg.height/2 + 50;
 		gameOverExitImg = new Sprite("src/graphics/guiPack/white_home.png");
 		gameOverExitImg.x = WindowConstants.WIDTH/2 - exitImg.width/2  + restartImg.width + 20;
 		gameOverExitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
+		gameoverSound = new Sound("src/sounds/blackhole_sound.wav");
+		if(game.getSoundStatus()) {
+			gameoverSound.play();
+		}
 	}
 	
 	private void draw() {
