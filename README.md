@@ -1,8 +1,24 @@
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors)
-## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+# Force Gama Attack (F.G.A.)
+
+## Sobre a F.G.A.
+
+Este projeto foi concebido no contexto da disciplina de Arquitetura e Desenho de Software da Faculdade do Gama (FGA), Universidade de Brasília. O jogo tem como proposta exercitar e aplicar conhecimentos relativos ao assuntos de projeto de Software, como padrões de projeto.
+
+Como o jogo está sendo construído por estudantes de Engenharia de Software, ele contém vários Easter Eggs a respeito da realidade do curso.
+
+## Sobre a Escolha do Tema
+
+Na tentativa de explorar conceitos que extrapolam os casos comuns de software e também de realizar um trabalho um pouco mais descontraído, foi escolhido um jogo como tema de projeto para a disciplina descrita acima.
+
+Após estudar as tecnologias onde são aplicáveis padrões de projetos (GoFs) e as alternativas de gêneros de jogos, o time optou por contruir um Space Shooter em Java. A escolha de não utilizar uma Game Engine própria para este tipo de aplicação foi proposital, para que o time tenha a experiência de implementar os detalhes de um jogo, como o Game Loop e um renderizador eficiente.
+
+
+## Contribuidores
+
+Agradecimentos para essas pessoas maravilhosas ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
@@ -10,4 +26,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+Este projeto segue [all-contributors](https://github.com/all-contributors/all-contributors). Contribuições de todos os tipos são bem-vindas!
