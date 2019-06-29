@@ -4,7 +4,7 @@
 ## 1. Introdução
 
 ### 1.1 Objetivo
-Este documento foi feito com o objetivo de descrever a arquitetura do jogo desenvolvido durante a disciplina de Arquitetura e Desenho de Software ministrado pela professora Milene Serrano como parte do curso de graduação do curso de engenharia de software da Universidade de Brasília. 
+Este documento foi feito com o objetivo de descrever a arquitetura do jogo desenvolvido durante a disciplina de Arquitetura e Desenho de Software ministrado pela professora Milene Serrano como parte do curso de graduação do curso de engenharia de software da Universidade de Brasília.
 
 Ele tem como objetivo mostrar as principais decisões tomadas para o desenvolvimento do jogo referentes a sua arquitetura mostrando diferentes visões de arquitetura para mostrar aspectos diferentes do sistema.
 
@@ -39,7 +39,7 @@ Nesta seção é descrito os requisitos e os objetivos que possuem impacto no de
 
 - O jogo deve utilizar a biblioteca JPlay como base
 
-- O GDD deve ser seguido 
+- O GDD deve ser seguido
 
 ## 4. Visualização de Casos de Uso
 
@@ -50,15 +50,15 @@ O diagrama de Casos de Uso auxilia no levantamento dos requisitos funcionais do 
 
 ### 4.2 UC01 - Menu Principal
 
-#### 4.2.1 Diagrama
+#### 4.2.1 Diagrama V.1.0
 
-![UC01 - Menu Principal](https://i.ibb.co/VYpx6Rx/UC01.png)
+![UC01 - Menu Principal](https://i.ibb.co/Ctmxx2q/UC01.png)
 
 ### 4.3 UC02 - Jogar
 
 #### 4.3.1 Diagrama
 
-![UC02 - Jogar](https://i.ibb.co/C69sBYv/UC02-Jogar.png)
+![UC02 - Jogar](https://i.ibb.co/3NtMYtx/UC02-V-1-0.png)
 
 #### 4.3.2 Especificação
 
@@ -68,7 +68,7 @@ O diagrama de Casos de Uso auxilia no levantamento dos requisitos funcionais do 
 | **Atores** | Usuário |
 | **Pré Condições** | O sistema deve estar em pleno funcionamento. |
 | **Fluxo Principal** | **FP01 - Começar o jogo**<br>1. Abre a tela inicial do jogo.<br>2. Usuário seleciona a opção start.<br>3. A cena de jogo se inicia.<br>4. Caso de uso encerrado.[FA01][FA02][FA03][FA04]<br>**FP02 - Escolher nome do jogador**<br>1. Abre a tela inicial do jogo.<br>2. Usuário seleciona a opção de escolher nome.<br>3. Usuário confirma nome escolhido<br>4. A cena de jogo se inicia.<br>5. Caso de uso encerrado.[FA01][FA02][FA03][FA04] |
-| **Fluxos Alternativos** | **FA01 - Abrir Menu de Pausa**<br>1. Usuário clica no botão de pausa presente na tela de jogo.<br>2. Jogo pausa.<br>3. Jogo mostra opções do menu de pausa.<br>4. Usuário retorna para o quarto passo do fluxo principal.[FA05][FA06][FA07]<br>**FA02 - Atirar**<br>1. Usuário clica no botão de tiro.<br>2. Bala é instanciada na cena.<br>3. Animação de tiro é iniciada.<br>4. Usuário retorna para o quarto passo do fluxo principal.[FA08]<br>**FA03 - Movimentar a nave**<br>1. Usuário clica no botão de moviemento.<br>2. Animação de movimento é iniciada.<br>3. A nave muda de lugar.<br>4. Usuário retorna para o quarto passo do fluxo principal.[FA09][FA10]<br>**FA04 - Silenciar o jogo**<br>1. Usuário clica no botão de mutar o som.<br>2. Som é desativado no jogo.<br>3. Usuário retorna para o quarto passo do fluxo principal.<br>**FA05 - Reiniciar fase**<br>1. Usuário clica na opção de reiniciar a fase.<br>2. Fase é reiniciada.<br>**FA06 - Voltar ao jogo**<br>1. Usuário clica na opção de voltar ao jogo.<br>2. Menu de pausa sai da tela.<br>3. Jogo sai da pausa.<br>4. Retorna ao passo quatro do fluxo principal.<br>**FA07 - Voltar ao menu principal**<br>1. Usuário clica na opção de voltar ao menu principal.<br>2. Jogo sai da tela de jogo.<br>3. Jogo carrega a tela de menu<br>**FA08 - Destruir inimigos**<br>1. Bala entra em contato com inimigo.<br>2. Animação de destruição se inicia.<br>3. Som de destruição se inicia.<br>4. Instância do inimigo é destruída.<br>5. Retorna ao passo quatro do fluxo principal<br>**FA09 - Coletar moedas**<br>1. Moeda é instanciada na cena.<br>2. Nave entra em contato com moeda.<br>3. Som de coleta de moeda se inicia.<br>4. Animação de coleta de moeda se inicia.<br>5. Instância da moeda é destruída.<br>6. Número de moedas coletadas aumenta.<br>7. Retorna ao passo quatro do fluxo principal<br>**FA10 - Coletar power up**<br>1. Power up é instanciado na cena.<br>2. Nave entra em contato com power up.<br>3. Som de coleta de power up se inicia.<br>4. Animação de coleta de power up se inicia.<br>5. Instância do power up é destruída.<br>6. Os atributos da nave mudam de acordo com o power up coletado.<br>7. Retorna ao passo quatro do fluxo principal |
+| **Fluxos Alternativos** | **FA01 - Abrir Menu de Pausa**<br>1. Usuário clica no botão de pausa presente na tela de jogo.<br>2. Jogo pausa.<br>3. Jogo mostra opções do menu de pausa.<br>4. Usuário retorna para o quarto passo do fluxo principal.[FA05][FA06][FA07]<br>**FA02 - Atirar**<br>1. Usuário clica no botão de tiro.<br>2. Bala é instanciada na cena.<br>3. Animação de tiro é iniciada.<br>4. Usuário retorna para o quarto passo do fluxo principal.[FA08]<br>**FA03 - Movimentar a nave**<br>1. Usuário clica no botão de moviemento.<br>2. Animação de movimento é iniciada.<br>3. A nave muda de lugar.<br>4. Usuário retorna para o quarto passo do fluxo principal.[FA09][FA10]<br>**FA04 - Silenciar o jogo**<br>1. Usuário clica no botão de mutar o som.<br>2. Som é desativado no jogo.<br>3. Usuário retorna para o quarto passo do fluxo principal.<br>**FA05 - Reiniciar fase**<br>1. Usuário clica na opção de reiniciar a fase.<br>2. Fase é reiniciada.<br>**FA06 - Voltar ao jogo**<br>1. Usuário clica na opção de voltar ao jogo.<br>2. Menu de pausa sai da tela.<br>3. Jogo sai da pausa.<br>4. Retorna ao passo quatro do fluxo principal.<br>**FA07 - Voltar ao menu principal**<br>1. Usuário clica na opção de voltar ao menu principal.<br>2. Jogo sai da tela de jogo.<br>3. Jogo carrega a tela de menu<br>**FA08 - Destruir inimigos**<br>1. Bala entra em contato com inimigo.<br>2. Animação de destruição se inicia.<br>3. Som de destruição se inicia.<br>4. Instância do inimigo é destruída.<br>5. Retorna ao passo quatro do fluxo principal<br>**FA09 - Coletar moedas**<br>1. Moeda é instanciada na cena.<br>2. Nave entra em contato com moeda.<br>3. Som de coleta de moeda se inicia.<br>4. Animação de coleta de moeda se inicia.<br>5. Instância da moeda é destruída.<br>6. Número de moedas coletadas aumenta.<br>7. Retorna ao passo quatro do fluxo principal<br>**FA10 - Coletar power up**<br>1. Power up é instanciado na cena.<br>2. Nave entra em contato com power up.<br>3. Som de coleta de power up se inicia.<br>4. Animação de coleta de power up se inicia.<br>5. Instância do power up é destruída.<br>6. Os atributos da nave mudam de acordo com o power up coletado.<br>7. Retorna ao passo quatro do fluxo principal<br>**FA11 - Silenciar Música de Fundo**<br>1. Usuário clica na opção de silenciar a música.<br>2. A música de fundo deixa de ser tocada.<br>3. Usuário deve retornar ao passo seis do fluxo alternativo para jogar o jogo sem música.  |
 | **Fluxos de Exceção** | Não se aplica. |
 | **Pós Condições** | Usuário terá acesso a tela de jogo e opções do jogabilidade. |
 
@@ -111,17 +111,17 @@ O diagrama de Casos de Uso auxilia no levantamento dos requisitos funcionais do 
 ## 5. Visualização Lógica
 
 ### 5.1 Visão Geral
-Nesta seção é descrito as partes significantes da arquitetura como a decomposição em pacotes, componentes e classes do jogo. 
+Nesta seção é descrito as partes significantes da arquitetura como a decomposição em pacotes, componentes e classes do jogo.
 
-Nesta seção temos uma descrição da visualização lógica da arquitetura. Na qual as classes mais importantes, suas organizações nos pacotes de serviço e subsistemas é descrita, assim como a sua organização desses subsistemas em camadas. 
+Nesta seção temos uma descrição da visualização lógica da arquitetura. Na qual as classes mais importantes, suas organizações nos pacotes de serviço e subsistemas é descrita, assim como a sua organização desses subsistemas em camadas.
 
 ### 5.2 Modelo de Domínio
 Um modelo de domínio é a representação visual de classes conceituais ou objetos do mundo real em um domínio.
 ![Modelo de Domínio v0.1](https://i.imgur.com/DZohRZ0.png)
 
 ### 5.3 Diagrama de Classe
- 
-Um diagrama de classes é uma representação da estrutura e relações das classes que servem de modelo para objetos. Ou seja é um conjunto de objetos com as mesmas características, assim saberemos identificar objetos e agrupá-los, de forma a encontrar suas respectivas classes. 
+
+Um diagrama de classes é uma representação da estrutura e relações das classes que servem de modelo para objetos. Ou seja é um conjunto de objetos com as mesmas características, assim saberemos identificar objetos e agrupá-los, de forma a encontrar suas respectivas classes.
 
 Na Unified Modeling Language (UML) em diagrama de classe, uma classe é representada por um retângulo com três divisões, são elas: O nome da classe, seus atributos e por fim os métodos.
 
@@ -153,14 +153,21 @@ Versão utilizada no começo da implementação.
 
 ![Diagrama JPlay](https://i.imgur.com/Aoflhxh.jpg)
 
+### 5.3.6 JPlay Versão 2.0
+
+![Diagrama JPlay](https://i.imgur.com/Tb9yNYZ.jpg)
+
 ### 5.4 Diagrama de Pacotes
 Um pacote é um conjunto de elementos agrupados. O diagrama fornece uma visão conceitual no geral um mesmo pacote contém o mesmo tipo de item.
 
 #### 5.4.1 Versão 0.1
 ![Diagrama de pacotes v0.1](https://i.imgur.com/oxrEYie.png)
 
-#### 5.4.2 Versão 1.0
+#### 5.4.2 Versão 0.2
 ![Diagrama de pacotes v1.0](https://i.imgur.com/hIGukUR.png)
+
+#### 5.4.3 Versão 1.0
+![Diagrama de pacotes v0.3](https://i.ibb.co/8mnb25n/package-Diagram-v0-3.png)
 
 ### 5.5 Diagrama de Componentes
 Ele representa um modelamento físico dos componentes de software de um
@@ -227,12 +234,11 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 ### 6.4 Diagrama de Atividades
 
 #### Diagrama de Level
-##### Versão 1.0
-![Versão 1.0](https://i.ibb.co/K5Jxj0g/Level-Activity-Diagram.png)
+##### Versão 1.1
+
+![Versão 1.1](https://i.ibb.co/RQnyB3G/Leveldiagram-V-1-1.png)
 
 #### Diagrama de Colisões
-##### Versão 0.1
-![Versão 0.1](https://i.imgur.com/jTQBLTx.jpg)
 
 ##### Versão 1.0
 ![Versão 1.0](https://i.imgur.com/XRSEXy9.jpg)
@@ -248,7 +254,7 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 ## 7. Visualização de Implementação
 
 ### 7.1 Visão Geral
-Nesta seção tem como objetivo realizar um mapeamento do software na infraestrutura disponível normalmente os sistemas são distribuídos e contém vários componentes também espalhados ao longo da infraestrutura. 
+Nesta seção tem como objetivo realizar um mapeamento do software na infraestrutura disponível normalmente os sistemas são distribuídos e contém vários componentes também espalhados ao longo da infraestrutura.
 
 O diagrama contém Nós e eventualmente os componentes em cada Nó as ligações entre nós representam as ligações de rede com portas e parâmetros necessários
 
@@ -259,11 +265,16 @@ O objetivo deste diagrama é facilitar e documentar a implantação de um sistem
 ![Diagrama de Implantação](https://i.imgur.com/TV8qePy.png)
 
 ### 7.2.1 Camada 1
-
+#### Personal Computer
+A primeira camada é representada pelo computador pessoal que será utilizado para rodar o jogo. Qualquer computador que atenda os requisitos mínimos defnidos na seção 8.2 poderá ser utilizado.
 
 ### 7.2.2 Camada 2
+#### JRE
+A segunda camada é representada pela JRE (Java Runtime Environment) que é o ambiente de execução utilizado para executar as aplicações java.
 
 ### 7.2.3 Camada 3
+#### JVM
+A terceira camada é representada pela JVM (Java Virtual Machine) que é a responsável por carregar e executar os aplicativos java, convertendo os bytecodes em código executável de máquina.
 
 ## 8. Tamanho e Desempenho
 ### 8.1 Visão Geral

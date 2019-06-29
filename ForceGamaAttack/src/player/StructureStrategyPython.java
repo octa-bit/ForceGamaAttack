@@ -5,14 +5,15 @@ import java.awt.event.KeyEvent;
 import jplay.Keyboard;
 import player.Player;
 
-public class StructureStrategyPython extends Player {
+public class StructureStrategyPython extends Structure {
 	
 	private Player player;
 	double speed = 1.0;
+	private static int pythonHealth = 75;
 	private final static String sprite = "src/graphics/img/python-ship.png";
 
 	public StructureStrategyPython(int x, int y) {
-		super(x, y, sprite);
+		super(x, y, sprite, pythonHealth);
 	}
 	
 	@Override

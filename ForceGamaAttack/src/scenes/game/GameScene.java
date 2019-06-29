@@ -1,9 +1,13 @@
 package scenes.game;
 import java.util.List;
 import java.util.ArrayList;
-import scenes.Scene;
+import java.util.Iterator;
 
+import scenes.Scene;
+import entities.Bullet;
+import entities.BulletManager;
 import entities.Enemy;
+import entities.Obstacle;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
@@ -14,11 +18,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 
+import constants.Constants;
 import constants.WindowConstants;
 import entities.EnemyType;
+import player.PlayerSpaceship;
 import jplay.GameImage;
 import jplay.Sprite;
+import jplay.Window;
 import player.Player;
+import player.Structure;
 import player.StructureStrategyJava;
 import jplay.Keyboard;
 import jplay.Sound;
@@ -31,18 +39,25 @@ public class GameScene extends Scene {
 	private GameImage background;
 	private GameImage playerImage;
 	private Sound backgroundSound;
-	private Collision collision;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
+	private List<Obstacle> obstacles = new ArrayList<Obstacle>();
 	private Factory fac = new FactoryPhase1();
 	private Text pausedText;
 	private Sprite restartImg;
 	private Sprite soundImg;
+	private Text gameOverText;
+	private Sprite gameOverExitImg;
+	private Sprite gameOverRestartImg;
 	private Sprite exitImg;
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
 	private ScoreText scoris;
 	private int scori=0;
+	private Player player;
+	private BulletManager bullet;
+	private Sprite lifeBarBackground;
+	private Sprite lifeBar;
 	
 	
 	protected void initialSetup(){
@@ -50,6 +65,7 @@ public class GameScene extends Scene {
 		keyboard.setBehavior(Keyboard.UP_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(Keyboard.LEFT_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(Keyboard.RIGHT_KEY, Keyboard.DETECT_EVERY_PRESS);
+		keyboard.setBehavior(keyboard.SPACE_KEY, keyboard.DETECT_EVERY_PRESS);
 		keyboard.addKey(Keyboard.SPACE_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		keyboard.addKey(KeyEvent.VK_P, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		mouse = game.getMouse();
@@ -61,18 +77,27 @@ public class GameScene extends Scene {
 		scoris = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);
 //		scoreHigh = new Text(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, scori );	
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-		((Player) playerImage).setKeyboard(keyboard);
+		//((Player) playerImage).setKeyboard(keyboard);
 //		playerImage = new Sprite("src/graphics/img/spaceship.png", 10);
 	//	score.x = 600.0;
 	//	score.y = 10.0;
-		playerImage.x = 360.0;
-		playerImage.y = 550.0;
+		gameOverSetup();
+		background = new GameImage("src/graphics/img/space_bg.jpg");
+//		playerImage = Player.getInstance();
+		((Structure) playerImage).setKeyboard(keyboard);
+		lifeBar = new Sprite("src/graphics/guiPack/lifebar2.png");
+		lifeBarBackground = new Sprite("src/graphics/guiPack/lifebar_1.png");
+		lifeBarBackground.x = 39;
+		lifeBarBackground.y = 40;
+		lifeBar.x = 40;
+		lifeBar.y = 40;
 		playerImage.height = 90;
 		playerImage.width = 40;
 		backgroundSound = new Sound("src/sounds/hbfs.wav");
 		if(game.getSoundStatus()) {
 			backgroundSound.play();
 		}
+		bullet = new BulletManager();
 	}
 
 	private void pauseSetup() {
@@ -85,19 +110,37 @@ public class GameScene extends Scene {
 		exitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
 	}
 	
+	private void gameOverSetup() {
+		gameOverText = new Text(230,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "GAME OVER");
+		gameOverRestartImg = new Sprite("src/graphics/guiPack/white_restart.png");
+		gameOverRestartImg.x = WindowConstants.WIDTH/2 - restartImg.width/2 - restartImg.width - 20;
+		gameOverRestartImg.y = WindowConstants.HEIGHT/2 - restartImg.height/2 + 50;
+		gameOverExitImg = new Sprite("src/graphics/guiPack/white_home.png");
+		gameOverExitImg.x = WindowConstants.WIDTH/2 - exitImg.width/2  + restartImg.width + 20;
+		gameOverExitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
+	}
+	
 	private void draw() {
 		background.draw();
 		score.draw();
 		scoris.draw();
 		playerImage.draw();
+		lifeBarBackground.draw();
+		renderLifeBar();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
 		}
+		bullet.draw();
+		
+		for (Obstacle obst: obstacles) {
+			 obst.draw();
+		}
 	}
 	
-	public GameScene(GameImage playerImage) {
+	public GameScene(Structure structure) {
 		super();
-		this.playerImage = playerImage;
+		Player.getInstance().setStructure(structure);
+		this.playerImage = Player.getInstance().getStructure();
 	}
 
 	private void drawPausedButtons () {
@@ -116,12 +159,19 @@ public class GameScene extends Scene {
 		exitImg.draw();
 	}
 	
+	private void drawGameOverButtons () {
+		game.keyboard.removeKey(KeyEvent.VK_P);
+		gameOverText.draw();
+		gameOverRestartImg.draw();
+		gameOverExitImg.draw();
+	}
+	
 	private void checkPausedMenuButtonsClick() {
 		
 		if(mouse.isLeftButtonPressed()) {
 			
 			if (mouse.isOverObject(restartImg)) {
-				currentLevel = new GameScene(this.playerImage);
+				currentLevel = new GameScene(Player.getInstance().getStructure());
 				game.pressPause();
 				game.transitTo(currentLevel);
 				backgroundSound.stop();
@@ -139,36 +189,115 @@ public class GameScene extends Scene {
 		}
 	}
 	
+	private void checkGameOverMenuButtonsClick() {
+		
+		if(mouse.isLeftButtonPressed()) {
+			
+			if (mouse.isOverObject(gameOverRestartImg)) {
+				currentLevel = new GameScene(Player.getInstance().getStructure());
+				game.setNewGame();
+				((Structure) playerImage).resetHealth();
+				game.transitTo(currentLevel);
+				backgroundSound.stop();
+			} else if (mouse.isOverObject(gameOverExitImg)) {
+				menuScene = new MenuScene();
+				game.setNewGame();
+				game.keyboard.removeKey(Keyboard.ENTER_KEY);
+				game.transitTo(menuScene);
+				backgroundSound.stop();
+			}
+		}
+	}
+	
+	private void renderLifeBar() {
+		lifeBar.width = (((Structure) playerImage).getHealth() * 200)/((Structure) playerImage).getMaxHealth();
+		lifeBar.draw();
+		if (((Structure) playerImage).getHealth() <= 0) {
+			game.setIsGameOver();
+		}
+	}
+
 	private void checkKeyboardPress() {
+		int floor = 500;
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
 				scori=scori+100;
 				scoris.setScore(scori);
 			}
+			bullet.addBullet(playerImage.x + playerImage.width/2, playerImage.y + playerImage.height/2, floor);
 		} else if ( keyboard.keyDown(KeyEvent.VK_P)) {
 			game.pressPause();
 		}
+		bullet.step(floor);
+	}
+	
+	private void PlayBackgroundSound(Sound backgroundSound) {
+		if (!backgroundSound.isExecuting()) {
+			backgroundSound.play();
+			System.out.println("Play sound");
+		}
 	}
 
+	private boolean isInside(Sprite sprite) {
+		boolean isInside = sprite.x > -20 &&
+				           sprite.x < WindowConstants.WIDTH + 20 &&
+				           sprite.y > -150 &&
+				           sprite.y < WindowConstants.HEIGHT + 20;
+		
+		return isInside;
+	}
+	
 	public void update(){
 		draw();
 		checkKeyboardPress();
-		if (!game.getIsPaused()) {
-			((Sprite) playerImage).moveY(2.5);
-			((Sprite) playerImage).moveX(2.5);
+		
+		if (!game.getIsPaused() && !game.getIsGameOver()) {	
+			((Structure) playerImage).moveY(2.5);
+			((Structure) playerImage).moveX(2.5);
 			if (fac.isSpawnTime()) {
 				enemies.addAll(fac.factoryMethod());
 			}
-			for (Enemy enemy: enemies) {
-				enemy.move();
-				if(Collision.collided(playerImage,enemy)) {
-					// do something after colliding
+			
+			// Enemy things
+			Iterator<Enemy> itrEnemy = enemies.iterator();
+			while (itrEnemy.hasNext()) {
+				Enemy enemy = itrEnemy.next();
+				
+				enemy.move();	
+				
+				if (!isInside(enemy)) {
+					itrEnemy.remove();
+					continue;
+				}
+				
+				if(Collision.collided(playerImage, enemy)) {
+					((Structure) playerImage).takeDamage(1);
+				}				
+				if(enemy.isShooting()) {
+					obstacles.add(enemy.shoot());
 				}
 			}
-		} else {
+			
+			// Obstacle things
+			Iterator<Obstacle> itrObs = obstacles.iterator();
+			while (itrObs.hasNext()) {
+				Obstacle obstacle = itrObs.next();
+				
+				obstacle.move();
+				
+				if(!isInside(obstacle)) {
+					itrObs.remove();
+				}
+			}
+	
+		} else if (game.getIsPaused()) {
 			drawPausedButtons();
 			checkPausedMenuButtonsClick();
+			
+		} else if (game.getIsGameOver()) {
+			drawGameOverButtons();
+			checkGameOverMenuButtonsClick();
 		}
 	}
 }
