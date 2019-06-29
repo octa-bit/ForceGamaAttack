@@ -11,22 +11,18 @@ import entities.Obstacle;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
+import scenes.spaceShipMenu.SpaceShipMenuScene;
 import text.Text;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 
-import constants.Constants;
 import constants.WindowConstants;
-import entities.EnemyType;
-import player.PlayerSpaceship;
 import jplay.GameImage;
 import jplay.Sprite;
-import jplay.Window;
 import player.Player;
 import player.Structure;
-import player.StructureStrategyJava;
 import jplay.Keyboard;
 import jplay.Sound;
 import jplay.Collision;
@@ -110,8 +106,6 @@ public class GameScene extends Scene {
 	private void draw() {
 		background.draw();
 		playerImage.draw();
-		lifeBarBackground.draw();
-		renderLifeBar();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
 		}
@@ -120,6 +114,8 @@ public class GameScene extends Scene {
 		for (Obstacle obst: obstacles) {
 			 obst.draw();
 		}
+		lifeBarBackground.draw();
+		renderLifeBar();
 	}
 	
 	public GameScene(Structure structure) {
@@ -156,7 +152,8 @@ public class GameScene extends Scene {
 		if(mouse.isLeftButtonPressed()) {
 			
 			if (mouse.isOverObject(restartImg)) {
-				currentLevel = new GameScene(Player.getInstance().getStructure());
+				currentLevel = new SpaceShipMenuScene();
+				// currentLevel = new GameScene(Player.getInstance().getStructure());
 				game.pressPause();
 				game.transitTo(currentLevel);
 				backgroundSound.stop();
@@ -247,7 +244,7 @@ public class GameScene extends Scene {
 			while (itrEnemy.hasNext()) {
 				Enemy enemy = itrEnemy.next();
 				
-				enemy.move();	
+				enemy.move();
 				
 				if (!isInside(enemy)) {
 					itrEnemy.remove();
