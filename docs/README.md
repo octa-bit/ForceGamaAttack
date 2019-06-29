@@ -1,6 +1,3 @@
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors)
-
 # Force Gama Attack (F.G.A.)
 
 ## Sobre a F.G.A.
