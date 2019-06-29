@@ -27,7 +27,7 @@ public class FactoryPhase1 extends Factory {
 		
 		List<Enemy> bugingList = new ArrayList<Enemy>();
 		for (int i=0; i<18; i++) {
-			bugingList.add(new Tasker(0, 0));
+			bugingList.add(new Buging(0, 0));
 		}
 		this.bugingPool = new EnemyPool(bugingList);
 	}
@@ -45,49 +45,36 @@ public class FactoryPhase1 extends Factory {
 	
 	public List<Enemy> factoryMethod() {
 		Random r = new Random();
-		int sort = r.nextInt(11);
+//		int sort = r.nextInt(11);
+		int sort = 10;
 		List<Enemy> wave = new ArrayList<Enemy>();
 		
 		if (sort < 3) {
 			int randPos = r.nextInt(350) + 20;
-			wave.add(new Tasker(randPos, -50));
-		    wave.add(new Tasker(randPos + 50, -50));
-		    wave.add(new Tasker(randPos + 100, -50));
+			System.out.println(randPos);
+			wave.addAll(taskerPool.getEnemies(3, randPos, -50, 50, "horizontal"));
 		    
 		} else if (sort < 4) {
 			int randPos = r.nextInt(300) + 20;
-			wave.add(new Tasker(randPos, -50));
-		    wave.add(new Tasker(randPos + 50, -50));
-		    wave.add(new Tasker(randPos + 100, -50));
-		    wave.add(new Tasker(randPos + 150, -50));
-		    
+			wave.addAll(taskerPool.getEnemies(4, randPos, -50, 50, "horizontal"));
+
 		} else if (sort < 7) {
 			int randPos = r.nextInt(500) + 50;
-			wave.add(new Issuelizer(randPos, -20));
-			wave.add(new Issuelizer(randPos, -80));
-			wave.add(new Issuelizer(randPos, -140));
+			wave.addAll(issuelizerPool.getEnemies(3, randPos, -50, 60, "vertical"));
 			
 		} else if (sort < 9) {
 			int randPos = r.nextInt(500) + 50;
-			wave.add(new Issuelizer(randPos, -20));
-			wave.add(new Issuelizer(randPos, -80));
-			wave.add(new Issuelizer(randPos, -140));
-			wave.add(new Issuelizer(randPos, -170));
+			wave.addAll(issuelizerPool.getEnemies(4, randPos, -50, 60, "vertical"));
 			
 		} else if (sort < 10 ) {
-			wave.add(new Buging(-20, -20));
-			wave.add(new Buging(30, -20));
-			wave.add(new Buging(80, -20));
-			wave.add(new Buging(-20, 30));
-			wave.add(new Buging(-20, 80));
+			wave.addAll(bugingPool.getEnemies(3, -20, -20, 50, "horizontal"));
+			wave.addAll(bugingPool.getEnemies(2, -20, 80, 50, "vertical"));
 			
 		} else {
-			float limit = (float) WindowConstants.WIDTH;
-			wave.add(new Buging(limit + 20, -20));
-			wave.add(new Buging(limit - 10, -20));
-			wave.add(new Buging(limit - 60, -20));
-			wave.add(new Buging(limit + 20, 30));
-			wave.add(new Buging(limit + 20, 80));
+			int limit = WindowConstants.WIDTH;
+			wave.addAll(bugingPool.getEnemies(3, limit+20, -20, -50, "horizontal"));
+			wave.addAll(bugingPool.getEnemies(2, limit+20, 80, 50, "vertical"));
+			
 		}
 		
 		return wave;

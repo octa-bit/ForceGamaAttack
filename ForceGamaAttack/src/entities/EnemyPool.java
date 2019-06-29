@@ -53,9 +53,9 @@ public class EnemyPool {
 		
 		int i=0;
 		Iterator<Enemy> itr = pool.iterator();
-		
+
 		if (orientation == "H") {
-			while(itr.hasNext()) {
+			while(itr.hasNext() && i < quantity) {
 				Enemy enemy = itr.next();
 				enemy.setX(x + dist*i);
 				enemy.setY(y);
@@ -64,7 +64,7 @@ public class EnemyPool {
 				i++;
 			}
 		} else {
-			while(itr.hasNext()) {
+			while(itr.hasNext() && i < quantity) {
 				Enemy enemy = itr.next();
 				enemy.setX(x);
 				enemy.setY(y - dist*i);
