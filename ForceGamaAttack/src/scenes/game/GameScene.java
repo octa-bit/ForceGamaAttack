@@ -123,7 +123,10 @@ public class GameScene extends Scene {
 	public void updateParallax(){
   		parallax.drawLayers();
   		parallax.repeatLayers(800, 600, false);
-  		parallax.moveLayersStandardY(false);
+
+		if (!game.getIsPaused() && !game.getIsGameOver()) {
+  			parallax.moveLayersStandardY(false);
+		} 
   	}
 	
 	public GameScene(Structure structure, Gun gun) {
