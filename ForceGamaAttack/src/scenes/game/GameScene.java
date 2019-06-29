@@ -66,7 +66,6 @@ public class GameScene extends Scene {
 		pauseSetup();
 		gameOverSetup();
 		background = new GameImage("src/graphics/img/space_bg.jpg");
-//		playerImage = Player.getInstance();
 		((Structure) playerImage).setKeyboard(keyboard);
 		lifeBar = new Sprite("src/graphics/guiPack/lifebar2.png");
 		lifeBarBackground = new Sprite("src/graphics/guiPack/lifebar_1.png");
@@ -198,16 +197,20 @@ public class GameScene extends Scene {
 			game.setIsGameOver();
 		}
 	}
-
+	
 	private void checkKeyboardPress() {
+		if ( keyboard.keyDown(KeyEvent.VK_P)) {
+			game.pressPause();
+		}
+	}
+
+	private void checkShootPress() {
 		int floor = 500;
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
 			}
 			bullet.addBullet(playerImage.x + playerImage.width/2, playerImage.y + playerImage.height/2, floor);
-		} else if ( keyboard.keyDown(KeyEvent.VK_P)) {
-			game.pressPause();
 		}
 		bullet.step(floor);
 	}
@@ -230,11 +233,12 @@ public class GameScene extends Scene {
 	
 	public void update(){
 		draw();
+		checkKeyboardPress();
 		
 		if (!game.getIsPaused() && !game.getIsGameOver()) {	
 			((Structure) playerImage).moveY(2.5);
 			((Structure) playerImage).moveX(2.5);
-			checkKeyboardPress();
+			checkShootPress();
 			if (fac.isSpawnTime()) {
 				enemies.addAll(fac.factoryMethod());
 			}
