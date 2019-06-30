@@ -20,6 +20,8 @@ public class Tasker extends Enemy {
 		this.health = 10;
 		this.value = 5;
 		this.colisionDamage = 5;
+		this.reloadTime = 0;
+		this.time = 0;
 	}
 	
 	
