@@ -52,6 +52,7 @@ public class GameScene extends Scene {
 	private Sprite lifeBarBackground;
 	private Sprite lifeBar;
 	private Parallax parallax;
+	private Text pauseText;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -84,6 +85,7 @@ public class GameScene extends Scene {
 			backgroundSound.play();
 		}
 		bullet = new BulletManager();
+		pauseText = new Text(630,580,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "P (PAUSE)");
 	}
 
 	private void pauseSetup() {
@@ -110,6 +112,7 @@ public class GameScene extends Scene {
 	
 	private void draw() {
 		updateParallax();
+		pauseText.draw();
 		playerImage.draw();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
