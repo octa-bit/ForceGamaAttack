@@ -33,7 +33,6 @@ public class EnemyPool {
 	
 	public void giveBack(Enemy enemy) {
 		enemy.reset();
-		System.out.println("received a " + enemy.getClass().getSimpleName());
 		pool.add(enemy);
 	}
 
@@ -75,7 +74,6 @@ public class EnemyPool {
 			}
 		}
 		
-		System.out.println("sended " + quantity + "! Total on pool now: " + pool.size());
 		return list;
 	}
 }
