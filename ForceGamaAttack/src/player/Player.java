@@ -1,6 +1,8 @@
 package player;
 import jplay.Keyboard;
 
+import java.time.Instant;
+
 import constants.Constants;
 import entities.BulletManager;
 import jplay.Keyboard;
@@ -16,6 +18,7 @@ public class Player extends Sprite{
 	private int previousDirection;
 	private int direction;
 	private boolean isDead = false;
+	private Gun gun;
 	
 	private static final Player INSTANCE = new Player(360, 550, sprite);
 	
@@ -48,6 +51,13 @@ public class Player extends Sprite{
 		this.structure = structure;
 	}
 	
+	public void setGun(Gun gun) {
+		this.gun = gun;
+	}
+	
+	public Gun getGun() {
+		return gun;
+	}
 	
 	public void move(Keyboard keyboard) {
 		

@@ -23,6 +23,7 @@ import java.awt.event.KeyEvent;
 import constants.WindowConstants;
 import jplay.GameImage;
 import jplay.Sprite;
+import player.Gun;
 import player.Player;
 import player.Structure;
 import jplay.Keyboard;
@@ -66,7 +67,6 @@ public class GameScene extends Scene {
 		keyboard.setBehavior(Keyboard.LEFT_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(Keyboard.RIGHT_KEY, Keyboard.DETECT_EVERY_PRESS);
 		keyboard.setBehavior(keyboard.SPACE_KEY, keyboard.DETECT_EVERY_PRESS);
-		keyboard.addKey(Keyboard.SPACE_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		keyboard.addKey(KeyEvent.VK_P, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		mouse = game.getMouse();
 	}
@@ -145,12 +145,16 @@ public class GameScene extends Scene {
 	public void updateParallax(){
   		parallax.drawLayers();
   		parallax.repeatLayers(800, 600, false);
-  		parallax.moveLayersStandardY(false);
+
+		if (!game.getIsPaused() && !game.getIsGameOver()) {
+  			parallax.moveLayersStandardY(false);
+		} 
   	}
 	
-	public GameScene(Structure structure) {
+	public GameScene(Structure structure, Gun gun) {
 		super();
 		Player.getInstance().setStructure(structure);
+		Player.getInstance().setGun(gun);
 		this.playerImage = Player.getInstance().getStructure();
 	}
 
@@ -184,7 +188,6 @@ public class GameScene extends Scene {
 			
 			if (mouse.isOverObject(restartImg)) {
 				currentLevel = new SpaceShipMenuScene();
-				// currentLevel = new GameScene(Player.getInstance().getStructure());
 				game.pressPause();
 				Player.getInstance().width = 50;
 				game.transitTo(currentLevel);
@@ -208,7 +211,7 @@ public class GameScene extends Scene {
 		if(mouse.isLeftButtonPressed()) {
 			
 			if (mouse.isOverObject(gameOverRestartImg)) {
-				currentLevel = new GameScene(Player.getInstance().getStructure());
+				currentLevel = new SpaceShipMenuScene();
 				game.setNewGame();
 				((Structure) playerImage).resetHealth();
 				game.transitTo(currentLevel);
@@ -244,7 +247,7 @@ public class GameScene extends Scene {
 
 	private void checkShootPress() {
 		int floor = 500;
-		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
+		if (keyboard.keyDown(Keyboard.SPACE_KEY) && Player.getInstance().getGun().canShoot()) {
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
 				
@@ -301,7 +304,7 @@ public class GameScene extends Scene {
 				for (Bullet playerBullet : bullet.getBullets()) {
 					if(Collision.collided(playerBullet, enemy)) {
 						bulletsToBeRemoved.add(playerBullet);
-						enemy.takeDamage(30);
+						enemy.takeDamage(Player.getInstance().getGun().getShootDamage());
 						gameScore.notifyObservers(enemy);
 						scoreHigh.setScore(Score.score);
 					}
