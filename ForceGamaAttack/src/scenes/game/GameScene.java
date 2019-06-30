@@ -34,7 +34,6 @@ import jplay.Parallax;
 public class GameScene extends Scene {
 	private Text highScore;
 	private ScoreText scoreHigh;
-	private GameImage background;
 	private GameImage playerImage;
 	private GameImage backgroundGameOver;
 	private Sound backgroundSound;
@@ -52,8 +51,6 @@ public class GameScene extends Scene {
 	private Scene currentLevel;
 	private Scene menuScene;
   
-	private int actualScore=0;
-	private Player player;
 	private BulletManager bullet;
 	private Sprite lifeBarBackground;
 	private Sprite lifeBar;
@@ -79,7 +76,7 @@ public class GameScene extends Scene {
 		pauseSetup();
 		highScore = new Text(550,20,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "HIGH SCORE: 000000");
 		scoreHigh = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);	
-		background = new GameImage("src/graphics/img/space_bg.jpg");
+		
 		((Structure) playerImage).setKeyboard(keyboard);
 		gameOverSetup();
 		((Structure) playerImage).setKeyboard(keyboard);
@@ -123,7 +120,6 @@ public class GameScene extends Scene {
 	
 	private void draw() {
 		
-		background.draw();
 		updateParallax();
 
 		playerImage.draw();
