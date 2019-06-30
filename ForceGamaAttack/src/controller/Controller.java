@@ -107,6 +107,35 @@ public class Controller {
 		}
 	}
 	
+	public void saveHighScore(string score) {
+		try {
+			BufferedWriter file = new BufferedWriter(new FileWriter("src/config/highScore.txt"));
+			file.write(score);
+			file.close();
+		} catch (Exception e) {
+			System.err.format("Exception occurred trying to write on highScore.txt");
+			e.printStackTrace();
+		}
+	}
+	
+	public String getHighScore() {
+		String line = null;
+		String highScore = "0";
+		try {
+			BufferedReader file = new BufferedReader(new FileReader("src/config/highScore.txt"));
+			while((line = file.readLine()) != null) {
+				highScore = line;
+				file.close();
+				break;
+			}
+			file.close();
+		} catch (Exception e) {
+			System.err.format("Exception occurred trying to read highScore.txt");
+			e.printStackTrace();
+		}
+		return highScore;
+	}
+	
 	public boolean getSoundConfig() {
 		String line = null;
 		boolean soundStatus = false;

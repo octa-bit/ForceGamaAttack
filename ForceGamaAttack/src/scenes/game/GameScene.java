@@ -33,6 +33,7 @@ import jplay.Parallax;
 
 public class GameScene extends Scene {
 	private Text highScore;
+	private String highScoreValue;
 	private ScoreText scoreHigh;
 	private GameImage playerImage;
 	private GameImage backgroundGameOver;
@@ -75,7 +76,8 @@ public class GameScene extends Scene {
 		parallax.add("src/graphics/img/back_transp.png");
 		parallax.getLayer(0).setVelY(2.0);
 		pauseSetup();
-		highScore = new Text(550,20,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "HIGH SCORE: 000000");
+		highScoreValue = game.getHighScore();
+		highScore = new Text(550,20,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "HIGH SCORE: "+highScoreValue);
 		scoreHigh = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);	
 		
 		((Structure) playerImage).setKeyboard(keyboard);
@@ -228,6 +230,9 @@ public class GameScene extends Scene {
 		lifeBar.draw();
 		if (((Structure) playerImage).getHealth() <= 0) {
 			game.setIsGameOver();
+			if (Integer.parseInt(highScoreValue) < Score.score) {
+				game.saveHighScore(Score.score);
+			}
 		}
 	}
 	
