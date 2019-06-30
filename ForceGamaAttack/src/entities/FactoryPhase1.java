@@ -64,34 +64,51 @@ public class FactoryPhase1 extends Factory {
 	
 	public List<Enemy> factoryMethod() {
 		Random r = new Random();
-		int sort = r.nextInt(11);
+		int sort = r.nextInt(8);
 		List<Enemy> wave = new ArrayList<Enemy>();
 		
-		if (sort < 3) {
-			int randPos = r.nextInt(350) + 20;
-			wave.addAll(taskerPool.getEnemies(3, randPos, -50, 50, "horizontal"));
-		    
-		} else if (sort < 4) {
-			int randPos = r.nextInt(300) + 20;
-			wave.addAll(taskerPool.getEnemies(4, randPos, -50, 50, "horizontal"));
-
-		} else if (sort < 7) {
-			int randPos = r.nextInt(500) + 50;
-			wave.addAll(issuelizerPool.getEnemies(3, randPos, -50, 60, "vertical"));
+		try {
+			if (sort < 3) {
+				int randPos = r.nextInt(350) + 20;
+				wave.addAll(taskerPool.getEnemies(3, randPos, -50, 50, "horizontal"));
+				
+			} else if (sort < 4) {
+				int randPos = r.nextInt(300) + 20;
+				wave.addAll(taskerPool.getEnemies(4, randPos, -50, 50, "horizontal"));
+				
+			} else if (sort < 6) {
+				int randPos = r.nextInt(500) + 50;
+				wave.addAll(issuelizerPool.getEnemies(3, randPos, -50, 60, "vertical"));
+				
+			} else if (sort < 7) {
+				int randPos = r.nextInt(500) + 50;
+				wave.addAll(issuelizerPool.getEnemies(4, randPos, -50, 60, "vertical"));
+				
+			} else if (sort < 8 ) {
+				wave.addAll(bugingPool.getEnemies(3, -20, -20, 50, "horizontal"));
+				wave.addAll(bugingPool.getEnemies(2, -20, 80, 50, "vertical"));
+				
+			} else {
+				int limit = WindowConstants.WIDTH;
+				wave.addAll(bugingPool.getEnemies(3, limit+20, -20, -50, "horizontal"));
+				wave.addAll(bugingPool.getEnemies(2, limit+20, 80, 50, "vertical"));
+				
+			}
+		} catch (UnsupportedOperationException nexc) {
+			try {
+				int randPos = r.nextInt(350) + 20;
+				wave.addAll(taskerPool.getEnemies(3, randPos, -50, 50, "horizontal"));
 			
-		} else if (sort < 9) {
-			int randPos = r.nextInt(500) + 50;
-			wave.addAll(issuelizerPool.getEnemies(4, randPos, -50, 60, "vertical"));
-			
-		} else if (sort < 10 ) {
-			wave.addAll(bugingPool.getEnemies(3, -20, -20, 50, "horizontal"));
-			wave.addAll(bugingPool.getEnemies(2, -20, 80, 50, "vertical"));
-			
-		} else {
-			int limit = WindowConstants.WIDTH;
-			wave.addAll(bugingPool.getEnemies(3, limit+20, -20, -50, "horizontal"));
-			wave.addAll(bugingPool.getEnemies(2, limit+20, 80, 50, "vertical"));
-			
+			} catch (UnsupportedOperationException nnexc) {
+				List<Enemy> taskerList = new ArrayList<Enemy>();
+				for (int i=0; i<3; i++) {
+					taskerList.add(new Tasker(0, 0));
+				}
+				this.taskerPool = new EnemyPool(taskerList);
+				
+				int randPos = r.nextInt(350) + 20;
+				wave.addAll(taskerPool.getEnemies(3, randPos, -50, 50, "horizontal"));
+			}
 		}
 		
 		return wave;
