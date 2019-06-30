@@ -124,8 +124,6 @@ public class GameScene extends Scene {
 	private void draw() {
 		
 		background.draw();
-		highScore.draw();
-		scoreHigh.draw();
 		updateParallax();
 
 		playerImage.draw();
@@ -140,6 +138,8 @@ public class GameScene extends Scene {
 		}
 		lifeBarBackground.draw();
 		renderLifeBar();
+		highScore.draw();
+		scoreHigh.draw();
 	}
 	
 	public void updateParallax(){

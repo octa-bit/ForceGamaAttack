@@ -26,7 +26,6 @@ public class Score extends Observer {
 	
 	public void addEnemy(Enemy enemy) {
 		enemy.attach(this);
-		System.out.println("aaaaaa");
 	}
 	
 	public int getScore() {
