@@ -8,8 +8,46 @@ import constants.WindowConstants;
 public class FactoryPhase1 extends Factory {
 
 	private int time=300;
+	private EnemyPool taskerPool;
+	private EnemyPool bugingPool;
+	private EnemyPool issuelizerPool;
 	
 	public FactoryPhase1() {
+		List<Enemy> taskerList = new ArrayList<Enemy>();
+		for (int i=0; i<15; i++) {
+			taskerList.add(new Tasker(0, 0));
+		}
+		this.taskerPool = new EnemyPool(taskerList);
+		
+		List<Enemy> issuelizerList = new ArrayList<Enemy>();
+		for (int i=0; i<15; i++) {
+			issuelizerList.add(new Issuelizer(0, 0));
+		}
+		this.issuelizerPool = new EnemyPool(issuelizerList);
+		
+		List<Enemy> bugingList = new ArrayList<Enemy>();
+		for (int i=0; i<18; i++) {
+			bugingList.add(new Buging(0, 0));
+		}
+		this.bugingPool = new EnemyPool(bugingList);
+	}
+	
+	
+	public void sendBack(Enemy enemy) {
+		String name = enemy.getClass().getSimpleName();
+		switch (name) {
+		case "Tasker":
+			taskerPool.giveBack(enemy);
+			break;
+		case "Issuelizer":
+			issuelizerPool.giveBack(enemy);
+			break;
+		case "Buging":
+			bugingPool.giveBack(enemy);
+			break;
+		default:
+			throw new IllegalArgumentException();
+		}
 	}
 
 	
@@ -25,49 +63,51 @@ public class FactoryPhase1 extends Factory {
 	
 	public List<Enemy> factoryMethod() {
 		Random r = new Random();
-		int sort = r.nextInt(11);
+		int sort = r.nextInt(8);
 		List<Enemy> wave = new ArrayList<Enemy>();
 		
-		if (sort < 3) {
-			int randPos = r.nextInt(350) + 20;
-			wave.add(new Tasker(randPos, -50));
-		    wave.add(new Tasker(randPos + 50, -50));
-		    wave.add(new Tasker(randPos + 100, -50));
-		    
-		} else if (sort < 4) {
-			int randPos = r.nextInt(300) + 20;
-			wave.add(new Tasker(randPos, -50));
-		    wave.add(new Tasker(randPos + 50, -50));
-		    wave.add(new Tasker(randPos + 100, -50));
-		    wave.add(new Tasker(randPos + 150, -50));
-		    
-		} else if (sort < 7) {
-			int randPos = r.nextInt(500) + 50;
-			wave.add(new Issuelizer(randPos, -20));
-			wave.add(new Issuelizer(randPos, -80));
-			wave.add(new Issuelizer(randPos, -140));
+		try {
+			if (sort < 3) {
+				int randPos = r.nextInt(350) + 20;
+				wave.addAll(taskerPool.getEnemies(3, randPos, -50, 50, "horizontal"));
+				
+			} else if (sort < 4) {
+				int randPos = r.nextInt(300) + 20;
+				wave.addAll(taskerPool.getEnemies(4, randPos, -50, 50, "horizontal"));
+				
+			} else if (sort < 6) {
+				int randPos = r.nextInt(500) + 50;
+				wave.addAll(issuelizerPool.getEnemies(3, randPos, -50, 60, "vertical"));
+				
+			} else if (sort < 7) {
+				int randPos = r.nextInt(500) + 50;
+				wave.addAll(issuelizerPool.getEnemies(4, randPos, -50, 60, "vertical"));
+				
+			} else if (sort < 8 ) {
+				wave.addAll(bugingPool.getEnemies(3, -20, -20, 50, "horizontal"));
+				wave.addAll(bugingPool.getEnemies(2, -20, 80, 50, "vertical"));
+				
+			} else {
+				int limit = WindowConstants.WIDTH;
+				wave.addAll(bugingPool.getEnemies(3, limit+20, -20, -50, "horizontal"));
+				wave.addAll(bugingPool.getEnemies(2, limit+20, 80, 50, "vertical"));
+				
+			}
+		} catch (UnsupportedOperationException nexc) {
+			try {
+				int randPos = r.nextInt(350) + 20;
+				wave.addAll(taskerPool.getEnemies(3, randPos, -50, 50, "horizontal"));
 			
-		} else if (sort < 9) {
-			int randPos = r.nextInt(500) + 50;
-			wave.add(new Issuelizer(randPos, -20));
-			wave.add(new Issuelizer(randPos, -80));
-			wave.add(new Issuelizer(randPos, -140));
-			wave.add(new Issuelizer(randPos, -170));
-			
-		} else if (sort < 10 ) {
-			wave.add(new Buging(-20, -20));
-			wave.add(new Buging(30, -20));
-			wave.add(new Buging(80, -20));
-			wave.add(new Buging(-20, 30));
-			wave.add(new Buging(-20, 80));
-			
-		} else {
-			float limit = (float) WindowConstants.WIDTH;
-			wave.add(new Buging(limit + 20, -20));
-			wave.add(new Buging(limit - 10, -20));
-			wave.add(new Buging(limit - 60, -20));
-			wave.add(new Buging(limit + 20, 30));
-			wave.add(new Buging(limit + 20, 80));
+			} catch (UnsupportedOperationException nnexc) {
+				List<Enemy> taskerList = new ArrayList<Enemy>();
+				for (int i=0; i<3; i++) {
+					taskerList.add(new Tasker(0, 0));
+				}
+				this.taskerPool = new EnemyPool(taskerList);
+				
+				int randPos = r.nextInt(350) + 20;
+				wave.addAll(taskerPool.getEnemies(3, randPos, -50, 50, "horizontal"));
+			}
 		}
 		
 		return wave;

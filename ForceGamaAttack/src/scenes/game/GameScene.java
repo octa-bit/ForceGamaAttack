@@ -11,6 +11,8 @@ import entities.Obstacle;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
+import score.Score;
+import text.ScoreText;
 import scenes.spaceShipMenu.SpaceShipMenuScene;
 import text.Text;
 
@@ -31,8 +33,10 @@ import jplay.Mouse;
 import jplay.Parallax;
 
 public class GameScene extends Scene {
-	private GameImage background;
+	private Text highScore;
+	private ScoreText scoreHigh;
 	private GameImage playerImage;
+	private GameImage backgroundGameOver;
 	private Sound backgroundSound;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
 	private List<Obstacle> obstacles = new ArrayList<Obstacle>();
@@ -47,11 +51,14 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
-	private Player player;
+  
 	private BulletManager bullet;
 	private Sprite lifeBarBackground;
 	private Sprite lifeBar;
+	private Score gameScore;
+	private Sound gameOverSound;
 	private Parallax parallax;
+	private Text pauseText;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -68,6 +75,10 @@ public class GameScene extends Scene {
 		parallax.add("src/graphics/img/back_transp.png");
 		parallax.getLayer(0).setVelY(2.0);
 		pauseSetup();
+		highScore = new Text(550,20,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "HIGH SCORE: 000000");
+		scoreHigh = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);	
+		
+		((Structure) playerImage).setKeyboard(keyboard);
 		gameOverSetup();
 		((Structure) playerImage).setKeyboard(keyboard);
 		lifeBar = new Sprite("src/graphics/guiPack/lifebar2.png");
@@ -78,11 +89,13 @@ public class GameScene extends Scene {
 		lifeBar.y = 40;
 		playerImage.height = ((Structure) playerImage).getHeight();
 		playerImage.width = ((Structure) playerImage).getWidth();
-		backgroundSound = new Sound("src/sounds/hbfs.wav");
+		backgroundSound = new Sound("src/sounds/hbsf.wav");
 		if(game.getSoundStatus()) {
 			backgroundSound.play();
 		}
 		bullet = new BulletManager();
+		gameScore = new Score();
+		pauseText = new Text(630,580,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "P (PAUSE)");
 	}
 
 	private void pauseSetup() {
@@ -96,21 +109,26 @@ public class GameScene extends Scene {
 	}
 	
 	private void gameOverSetup() {
-		gameOverText = new Text(230,240,new Font("Comic Sans MS", Font.BOLD, 60), Color.WHITE, "GAME OVER");
+		backgroundGameOver = new GameImage("src/graphics/img/gameover.png");
+		gameOverText = new Text(230,240,new Font("Comic Sans MS", Font.BOLD, 55), Color.WHITE, "GAME OVER");
 		gameOverRestartImg = new Sprite("src/graphics/guiPack/white_restart.png");
 		gameOverRestartImg.x = WindowConstants.WIDTH/2 - restartImg.width/2 - restartImg.width - 20;
 		gameOverRestartImg.y = WindowConstants.HEIGHT/2 - restartImg.height/2 + 50;
 		gameOverExitImg = new Sprite("src/graphics/guiPack/white_home.png");
 		gameOverExitImg.x = WindowConstants.WIDTH/2 - exitImg.width/2  + restartImg.width + 20;
 		gameOverExitImg.y = WindowConstants.HEIGHT/2 - exitImg.height/2 + 50;
+		gameOverSound = new Sound("src/sounds/gameover.wav");
 	}
 	
 	private void draw() {
+		
 		updateParallax();
+		pauseText.draw();
 		playerImage.draw();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
 		}
+		
 		bullet.draw();
 		
 		for (Obstacle obst: obstacles) {
@@ -118,6 +136,8 @@ public class GameScene extends Scene {
 		}
 		lifeBarBackground.draw();
 		renderLifeBar();
+		highScore.draw();
+		scoreHigh.draw();
 	}
 	
 	public void updateParallax(){
@@ -154,6 +174,7 @@ public class GameScene extends Scene {
 	
 	private void drawGameOverButtons () {
 		game.keyboard.removeKey(KeyEvent.VK_P);
+		backgroundGameOver.draw();
 		gameOverText.draw();
 		gameOverRestartImg.draw();
 		gameOverExitImg.draw();
@@ -193,12 +214,14 @@ public class GameScene extends Scene {
 				game.setNewGame();
 				((Structure) playerImage).resetHealth();
 				game.transitTo(currentLevel);
+				gameOverSound.stop();
 				backgroundSound.stop();
 			} else if (mouse.isOverObject(gameOverExitImg)) {
 				menuScene = new MenuScene();
 				game.setNewGame();
 				game.keyboard.removeKey(Keyboard.ENTER_KEY);
 				game.transitTo(menuScene);
+				gameOverSound.stop();
 				backgroundSound.stop();
 			}
 		}
@@ -223,23 +246,25 @@ public class GameScene extends Scene {
 		if (keyboard.keyDown(Keyboard.SPACE_KEY) && Player.getInstance().getGun().canShoot()) {
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
+				
+				
 			}
 			bullet.addBullet(playerImage.x + playerImage.width/2, playerImage.y + playerImage.height/2, floor);
 		}
 		bullet.step(floor);
 	}
 	
-	private void PlayBackgroundSound(Sound backgroundSound) {
+/*	private void PlayBackgroundSound(Sound backgroundSound) {
 		if (!backgroundSound.isExecuting()) {
 			backgroundSound.play();
 			System.out.println("Play sound");
 		}
 	}
-
+*/
 	private boolean isInside(Sprite sprite) {
 		boolean isInside = sprite.x > -20 &&
 				           sprite.x < WindowConstants.WIDTH + 20 &&
-				           sprite.y > -150 &&
+				           sprite.y > -300 &&
 				           sprite.y < WindowConstants.HEIGHT + 20;
 		
 		return isInside;
@@ -265,6 +290,7 @@ public class GameScene extends Scene {
 				enemy.move();
 				
 				if (!isInside(enemy)) {
+					fac.sendBack(enemy);
 					itrEnemy.remove();
 					continue;
 				}
@@ -275,6 +301,8 @@ public class GameScene extends Scene {
 					if(Collision.collided(playerBullet, enemy)) {
 						bulletsToBeRemoved.add(playerBullet);
 						enemy.takeDamage(Player.getInstance().getGun().getShootDamage());
+						gameScore.notifyObservers(enemy);
+						scoreHigh.setScore(Score.score);
 					}
 				}
 				bullet.removeBullets(bulletsToBeRemoved);
@@ -291,6 +319,7 @@ public class GameScene extends Scene {
 				
 				if (enemyHealth <= 0) {
 					try {
+						fac.sendBack(enemy);
 						itrEnemy.remove();
 					} catch (Exception e) {
 						System.out.println("Error when trying to remove an enemy");
@@ -319,8 +348,14 @@ public class GameScene extends Scene {
 			checkPausedMenuButtonsClick();
 			
 		} else if (game.getIsGameOver()) {
+			if (game.getSoundStatus() && !gameOverSound.isExecuting()) {
+				backgroundSound.stop();
+				gameOverSound.play();
+				
+			}
 			drawGameOverButtons();
 			checkGameOverMenuButtonsClick();
+			gameScore.clearScore();
 		}
 	}
 }

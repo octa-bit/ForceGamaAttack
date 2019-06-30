@@ -15,7 +15,7 @@ public abstract class Enemy extends Sprite{
 	protected int hitPoints;
 	protected int value;
 	protected int colisionDamage;
-	private int health;
+	protected int health;
 	
 	private static String sprite = "";
 	private List<Observer> observers = new ArrayList<Observer>();
@@ -100,9 +100,14 @@ public abstract class Enemy extends Sprite{
 		return false;
 	}
 	
+
+	public abstract void reset();
+	
+	
 	public void takeDamage(int damage) {
 		health -= damage;
 	}
+	
 	
 	public int getHealth() {
 		return health;
