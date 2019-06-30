@@ -31,6 +31,25 @@ public class FactoryPhase1 extends Factory {
 		}
 		this.bugingPool = new EnemyPool(bugingList);
 	}
+	
+	
+	public void sendBack(Enemy enemy) {
+		String name = enemy.getClass().getSimpleName();
+		System.out.println(name);
+		switch (name) {
+		case "Tasker":
+			taskerPool.giveBack(enemy);
+			break;
+		case "Issuelizer":
+			issuelizerPool.giveBack(enemy);
+			break;
+		case "Buging":
+			bugingPool.giveBack(enemy);
+			break;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
 
 	
 	public boolean isSpawnTime() {
@@ -45,13 +64,11 @@ public class FactoryPhase1 extends Factory {
 	
 	public List<Enemy> factoryMethod() {
 		Random r = new Random();
-//		int sort = r.nextInt(11);
-		int sort = 10;
+		int sort = r.nextInt(11);
 		List<Enemy> wave = new ArrayList<Enemy>();
 		
 		if (sort < 3) {
 			int randPos = r.nextInt(350) + 20;
-			System.out.println(randPos);
 			wave.addAll(taskerPool.getEnemies(3, randPos, -50, 50, "horizontal"));
 		    
 		} else if (sort < 4) {

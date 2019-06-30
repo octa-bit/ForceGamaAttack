@@ -192,6 +192,7 @@ public class GameScene extends Scene {
 				enemy.move();	
 				
 				if (!isInside(enemy)) {
+					fac.sendBack(enemy);
 					itrEnemy.remove();
 					continue;
 				}
