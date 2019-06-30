@@ -35,7 +35,6 @@ public class FactoryPhase1 extends Factory {
 	
 	public void sendBack(Enemy enemy) {
 		String name = enemy.getClass().getSimpleName();
-		System.out.println(name);
 		switch (name) {
 		case "Tasker":
 			taskerPool.giveBack(enemy);
