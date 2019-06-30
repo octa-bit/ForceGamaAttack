@@ -294,6 +294,7 @@ public class GameScene extends Scene {
 				
 				if (enemyHealth <= 0) {
 					try {
+						fac.sendBack(enemy);
 						itrEnemy.remove();
 					} catch (Exception e) {
 						System.out.println("Error when trying to remove an enemy");
