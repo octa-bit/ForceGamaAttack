@@ -7,16 +7,16 @@ import constants.FileNames;
 class Issuelizer extends Enemy {
 	
 	private int reloadTime = 0;
-	public static int health = 100;
+	public static int maxHealth = 100;
 	
 	public Issuelizer (float x, float y) {
-		super(FileNames.spritePath + "IssuelizerSprite.png", 1, x, y, health);
+		super(FileNames.spritePath + "IssuelizerSprite.png", 1, x, y, maxHealth);
 		this.reset();
 	}
 	
 	
 	public void reset() {
-		this.hitPoints = 10;
+		this.health = 100;
 		this.value = 5;
 		this.colisionDamage = 5;
 	}
