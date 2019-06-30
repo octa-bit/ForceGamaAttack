@@ -107,7 +107,7 @@ public class Controller {
 		}
 	}
 	
-	public void saveHighScore(string score) {
+	public void saveHighScore(String score) {
 		try {
 			BufferedWriter file = new BufferedWriter(new FileWriter("src/config/highScore.txt"));
 			file.write(score);

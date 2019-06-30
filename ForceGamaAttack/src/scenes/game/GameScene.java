@@ -231,7 +231,7 @@ public class GameScene extends Scene {
 		if (((Structure) playerImage).getHealth() <= 0) {
 			game.setIsGameOver();
 			if (Integer.parseInt(highScoreValue) < Score.score) {
-				game.saveHighScore(Score.score);
+				game.saveHighScore(Integer.toString(Score.score));
 			}
 		}
 	}
