@@ -8,14 +8,22 @@ public class Tasker extends Enemy {
 		
 	private int time = 0;
 	private int reloadTime = 0;
-	public static int health = 10;
+	public static int maxHealth = 10;
 	
 	public Tasker (float x, float y) {
-		super("src/graphics/img/sprites/TaskerSprite.png", 1, x, y, health);
-		this.hitPoints = 10;
+		super("src/graphics/img/sprites/TaskerSprite.png", 1, x, y, maxHealth);
+		this.reset();
+	}
+	
+	
+	public void reset() {
+		this.health = 10;
 		this.value = 5;
 		this.colisionDamage = 5;
+		this.reloadTime = 0;
+		this.time = 0;
 	}
+	
 	
 	public void move() {
 		this.y += 1;

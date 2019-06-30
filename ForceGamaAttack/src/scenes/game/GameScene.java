@@ -57,6 +57,7 @@ public class GameScene extends Scene {
 	private Score gameScore;
 	private Sound gameOverSound;
 	private Parallax parallax;
+	private Text pauseText;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -94,6 +95,7 @@ public class GameScene extends Scene {
 		}
 		bullet = new BulletManager();
 		gameScore = new Score();
+		pauseText = new Text(630,580,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "P (PAUSE)");
 	}
 
 	private void pauseSetup() {
@@ -121,7 +123,7 @@ public class GameScene extends Scene {
 	private void draw() {
 		
 		updateParallax();
-
+		pauseText.draw();
 		playerImage.draw();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
@@ -258,7 +260,7 @@ public class GameScene extends Scene {
 	private boolean isInside(Sprite sprite) {
 		boolean isInside = sprite.x > -20 &&
 				           sprite.x < WindowConstants.WIDTH + 20 &&
-				           sprite.y > -150 &&
+				           sprite.y > -300 &&
 				           sprite.y < WindowConstants.HEIGHT + 20;
 		
 		return isInside;
@@ -284,6 +286,7 @@ public class GameScene extends Scene {
 				enemy.move();
 				
 				if (!isInside(enemy)) {
+					fac.sendBack(enemy);
 					itrEnemy.remove();
 					continue;
 				}
@@ -312,6 +315,7 @@ public class GameScene extends Scene {
 				
 				if (enemyHealth <= 0) {
 					try {
+						fac.sendBack(enemy);
 						itrEnemy.remove();
 					} catch (Exception e) {
 						System.out.println("Error when trying to remove an enemy");
