@@ -6,14 +6,16 @@ import player.Structure;
 import java.lang.Math;
 
 class Buging extends Enemy {
+	
+	public static int health = 10;
 
 	public Buging (float x, float y) {
-		super("src/graphics/img/sprites/BugingSprite.png", 1, x, y);
+		super("src/graphics/img/sprites/BugingSprite.png", 1, x, y, health);
 		this.reset();
 	}
 	
 	public void move() {
-		Structure target = Player.getInstance().structure;
+		Structure target = Player.getInstance().getStructure();
 		
 		// Euclidian distance
 		Double xDistance = target.x - this.x;

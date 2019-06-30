@@ -19,6 +19,7 @@ public class Controller {
 	public Keyboard keyboard = null;
 	private boolean isRunning = true; 
 	private boolean isPaused = false;
+	private boolean isGameOver = false;
 	private boolean soundStatus = getSoundConfig();
 	private Mouse mouse;
 	private Window window;
@@ -53,6 +54,18 @@ public class Controller {
 	
 	public boolean getIsPaused() {
 		return isPaused;
+	}
+	
+	public void setIsGameOver() {
+		isGameOver = true;
+	}
+	
+	public void setNewGame() {
+		isGameOver = false;
+	}
+	
+	public boolean getIsGameOver() {
+		return isGameOver;
 	}
 	
 	public void setMouse(Mouse mouse) {
@@ -101,12 +114,12 @@ public class Controller {
 			BufferedReader file = new BufferedReader(new FileReader("src/config/Config.txt"));
 			// soundStatus = !soundStatus;
 			while((line = file.readLine()) != null) {
-					if(line.indexOf("Sound") !=-1) {
-							soundStatus = line.equals("Sound: True");
-							file.close();
-							break;
-					}
-			}   
+				if(line.indexOf("Sound") !=-1) {
+					soundStatus = line.equals("Sound: True");
+					file.close();
+					break;
+				}
+			}
 			file.close();
 		} catch (Exception e) {
 			System.err.format("Exception occurred trying to read Config.txt");

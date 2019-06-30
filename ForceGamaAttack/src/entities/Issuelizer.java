@@ -7,9 +7,10 @@ import constants.FileNames;
 class Issuelizer extends Enemy {
 	
 	private int reloadTime = 0;
+	public static int health = 100;
 	
 	public Issuelizer (float x, float y) {
-		super(FileNames.spritePath + "IssuelizerSprite.png", 1, x, y);
+		super(FileNames.spritePath + "IssuelizerSprite.png", 1, x, y, health);
 		this.reset();
 	}
 	
@@ -38,7 +39,7 @@ class Issuelizer extends Enemy {
 	
 	public Obstacle shoot() {
 		// get the Target
-		Structure target = Player.getInstance().structure;
+		Structure target = Player.getInstance().getStructure();
 		
 		// Euclidean distance
 		Double xDistance = target.x - this.x;
