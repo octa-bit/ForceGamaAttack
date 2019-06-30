@@ -10,7 +10,7 @@ public class StructureStrategyPython extends Structure {
 
 	public StructureStrategyPython(int x, int y) {
 		super(x, y, sprite, pythonHealth);
-		this.height = 90;
+		this.height = 40;
 		this.width = 50;
 		this.speed = 1.0;
 	}

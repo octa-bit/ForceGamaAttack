@@ -8,7 +8,7 @@ public class StructureStrategyC extends player.Structure {
 
 	public StructureStrategyC(int x, int y) {
 		super(x, y, sprite, cHealth);
-		this.height = 96;
+		this.height = 46;
 		this.width = 18;
 		this.speed = 2.0;
 	}
