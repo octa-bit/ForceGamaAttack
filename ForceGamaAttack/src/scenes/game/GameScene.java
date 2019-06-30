@@ -241,7 +241,7 @@ public class GameScene extends Scene {
 	private boolean isInside(Sprite sprite) {
 		boolean isInside = sprite.x > -20 &&
 				           sprite.x < WindowConstants.WIDTH + 20 &&
-				           sprite.y > -150 &&
+				           sprite.y > -300 &&
 				           sprite.y < WindowConstants.HEIGHT + 20;
 		
 		return isInside;
@@ -267,6 +267,7 @@ public class GameScene extends Scene {
 				enemy.move();
 				
 				if (!isInside(enemy)) {
+					fac.sendBack(enemy);
 					itrEnemy.remove();
 					continue;
 				}
@@ -293,6 +294,7 @@ public class GameScene extends Scene {
 				
 				if (enemyHealth <= 0) {
 					try {
+						fac.sendBack(enemy);
 						itrEnemy.remove();
 					} catch (Exception e) {
 						System.out.println("Error when trying to remove an enemy");
