@@ -11,6 +11,8 @@ import entities.Obstacle;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
+import score.Score;
+import text.ScoreText;
 import scenes.spaceShipMenu.SpaceShipMenuScene;
 import text.Text;
 
@@ -30,7 +32,8 @@ import jplay.Mouse;
 import jplay.Parallax;
 
 public class GameScene extends Scene {
-	private GameImage background;
+	private Text highScore;
+	private ScoreText scoreHigh;
 	private GameImage playerImage;
 	private GameImage backgroundGameOver;
 	private Sound backgroundSound;
@@ -47,10 +50,12 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
-	private Sound gameOverSound;
+  
 	private BulletManager bullet;
 	private Sprite lifeBarBackground;
 	private Sprite lifeBar;
+	private Score gameScore;
+	private Sound gameOverSound;
 	private Parallax parallax;
 	private Text pauseText;
 	
@@ -70,6 +75,10 @@ public class GameScene extends Scene {
 		parallax.add("src/graphics/img/back_transp.png");
 		parallax.getLayer(0).setVelY(2.0);
 		pauseSetup();
+		highScore = new Text(550,20,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "HIGH SCORE: 000000");
+		scoreHigh = new ScoreText(550,50,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE);	
+		
+		((Structure) playerImage).setKeyboard(keyboard);
 		gameOverSetup();
 		((Structure) playerImage).setKeyboard(keyboard);
 		lifeBar = new Sprite("src/graphics/guiPack/lifebar2.png");
@@ -85,6 +94,7 @@ public class GameScene extends Scene {
 			backgroundSound.play();
 		}
 		bullet = new BulletManager();
+		gameScore = new Score();
 		pauseText = new Text(630,580,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "P (PAUSE)");
 	}
 
@@ -111,12 +121,14 @@ public class GameScene extends Scene {
 	}
 	
 	private void draw() {
+		
 		updateParallax();
 		pauseText.draw();
 		playerImage.draw();
 		for (Enemy enemy: enemies) {
 			enemy.draw();
 		}
+		
 		bullet.draw();
 		
 		for (Obstacle obst: obstacles) {
@@ -124,6 +136,8 @@ public class GameScene extends Scene {
 		}
 		lifeBarBackground.draw();
 		renderLifeBar();
+		highScore.draw();
+		scoreHigh.draw();
 	}
 	
 	public void updateParallax(){
@@ -228,6 +242,8 @@ public class GameScene extends Scene {
 		if (keyboard.keyDown(Keyboard.SPACE_KEY)) {
 			if (game.getSoundStatus()) {
 				new Sound("src/sounds/shoot_laser.wav").play();
+				
+				
 			}
 			bullet.addBullet(playerImage.x + playerImage.width/2, playerImage.y + playerImage.height/2, floor);
 		}
@@ -281,6 +297,8 @@ public class GameScene extends Scene {
 					if(Collision.collided(playerBullet, enemy)) {
 						bulletsToBeRemoved.add(playerBullet);
 						enemy.takeDamage(30);
+						gameScore.notifyObservers(enemy);
+						scoreHigh.setScore(Score.score);
 					}
 				}
 				bullet.removeBullets(bulletsToBeRemoved);
@@ -333,7 +351,7 @@ public class GameScene extends Scene {
 			}
 			drawGameOverButtons();
 			checkGameOverMenuButtonsClick();
-			
+			gameScore.clearScore();
 		}
 	}
 }
