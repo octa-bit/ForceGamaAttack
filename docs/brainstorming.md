@@ -1,11 +1,14 @@
 |Versão|Autor|Descrição|
 |------|-----|---------|
 |1.0|Isaac Borges|Forma Inicial|
-|1.0|Lucas Vitor|Ideias iniciais|
+|1.1|Lucas Vitor|Ideias iniciais|
+|1.2|Isaac Borges|Detalhamento
 
 # **Brainstorming**
+## 1. Introdução
+Brainstorming significa tempestade cerebral ou tempestade de ideias. É uma expressão inglesa formada pela junção das palavras "brain", que significa cérebro, intelecto e "storm", que significa tempestade. O brainstorming é uma dinâmica de grupo que é usada em várias empresas como uma técnica para resolver problemas específicos, para desenvolver novas ideias ou projetos, para juntar informação e para estimular o pensamento criativo.
 
-### **Ideias iniciais**
+## 2. **Ideias iniciais**
 
 Antes da dinâmica 1, foi criado um documento incluindo ideias gerais de alguns integrantes da equipe (Lucas Vitor, Filipe Toyoshima e Lucas Hiroshi). Abaixo se encontra a lista com as ideias pensadas:
 
@@ -25,14 +28,17 @@ Antes da dinâmica 1, foi criado um documento incluindo ideias gerais de alguns 
 Durante a dinâmica 1, as ideias foram expostas, e em consenso com o grupo, algumas foram escolhidas para serem continuadas.
 
 
-### **Escolha do nome do projeto**
+## 3. **Escolha do nome do projeto**
 
 Durante a Dinâmica 1, todos os membros do grupo tiveram a oportunidade de sugerir um nome para o projeto. Todos que tiveram alguma ideia, colocaram no quadro sua sugestão. Abaixo, encontra-se os nomes escolhidos e o resultado da votação.
 
 ![](https://i.imgur.com/bGfQjKx.jpg)
 
-### **Ideias iniciais**
+## 4. **Dinâmica 1**
 
 Durante a Dinâmica 1, todos os membros tiveram a oportunidade de falar sobre suas ideias iniciais sobre o jogo. Muitas ideias foram colocadas em discussão e com o uso do quadro branco algumas ideias foram esboçadas para entendimento do grupo. Abaixo, encontra-se uma foto do resultado do quadro
 
 ![](https://i.imgur.com/KwymFBn.png)
+
+## 5.Referências
+https://www.significados.com.br/brainstorming/
