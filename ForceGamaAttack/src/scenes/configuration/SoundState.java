@@ -3,6 +3,7 @@ package scenes.configuration;
 import scenes.Scene;
 
 public class SoundState implements ConfigurationMenuState {
+	ConfigurationScene configurationScene;
 	
 	@Override
 	public void next(ConfigurationMenu menu) {
@@ -11,7 +12,7 @@ public class SoundState implements ConfigurationMenuState {
 
 	@Override
 	public void prev(ConfigurationMenu menu) {
-		menu.setState(new SoundState());
+		menu.setState(new KeyboardState());
 	}
 
 	@Override
@@ -26,7 +27,7 @@ public class SoundState implements ConfigurationMenuState {
 	
 	@Override
 	public Scene getScene() {
-		ConfigurationScene configurationScene = new ConfigurationScene();
+		configurationScene = new ConfigurationScene();
 		return configurationScene;
 	}
 }

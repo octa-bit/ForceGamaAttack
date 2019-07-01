@@ -16,10 +16,13 @@ public class ConfigurationScene extends Scene {
 	private GameImage background;
 	private Sprite arrow;
 	private Text title;
-	private Text sound, soundStatus;
+	private Text sound, soundStatus, keyboardConfiguration;
 	private String configOption;
+	private ConfigurationMenu selectedMenu;
 	
 	protected void initialSetup() {
+		selectedMenu = new ConfigurationMenu(new SoundState());
+		
 		keyboard.setBehavior(Keyboard.ESCAPE_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		keyboard.addKey(KeyEvent.VK_BACK_SPACE, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
@@ -27,7 +30,24 @@ public class ConfigurationScene extends Scene {
 		keyboard.addKey(Keyboard.ENTER_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		title = new Text(235,80,new Font("Comic Sans MS", Font.BOLD, 40), Color.WHITE, "CONFIGURAÇÕES");
 		sound = new Text(180,180,new Font("Comic Sans MS", Font.BOLD, 35), Color.WHITE, "SOM: ");
+		keyboardConfiguration = new Text(180,240,new Font("Comic Sans MS", Font.BOLD, 35), Color.WHITE, "TECLADO");
 		configOption = "sound";
+	}
+	
+	private void moveArrow() {
+		int currentButtonIndex = this.selectedMenu.getOrdinal().ordinal();
+		if (currentButtonIndex == 0) {
+			arrow.x = 135;
+			arrow.y = 150;
+		} else {
+			arrow.x = 135;
+			arrow.y = 210;
+		}
+//		Sprite currentButton = this.buttons.get(currentButtonIndex);
+		
+//		this.arrow.x = currentButton.x - arrow.width - DISTANCE_BETWEEN_BUTTONS;
+//		this.arrow.y = currentButton.y;
+		
 	}
 	
 	protected void viewSetup(){
@@ -42,6 +62,7 @@ public class ConfigurationScene extends Scene {
 		background.draw();
 		title.draw();
 		sound.draw();
+		keyboardConfiguration.draw();
 		drawConfigButtons();
 	}
 
@@ -54,6 +75,7 @@ public class ConfigurationScene extends Scene {
 			}
 			if (soundStatus != null && arrow != null) {
 				soundStatus.draw();
+				moveArrow();
 				arrow.draw();
 			}
 		}
@@ -64,17 +86,19 @@ public class ConfigurationScene extends Scene {
 			game.transitTo(new MenuScene());
 		}
 		if (keyboard.keyDown(Keyboard.DOWN_KEY)){
-			//nextState();
+			selectedMenu.nextState();
 		}
 
 		if (keyboard.keyDown(Keyboard.UP_KEY)){
-			//previousState();
+			selectedMenu.previousState();
 		}
 		else if (keyboard.keyDown(Keyboard.ENTER_KEY)){
-			if(configOption.indexOf("sound") !=-1) {
-				game.changeSoundStatus();
+			if(selectedMenu.getOrdinal().ordinal() == 0) {
+				if(configOption.indexOf("sound") !=-1) {
+					game.changeSoundStatus();
+				}
 			} else {
-//				TODO
+				game.transitTo(selectedMenu.getScene());
 			}
 		}
 	}

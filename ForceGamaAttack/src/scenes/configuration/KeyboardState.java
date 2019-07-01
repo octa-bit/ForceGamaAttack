@@ -13,7 +13,7 @@ public class KeyboardState implements ConfigurationMenuState {
 
 	@Override
 	public void prev(ConfigurationMenu menu) {
-		menu.setState(new KeyboardState());
+		menu.setState(new SoundState());
 	}
 
 	@Override
