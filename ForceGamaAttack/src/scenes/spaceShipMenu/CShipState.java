@@ -3,8 +3,6 @@ package scenes.spaceShipMenu;
 import player.Gun;
 import player.Structure;
 import player.StructureStrategyC;
-import player.StructureStrategyJava;
-import player.StructureStrategyPython;
 import scenes.Scene;
 import scenes.game.GameScene;
 
