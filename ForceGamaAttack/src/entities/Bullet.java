@@ -13,8 +13,8 @@ public class Bullet extends Sprite{
 	int direction = Constants.STOP;
 	private int vely;
 	
-	public Bullet(double x, double y, int vely) {
-		super("src/graphics/img/bullet_player.png");
+	public Bullet(String sprite, double x, double y, int vely) {
+		super(sprite);
 		
 		this.x = x;
 		this.y = y - 50;

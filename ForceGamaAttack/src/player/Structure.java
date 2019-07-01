@@ -16,7 +16,10 @@ public abstract class Structure extends Sprite{
 	protected int height;
 	protected int width;
 	private Keyboard keyboard = new Keyboard();
-
+	protected String bulletSprite;
+	protected int gunShootingSpeed;
+	protected int gunDamage;
+	
 	public Structure(int x, int y, String sprite, int health) {	
 		super(sprite, 10);
 		this.x = x;
@@ -24,6 +27,10 @@ public abstract class Structure extends Sprite{
 		this.speed = 10.0;
 		this.health = health;
 		this.maxHealth = health;
+	}
+	
+	public String getBulletSprite() {
+		return this.bulletSprite;
 	}
 	
 	protected Keyboard getKeyboard() {
@@ -50,32 +57,23 @@ public abstract class Structure extends Sprite{
 		this.health -= damage;
 	}
 	
-	public void moveX(double x) {
-		if(this.getKeyboard().keyDown(KeyEvent.VK_RIGHT) &&
-		   this.x + this.width < WindowConstants.WIDTH) {
-			this.x += x * speed;
-		}
-		else if(this.getKeyboard().keyDown(KeyEvent.VK_LEFT) &&
-				this.x > 0) {
-			this.x -= x * speed;
-		}
-	}
+	public abstract void moveX(double x);
 	
-	public void moveY(double y) {
-		if(this.getKeyboard().keyDown(KeyEvent.VK_DOWN) &&
-		   this.y + this.height < WindowConstants.HEIGHT) {
-			this.y += y * speed;
-		}
-		else if(this.getKeyboard().keyDown(KeyEvent.VK_UP) &&
-				this.y > 0) {
-			this.y -= y * speed;
-		}
-	}
-
+	public abstract void moveY(double y);
+	
 	public int getHeight() {
 		return this.height;
 	}
 	public int getWidth() {
 		return this.width;
 	}
+
+	public int getGunShootingSpeed() {
+		return this.gunShootingSpeed;
+	}
+
+	public int getGunDamage() {
+		return this.gunDamage;
+	}
+
 }

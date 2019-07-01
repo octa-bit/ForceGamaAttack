@@ -253,7 +253,7 @@ public class GameScene extends Scene {
 				
 				
 			}
-			bullet.addBullet(playerImage.x + playerImage.width/2, playerImage.y + playerImage.height/2, floor);
+			bullet.addBullet(((Structure)playerImage).getBulletSprite(), playerImage.x + playerImage.width/2.5, playerImage.y + playerImage.height/2.3, floor);
 		}
 		bullet.step(floor);
 	}
