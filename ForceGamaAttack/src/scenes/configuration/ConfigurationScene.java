@@ -30,7 +30,7 @@ public class ConfigurationScene extends Scene {
 		keyboard.addKey(Keyboard.ENTER_KEY, Keyboard.DETECT_INITIAL_PRESS_ONLY);
 		title = new Text(235,80,new Font("Comic Sans MS", Font.BOLD, 40), Color.WHITE, "CONFIGURAÇÕES");
 		sound = new Text(180,180,new Font("Comic Sans MS", Font.BOLD, 35), Color.WHITE, "SOM: ");
-		keyboardConfiguration = new Text(180,240,new Font("Comic Sans MS", Font.BOLD, 35), Color.WHITE, "CONFIGURA��O DO TECLADO");
+		keyboardConfiguration = new Text(180,240,new Font("Comic Sans MS", Font.BOLD, 35), Color.WHITE, "CONFIGURAÇÃO DO TECLADO");
 		configOption = "sound";
 	}
 	
