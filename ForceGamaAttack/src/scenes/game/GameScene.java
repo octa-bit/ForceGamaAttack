@@ -328,7 +328,7 @@ public class GameScene extends Scene {
 				if (Collision.collided(playerImage, pwr)){
 					if(pwr.getType() == PowerUpType.HAPPINESS) {
 						backgroundSound.stop();
-						happySound = new Sound("src/sounds/dont_worry.wav");
+						happySound = new Sound("src/sounds/Dont_Worry.wav");
 						happySound.play();
 						powerUpParallax();
 					}
