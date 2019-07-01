@@ -1,4 +1,5 @@
 package player;
+
 import jplay.Keyboard;
 
 import java.time.Instant;
@@ -7,9 +8,9 @@ import constants.Constants;
 import entities.BulletManager;
 import jplay.Keyboard;
 import jplay.Sprite;
-import jplay.Window;	
+import jplay.Window;
 
-public class Player extends Sprite{
+public class Player extends Sprite {
 	private Player player;
 	double speed;
 	private Structure structure;
@@ -19,18 +20,18 @@ public class Player extends Sprite{
 	private int direction;
 	private boolean isDead = false;
 	private Gun gun;
-	
+
 	private static final Player INSTANCE = new Player(360, 550, sprite);
-	
-	public Player(int x, int y, String sprite) {	
+
+	public Player(int x, int y, String sprite) {
 		super(sprite, 10);
 		this.x = x;
 		this.y = y;
 		this.speed = 10.0;
 		direction = Constants.RIGHT;
-        previousDirection = Constants.RIGHT;
+		previousDirection = Constants.RIGHT;
 	}
-	
+
 	public static Player getInstance() {
 		return INSTANCE;
 	}
@@ -50,40 +51,38 @@ public class Player extends Sprite{
 	public void setStructure(Structure structure) {
 		this.structure = structure;
 	}
-	
+
 	public void setGun(Gun gun) {
 		this.gun = gun;
 	}
-	
+
 	public Gun getGun() {
 		return gun;
 	}
-	
-	public void move(Keyboard keyboard) {
-		
-		//player.moveY(10.0);
-		//player.moveX(10.0);
-		if ( keyboard.keyDown(Keyboard.LEFT_KEY) && this.x > 1 ){
-				if (direction != Constants.LEFT){   
-					previousDirection = Constants.LEFT;
-					direction = Constants.LEFT;
-				}
-				this.x -= 2;
 
-		}
-		else{
-			if ( keyboard.keyDown(Keyboard.RIGHT_KEY)){
-				if (direction != Constants.RIGHT){
+	public void move(Keyboard keyboard) {
+
+		// player.moveY(10.0);
+		// player.moveX(10.0);
+		if (keyboard.keyDown(Keyboard.LEFT_KEY) && this.x > 1) {
+			if (direction != Constants.LEFT) {
+				previousDirection = Constants.LEFT;
+				direction = Constants.LEFT;
+			}
+			this.x -= 2;
+
+		} else {
+			if (keyboard.keyDown(Keyboard.RIGHT_KEY)) {
+				if (direction != Constants.RIGHT) {
 					previousDirection = Constants.RIGHT;
 					direction = Constants.RIGHT;
 				}
 				this.x += 2;
-			}
-			else{                     
+			} else {
 				direction = Constants.STOP;
 				if (previousDirection == Constants.RIGHT)
 					setCurrFrame(17);
-				else{
+				else {
 					if (previousDirection == Constants.LEFT)
 						setCurrFrame(3);
 				}
@@ -93,9 +92,8 @@ public class Player extends Sprite{
 			update();
 		}
 	}
-	
-	
-	public boolean isDead(){
+
+	public boolean isDead() {
 		return isDead;
 	}
 }

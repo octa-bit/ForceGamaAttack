@@ -3,30 +3,37 @@
 |1.0|Rossicler e Lucas|Casos de Usuário 1, 2, 3 e 4|
 |1.1|João Lucas| atualização do diagrama UC01 - Menu Principal|
 |1.2|João Lucas| atualização do diagrama UC02 - Jogar|
+|1.3|Isaac Borges| Detalhamento|
 
 # Casos de Uso
+## 1. Introdução
+Segundo Ivan Jacobson , podemos dizer que um caso de uso é  um "documento narrativo que descreve a sequência de eventos de um ator que usa um sistema para completar um processo".
 
-## UC01 - Menu Principal
+Um caso de uso é uma técnica de modelagem usada para descrever o que um novo sistema deve fazer . Ele é construído através de um processo interativo no qual as discussões entre o cliente e os desenvolvedores do sistema conduzem a uma especificação do sistema da qual todos estão de acordo.
 
-### Diagrama Versão 0.1
+Um caso de uso descreve as operações que o sistema deve cumprir para cada usuário. Ele vai ajudar a formalizar as funções que o sistema precisa fazer.
+
+## 2. UC01 - Menu Principal
+
+### 2.1 Diagrama Versão 0.1
 
 ![UC01 - Menu Principal](https://i.ibb.co/VYpx6Rx/UC01.png)
 
-### Diagrama Versão 1.0
+### 2.2 Diagrama Versão 1.0
 
 ![UC01 - Menu Principal](https://i.ibb.co/Ctmxx2q/UC01.png)
 
-## UC02 - Jogar
+## 3. UC02 - Jogar
 
-### Diagrama Versão 0.1
+### 3.1 Diagrama Versão 0.1
 
 ![UC02 - Jogar](https://i.ibb.co/C69sBYv/UC02-Jogar.png)
 
-### Diagrama Versão 1.0
+### 3.2 Diagrama Versão 1.0
 
 ![UC02 - Jogar](https://i.ibb.co/3NtMYtx/UC02-V-1-0.png)
 
-### Especificação
+### 3.3 Especificação
 
 |  |  |
 |  ------: | :------ |
@@ -38,13 +45,13 @@
 | **Fluxos de Exceção** | Não se aplica. |
 | **Pós Condições** | Usuário terá acesso a tela de jogo e opções do jogabilidade. |
 
-## UC03 - Customização
+## 4. UC03 - Customização
 
-### Diagrama
+### 4.1 Diagrama
 
 ![UC03 - Customização](https://i.ibb.co/3SwxStg/UC03-Customiza-o.png)
 
-### Especificação
+### 4.2 Especificação
 
 |  |  |
 |  ------: | :------ |
@@ -56,13 +63,13 @@
 | **Fluxos de Exceção** | Não se aplica. |
 | **Pós Condições** | Nave do jogador customizada de acordo com as especificações. |
 
-## UC04 - Configurações
+## 5. UC04 - Configurações
 
-### Diagrama
+### 5.1 Diagrama
 
 ![UC04 - Configurações](https://i.ibb.co/QbwVK70/UC04-Configura-es.png)
 
-### Especificação
+### 5.2 Especificação
 
 |  |  |
 |  ------: | :------ |
@@ -73,3 +80,6 @@
 | **Fluxos Alternativos** | **FA01 - Silenciar o jogo**<br>1. Usuário clica na opção de silenciar o jogo.<br>2. O jogo ficará silenciado até que o usuário desative essa opção.<br>**FA02 - Escolher nome do jogador**<br>1. Usuário clica na opção de mudar/escolher o nome do jogador.<br>2. Aparecerá um campo onde o usuário poderá inserir o nome do jogador.<br>3. Usuário insere o nome do jogador.<br>4. Usuário clica no botão de salvar salvar.<br>5. Caso de uso encerrado. |
 | **Fluxos de Exceção** | Não se aplica. |
 | **Pós Condições** | Usuário terá configurado o jogo de acordo com a sua vontade. |
+
+## 6. Referências
+http://www.macoratti.net/net_uml2.htm

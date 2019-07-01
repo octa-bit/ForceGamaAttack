@@ -1,16 +1,23 @@
 | Versão | Autor | Descrição |
 | :----: | :---: | :-------: |
 | 1.0    | João Vítor, Eduardo e Gabriel Viana | Versão inicial do documento |
+| 1.1    | Isaac Borges | Detalhamento |
 
 # Product Backlog
-## Legenda de prioridades atuais 
+## 1. Introdução
+### 1.1 MoSCoW
+![](https://sitecampus.com.br/wp-content/uploads/2018/06/moscow1.jpg)
+
+A técnica é muito simples: para cada requisito ou item do seu backlog, você deverá atribuir um das quatro letras M,S,C ou W e cada uma delas tem um significado diferente.
+
+### 1.2 Legenda de prioridades 
 
 * M (Must Have): Requisito muito necessário no momento
 * S (Should Have): Esse requisito deveria ser implementado
 * C (Could Have): Esse requisito poderia ser implementado
 * W (Would Have): Requisito não necessário no momento
 
-## Tabela de requisitos
+## 2. Tabela de requisitos
 
 
 |          ID        |        Nome       |       Descrição         |        Rastro           |            Prioridade        |
@@ -37,3 +44,6 @@
 |      RF020    |       Recompensa             |         Ao final do jogo, a pontuação do jogador deve ser convertida em moedas que podem ser usadas na loja         |         GDD               |                      |
 
 [Link do Drive](https://docs.google.com/spreadsheets/d/1v5esvacIuUPV8ZKtp0cpYaXCHVMb6mBJF853bKzrZJY/edit?usp=sharing)
+
+## 3. Referências
+https://sitecampus.com.br/tecnica-moscow-na-priorizacao-dos-requisitos/

@@ -1,8 +1,8 @@
 package scenes.spaceShipMenu;
 
 import player.Gun;
+import player.Structure;
 import player.StructureStrategyC;
-import player.StructureStrategyJava;
 import scenes.Scene;
 import scenes.game.GameScene;
 
@@ -31,7 +31,9 @@ public class CShipState implements MenuState {
 	
 	@Override
 	public Scene getScene() {
-		startLevel = new GameScene(new StructureStrategyC(100, 100), new Gun(111, 15));
+		Structure structure = new StructureStrategyC(400, 300);
+		Gun gun = new Gun(structure.getGunShootingSpeed(), structure.getGunDamage());
+		startLevel = new GameScene(structure, gun);
 		return startLevel;
 	}
 

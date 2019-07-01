@@ -1,7 +1,9 @@
 package scenes.spaceShipMenu;
 
 import player.Gun;
+import player.Structure;
 import player.StructureStrategyJava;
+import player.StructureStrategyPython;
 import scenes.Scene;
 import scenes.game.GameScene;
 
@@ -30,7 +32,9 @@ public class JavaShipState implements MenuState {
 
 	@Override
 	public Scene getScene() {
-		startLevel = new GameScene(new StructureStrategyJava(100, 100), new Gun(333,50));
+		Structure structure = new StructureStrategyJava(400, 300);
+		Gun gun = new Gun(structure.getGunShootingSpeed(), structure.getGunDamage());
+		startLevel = new GameScene(structure, gun);
 		return startLevel;
 	}
 

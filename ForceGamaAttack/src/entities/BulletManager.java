@@ -9,8 +9,8 @@ import jplay.Window;
 public class BulletManager {
 	private ArrayList<Bullet> objects = new ArrayList<Bullet>();
 	
-	public void addBullet(double x, double y, int floor) {
-		Bullet bullet = new Bullet(x, y, 10);
+	public void addBullet(String sprite, double x, double y, int floor) {
+		Bullet bullet = new Bullet(sprite, x, y, 10);
 		bullet.setFloor(floor);
 		
 		if(objects.size() < 30) {
