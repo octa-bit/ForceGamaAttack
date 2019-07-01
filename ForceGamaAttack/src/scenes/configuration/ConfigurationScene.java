@@ -43,10 +43,6 @@ public class ConfigurationScene extends Scene {
 			arrow.x = 135;
 			arrow.y = 210;
 		}
-//		Sprite currentButton = this.buttons.get(currentButtonIndex);
-		
-//		this.arrow.x = currentButton.x - arrow.width - DISTANCE_BETWEEN_BUTTONS;
-//		this.arrow.y = currentButton.y;
 		
 	}
 	
@@ -84,15 +80,11 @@ public class ConfigurationScene extends Scene {
 	private void checkUserEntry() {
 		if (keyboard.keyDown(KeyEvent.VK_BACK_SPACE) || keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
 			game.transitTo(new MenuScene());
-		}
-		if (keyboard.keyDown(Keyboard.DOWN_KEY)){
+		} else if (keyboard.keyDown(Keyboard.DOWN_KEY)){
 			selectedMenu.nextState();
-		}
-
-		if (keyboard.keyDown(Keyboard.UP_KEY)){
+		} else if (keyboard.keyDown(Keyboard.UP_KEY)){
 			selectedMenu.previousState();
-		}
-		else if (keyboard.keyDown(Keyboard.ENTER_KEY)){
+		} else if (keyboard.keyDown(Keyboard.ENTER_KEY)){
 			if(selectedMenu.getOrdinal().ordinal() == 0) {
 				if(configOption.indexOf("sound") !=-1) {
 					game.changeSoundStatus();
