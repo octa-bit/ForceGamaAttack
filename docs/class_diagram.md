@@ -3,6 +3,7 @@
 |1.0|João Vítor|Adição do diagrama de classes da JPlay|
 |2.0|João Lucas|Adição dos diagramas de classes do projeto|
 |2.1|João Vítor|Correção do diagrama de classes da JPlay e adição de nova versão do diagrama de classes do projeto|
+|3.0|Filipe Toyoshima|Atualização do Diagrama de Classes|
 
 # Diagramas de Classes
  
@@ -46,6 +47,11 @@ Visão de alto nível de implementação.
 Visão detalhada da implementação.
 
 ![Diagrama de classes v3.0](images/Class%20Diagram.png)
+
+### Versão 4.0
+Visão final de acordo com a entrega na disciplina
+
+![Diagrama de classes v4.0](images/4.0.png)
 
 ## JPlay
 

@@ -144,10 +144,9 @@ Aqui tivemos a primeira influência do diagrama de classes do JPlay.
 
 ![Diagrama de classes v0.3](https://i.imgur.com/9p1ZKn4.png)
 
-#### 5.3.4 Versão 1.0
-Versão utilizada no começo da implementação.
+#### 5.3.4 Versão Final
 
-![Diagrama de classes v1.0](https://i.imgur.com/TafcaHw.png)
+![Diagrama de classes v1.0](images/4.0.png)
 
 ### 5.3.5 JPlay Versão 1.0
 
