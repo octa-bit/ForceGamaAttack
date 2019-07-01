@@ -7,7 +7,7 @@
 ## 1. Introdução
 
 O objetivo desse Documento é dizer como foi a dinâmica das escolhas das músicas. O grupo buscou escolher músicas com temática em 8 Bits para ressaltar os famosos Arcades dos anos 80. </p>
-Para isso foram escolhidas músicas que todo o grupo aprova-se, como _Take On Me_ do A-ha e _Don't Worry Be Happy_ do Bobby McFerrin. Todos os créditos sobre as músicas  são do canal do _Youtube_ 8 bit Universe.
+Para isso foram escolhidas músicas que todo o grupo aprova-se, como _Take On Me_ do A-ha e _Don't Worry Be Happy_ do Bobby McFerrin. Todos os créditos sobre as músicas são do canal do _Youtube_ 8 bit Universe.
 
 ## 2. Playlist
 
@@ -33,6 +33,6 @@ Com isso, foi escolhida a música _Evil Morty's Theme_ da série Ricky and Morty
 ### Power Up - Hapiness
 
 O _Power Up Hapiness_ faz com que a tela do jogador fique amarela e toque uma música feliz. </p>
-A música alegre escolhida foi _Don't Worry Be Happy_ de Bobby McFerrin, como o próprio nome diz, a escolha da canção se encaixa perfeitamente no contexto do _Power Up_, e também é uma homenagem ao professor Wander e a disciplina de Felicidade da UnB.
+A música alegre escolhida foi _Don't Worry Be Happy_ de Bobby McFerrin, como o próprio nome diz, a escolha da canção se encaixa perfeitamente no contexto do _Power Up_, e também é uma homenagem ao professor Wander e a disciplina de Felicidade da UnB. Nesse caso, a música foi feita pelo Kneefle.
 
 [![](https://i.ibb.co/4Y42TBs/dont.jpg)](http://www.youtube.com/watch?v=KfF0UaTpIXA)
