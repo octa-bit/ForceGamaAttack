@@ -13,7 +13,7 @@ public class StructureStrategyJava extends Structure {
 	public StructureStrategyJava(int x, int y) {
 		super(x, y, sprite, javaHealth);
 		this.height = 40;
-		this.width = 46;
+		this.width = 48;
 		this.speed = 0.5;
 		this.bulletSprite = "src/graphics/img/java-beam.png";
 		this.gunShootingSpeed = 333;
