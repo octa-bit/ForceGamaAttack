@@ -25,7 +25,9 @@ import jplay.GameImage;
 import jplay.Sprite;
 import player.Gun;
 import player.Player;
+import player.PowerUp;
 import player.Structure;
+import player.PowerUp.PowerUpType;
 import jplay.Keyboard;
 import jplay.Sound;
 import jplay.Collision;
@@ -52,6 +54,7 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
+	private Sound happySound;
   
 	private BulletManager bullet;
 	private Sprite lifeBarBackground;
@@ -60,6 +63,10 @@ public class GameScene extends Scene {
 	private Sound gameOverSound;
 	private Parallax parallax;
 	private Text pauseText;
+	
+	private List<PowerUp> powerUpList = new ArrayList<PowerUp>();
+	private PowerUp powerUp;
+	private int powerUpDuration;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -98,6 +105,10 @@ public class GameScene extends Scene {
 		bullet = new BulletManager();
 		gameScore = new Score();
 		pauseText = new Text(630,580,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "P (PAUSE)");
+		powerUp = new PowerUp("src/graphics/img/top.png", 200, 0, PowerUpType.HAPPINESS,
+				  "Top", 248);
+		powerUpList.add(powerUp);
+		powerUpDuration = 0;
 	}
 
 	private void pauseSetup() {
@@ -140,6 +151,9 @@ public class GameScene extends Scene {
 		renderLifeBar();
 		highScore.draw();
 		scoreHigh.draw();
+		for (PowerUp pwr: powerUpList) {
+			pwr.draw();
+		}
 	}
 	
 	public void updateParallax(){
@@ -150,6 +164,18 @@ public class GameScene extends Scene {
   			parallax.moveLayersStandardY(false);
 		} 
   	}
+	
+	public void powerUpParallax() {
+		parallax = new Parallax();
+		parallax.add("src/graphics/img/back_happy.png");
+		parallax.getLayer(0).setVelY(2.0);
+	}
+	
+	public void undoPowerUp() {
+		parallax = new Parallax();
+		parallax.add("src/graphics/img/back_transp.png");
+		parallax.getLayer(0).setVelY(2.0);
+	}
 	
 	public GameScene(Structure structure, Gun gun) {
 		super();
@@ -277,6 +303,7 @@ public class GameScene extends Scene {
 	public void update(){
 		draw();
 		checkKeyboardPress();
+
 		
 		if (!game.getIsPaused() && !game.getIsGameOver()) {	
 			((Structure) playerImage).moveY(2.5);
@@ -286,6 +313,33 @@ public class GameScene extends Scene {
 				enemies.addAll(fac.factoryMethod());
 			}
 			
+			
+			// PowerUp things
+			Iterator<PowerUp> itrPowerUp = powerUpList.iterator();
+			while(itrPowerUp.hasNext()) {
+				PowerUp pwr = itrPowerUp.next();
+				
+				pwr.move();
+				
+				if (Collision.collided(playerImage, pwr)){
+					if(pwr.getType() == PowerUpType.HAPPINESS) {
+						backgroundSound.stop();
+						happySound = new Sound("src/sounds/take_on_me.wav");
+						happySound.play();
+						powerUpParallax();
+					}
+					powerUpDuration = pwr.getDuration();
+					itrPowerUp.remove();
+					continue;
+				}
+			}
+			
+			powerUpDuration-= 1;
+			if(powerUpDuration == 0) {
+				happySound.stop();
+				backgroundSound.play();
+				undoPowerUp();
+			}
 			// Enemy things
 			Iterator<Enemy> itrEnemy = enemies.iterator();
 			while (itrEnemy.hasNext()) {

@@ -37,6 +37,14 @@ public class PowerUp extends Sprite{
 		this.y += 0.6;
 	}
 	
+	public PowerUpType getType() {
+		return this.type;
+	}
+	
+	public int getDuration() {
+		return this.duration;
+	}
+	
 	public boolean isActivated() {
 		if(this.state == PowerUpState.ACTIVATED) {
 			return true;
