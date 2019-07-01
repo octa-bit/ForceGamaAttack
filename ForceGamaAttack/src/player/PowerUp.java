@@ -10,15 +10,14 @@ public class PowerUp extends Sprite{
 		ACTIVATED, DEACTIVATED;
 	}
 	
-	private static String sprite = "src/graphics/img/top.png";
+	private final static String sprite = "src/graphics/img/top.png";
 	
 	private PowerUpState state;
 	private PowerUpType type;
 	private String name;
 	private int duration;
 	
-	public PowerUp(String sprite, float x, float y,
-				   PowerUpType type, String name, int duration) {
+	public PowerUp(float x, float y, PowerUpType type, String name, int duration) {
 		super(sprite);
 		this.x = x;
 		this.y = y;

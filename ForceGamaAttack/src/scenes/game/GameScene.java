@@ -8,6 +8,7 @@ import entities.Bullet;
 import entities.BulletManager;
 import entities.Enemy;
 import entities.Obstacle;
+import entities.PowerUpFactoryPhase1;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
@@ -44,6 +45,7 @@ public class GameScene extends Scene {
 	private List<Enemy> enemies = new ArrayList<Enemy>();
 	private List<Obstacle> obstacles = new ArrayList<Obstacle>();
 	private Factory fac = new FactoryPhase1();
+	private PowerUpFactoryPhase1 powerUpFac = new PowerUpFactoryPhase1();
 	private Text pausedText;
 	private Sprite restartImg;
 	private Sprite soundImg;
@@ -65,7 +67,6 @@ public class GameScene extends Scene {
 	private Text pauseText;
 	
 	private List<PowerUp> powerUpList = new ArrayList<PowerUp>();
-	private PowerUp powerUp;
 	private int powerUpDuration;
 	
 	protected void initialSetup(){
@@ -105,9 +106,6 @@ public class GameScene extends Scene {
 		bullet = new BulletManager();
 		gameScore = new Score();
 		pauseText = new Text(630,580,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "P (PAUSE)");
-		powerUp = new PowerUp("src/graphics/img/top.png", 200, 0, PowerUpType.HAPPINESS,
-				  "Top", 248);
-		powerUpList.add(powerUp);
 		powerUpDuration = 0;
 	}
 
@@ -311,6 +309,9 @@ public class GameScene extends Scene {
 			checkShootPress();
 			if (fac.isSpawnTime()) {
 				enemies.addAll(fac.factoryMethod());
+			}
+			if (powerUpFac.isSpawnTime()) {
+				powerUpList.add(powerUpFac.factoryMethod());
 			}
 			
 			
