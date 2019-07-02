@@ -58,7 +58,7 @@ Visão final de acordo com a entrega na disciplina
 ### Versão 1.0
 Versão incorreta do diagrama.
 
-![Diagrama JPlay](https://i.imgur.com/Aoflhxh.jpg)
+![Diagrama JPlay](https://i.imgur.com/uU9rK4g.jpg)
 
 ### Versão 2.0
 Versão correta do diagrama.
