@@ -9,11 +9,13 @@ Este projeto foi concebido no contexto da disciplina de Arquitetura e Desenho de
 
 Como o jogo está sendo construído por estudantes de Engenharia de Software, ele contém vários Easter Eggs a respeito da realidade do curso.
 
+Toda a arquitetura está documentada em nossa [Wiki](https://octa-bit.github.io/ForceGamaAttack/)
+
 ## Sobre a Escolha do Tema
 
 Na tentativa de explorar conceitos que extrapolam os casos comuns de software e também de realizar um trabalho um pouco mais descontraído, foi escolhido um jogo como tema de projeto para a disciplina descrita acima.
 
-Após estudar as tecnologias onde são aplicáveis padrões de projetos (GoFs) e as alternativas de gêneros de jogos, o time optou por contruir um Space Shooter em Java. A escolha de não utilizar uma Game Engine própria para este tipo de aplicação foi proposital, para que o time tenha a experiência de implementar os detalhes de um jogo, como o Game Loop e um renderizador eficiente.
+Após estudar as tecnologias onde são aplicáveis padrões de projetos (GoFs) e as alternativas de gêneros de jogos, o time optou por construir um Space Shooter em Java. A escolha de não utilizar uma Game Engine própria para este tipo de aplicação foi proposital, para que o time tenha a experiência de implementar os detalhes de um jogo, como o Game Loop e um renderizador eficiente.
 
 
 ## Contribuidores

@@ -8,6 +8,7 @@ import entities.Bullet;
 import entities.BulletManager;
 import entities.Enemy;
 import entities.Obstacle;
+import entities.PowerUpFactoryPhase1;
 import entities.Factory;
 import entities.FactoryPhase1;
 import scenes.menu.MenuScene;
@@ -25,7 +26,9 @@ import jplay.GameImage;
 import jplay.Sprite;
 import player.Gun;
 import player.Player;
+import player.PowerUp;
 import player.Structure;
+import player.PowerUp.PowerUpType;
 import jplay.Keyboard;
 import jplay.Sound;
 import jplay.Collision;
@@ -42,6 +45,7 @@ public class GameScene extends Scene {
 	private List<Enemy> enemies = new ArrayList<Enemy>();
 	private List<Obstacle> obstacles = new ArrayList<Obstacle>();
 	private Factory fac = new FactoryPhase1();
+	private PowerUpFactoryPhase1 powerUpFac = new PowerUpFactoryPhase1();
 	private Text pausedText;
 	private Sprite restartImg;
 	private Sprite soundImg;
@@ -52,6 +56,7 @@ public class GameScene extends Scene {
 	private Mouse mouse;
 	private Scene currentLevel;
 	private Scene menuScene;
+	private Sound happySound;
   
 	private BulletManager bullet;
 	private Sprite lifeBarBackground;
@@ -60,6 +65,10 @@ public class GameScene extends Scene {
 	private Sound gameOverSound;
 	private Parallax parallax;
 	private Text pauseText;
+	
+	
+	private List<PowerUp> powerUpList = new ArrayList<PowerUp>();
+	private int powerUpDuration;
 	
 	protected void initialSetup(){
 		keyboard.setBehavior(Keyboard.DOWN_KEY, Keyboard.DETECT_EVERY_PRESS);
@@ -72,6 +81,7 @@ public class GameScene extends Scene {
 	}
 	
 	protected void viewSetup(){
+		happySound = new Sound("src/sounds/Dont_Worry.wav");
 		parallax = new Parallax();
 		parallax.add("src/graphics/img/back_transp.png");
 		parallax.getLayer(0).setVelY(2.0);
@@ -98,6 +108,7 @@ public class GameScene extends Scene {
 		bullet = new BulletManager();
 		gameScore = new Score();
 		pauseText = new Text(630,580,new Font("Comic Sans MS", Font.BOLD, 20), Color.WHITE, "P (PAUSE)");
+		powerUpDuration = 0;
 	}
 
 	private void pauseSetup() {
@@ -140,6 +151,9 @@ public class GameScene extends Scene {
 		renderLifeBar();
 		highScore.draw();
 		scoreHigh.draw();
+		for (PowerUp pwr: powerUpList) {
+			pwr.draw();
+		}
 	}
 	
 	public void updateParallax(){
@@ -150,6 +164,18 @@ public class GameScene extends Scene {
   			parallax.moveLayersStandardY(false);
 		} 
   	}
+	
+	public void powerUpParallax() {
+		parallax = new Parallax();
+		parallax.add("src/graphics/img/back_happy.png");
+		parallax.getLayer(0).setVelY(2.0);
+	}
+	
+	public void undoPowerUp() {
+		parallax = new Parallax();
+		parallax.add("src/graphics/img/back_transp.png");
+		parallax.getLayer(0).setVelY(2.0);
+	}
 	
 	public GameScene(Structure structure, Gun gun) {
 		super();
@@ -192,16 +218,23 @@ public class GameScene extends Scene {
 				Player.getInstance().width = 50;
 				game.transitTo(currentLevel);
 				backgroundSound.stop();
+				happySound.stop();
 			} else if (mouse.isOverObject(exitImg)) {
 				menuScene = new MenuScene();
 				game.pressPause();
 				game.keyboard.removeKey(Keyboard.ENTER_KEY);
 				game.transitTo(menuScene);
 				backgroundSound.stop();
+				happySound.stop();
 			} else if (mouse.isOverObject(soundImg)) {
 				ArrayList<Sound> sounds = new ArrayList<>();
 				sounds.add(backgroundSound);
 				game.changeSoundStatus(sounds);
+				if (game.getSoundConfig() && powerUpDuration > 0) {
+					happySound.play();
+				} else {
+					happySound.stop();
+				}
 			}
 		}
 	}
@@ -280,6 +313,7 @@ public class GameScene extends Scene {
 	public void update(){
 		draw();
 		checkKeyboardPress();
+
 		
 		if (!game.getIsPaused() && !game.getIsGameOver()) {	
 			((Structure) playerImage).moveY(2.5);
@@ -288,7 +322,38 @@ public class GameScene extends Scene {
 			if (fac.isSpawnTime()) {
 				enemies.addAll(fac.factoryMethod());
 			}
+			if (powerUpFac.isSpawnTime()) {
+				powerUpList.add(powerUpFac.factoryMethod());
+			}
 			
+			
+			// PowerUp things
+			Iterator<PowerUp> itrPowerUp = powerUpList.iterator();
+			while(itrPowerUp.hasNext()) {
+				PowerUp pwr = itrPowerUp.next();
+				
+				pwr.move();
+				
+				if (Collision.collided(playerImage, pwr)){
+					if(pwr.getType() == PowerUpType.HAPPINESS) {
+						if (game.getSoundConfig()) {
+							backgroundSound.stop();
+							happySound.play();
+						}
+						powerUpParallax();
+					}
+					powerUpDuration = pwr.getDuration();
+					itrPowerUp.remove();
+					continue;
+				}
+			}
+			
+			powerUpDuration-= 1;
+			if(powerUpDuration == 0) {
+				happySound.stop();
+				backgroundSound.play();
+				undoPowerUp();
+			}
 			// Enemy things
 			Iterator<Enemy> itrEnemy = enemies.iterator();
 			while (itrEnemy.hasNext()) {
@@ -357,6 +422,7 @@ public class GameScene extends Scene {
 		} else if (game.getIsGameOver()) {
 			if (game.getSoundStatus() && !gameOverSound.isExecuting()) {
 				backgroundSound.stop();
+				happySound.stop();
 				gameOverSound.play();
 				
 			}
