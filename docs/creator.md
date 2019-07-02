@@ -16,3 +16,5 @@ public abstract class Factory {
 	public abstract List <Enemy> factoryMethod();
 }
 ```
+
+![diagram](images/creator.png)
