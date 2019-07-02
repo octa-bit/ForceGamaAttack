@@ -8,7 +8,7 @@ O padrão variações protegidas protege elementos das variações em outros ele
 
 Para a criação foi definido que seria utilizado um State que e uma interface que seria utilizado pelo classe Menu e pelos outros estados.
 
-```Java
+```java
 public interface MenuState {
 	void next(Menu menu);
     void prev(Menu menu);

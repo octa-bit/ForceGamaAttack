@@ -4,6 +4,6 @@
 
 ## Indireção
 
-```Java
+```java
 
 ```

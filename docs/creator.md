@@ -8,7 +8,7 @@ Delegar a responsabilidade de criação de objetos é um dos mais comuns dentro 
 
 Durante o desenvolvimento do projeto optamos por utilizar Factory para a criação dos inimigos que é um padrão GOF e também um GRASP.
 
-```Java
+```java
 public abstract class Factory {
 
 	public Factory() {}
@@ -19,7 +19,7 @@ public abstract class Factory {
 }
 ```
 
-```Java
+```java
 public abstract class Enemy extends Sprite{
 	protected int hitPoints;
 	protected int value;
