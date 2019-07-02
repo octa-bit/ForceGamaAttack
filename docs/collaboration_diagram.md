@@ -3,6 +3,7 @@
 |1.0|Luciano Santos|Adição do diagrama de colaboração|
 |1.1|Isaac Borges|Adição do sprite 0.2|
 |1.2|Isaac Borges|Detalhamento|
+|1.3|Luciano Santos|Adição da versão 0.3 do diagrama de colaboração Menu Game|
 
 # Diagramas de Colaboração
 ## 1. Introdução
@@ -18,6 +19,9 @@ O diagrama de colaboração, também conhecido como diagrama de comunicação, �
 #### Versão 0.2
 ![Diagrama de colaboração - Menu Game v0.2](https://i.imgur.com/fFV7XRO.png)
 
+#### Versão 0.3
+![Diagrama de colaboração - Menu Game v0.3](https://i.imgur.com/A9hu47n.png)
+
 ### 2.2.1 Diagrama Sprite
 
 #### Versão 0.1
@@ -25,6 +29,8 @@ O diagrama de colaboração, também conhecido como diagrama de comunicação, �
 
 #### Versão 0.2
 ![Diagrama de colaboração - Sprite v0.2](https://i.imgur.com/6gbSLao.png)
+
+
 
 
 
