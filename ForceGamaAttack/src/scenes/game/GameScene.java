@@ -66,6 +66,7 @@ public class GameScene extends Scene {
 	private Parallax parallax;
 	private Text pauseText;
 	
+	
 	private List<PowerUp> powerUpList = new ArrayList<PowerUp>();
 	private int powerUpDuration;
 	
@@ -80,6 +81,7 @@ public class GameScene extends Scene {
 	}
 	
 	protected void viewSetup(){
+		happySound = new Sound("src/sounds/Dont_Worry.wav");
 		parallax = new Parallax();
 		parallax.add("src/graphics/img/back_transp.png");
 		parallax.getLayer(0).setVelY(2.0);
@@ -216,16 +218,23 @@ public class GameScene extends Scene {
 				Player.getInstance().width = 50;
 				game.transitTo(currentLevel);
 				backgroundSound.stop();
+				happySound.stop();
 			} else if (mouse.isOverObject(exitImg)) {
 				menuScene = new MenuScene();
 				game.pressPause();
 				game.keyboard.removeKey(Keyboard.ENTER_KEY);
 				game.transitTo(menuScene);
 				backgroundSound.stop();
+				happySound.stop();
 			} else if (mouse.isOverObject(soundImg)) {
 				ArrayList<Sound> sounds = new ArrayList<>();
 				sounds.add(backgroundSound);
 				game.changeSoundStatus(sounds);
+				if (game.getSoundConfig() && powerUpDuration > 0) {
+					happySound.play();
+				} else {
+					happySound.stop();
+				}
 			}
 		}
 	}
@@ -327,9 +336,10 @@ public class GameScene extends Scene {
 				
 				if (Collision.collided(playerImage, pwr)){
 					if(pwr.getType() == PowerUpType.HAPPINESS) {
-						backgroundSound.stop();
-						happySound = new Sound("src/sounds/Dont_Worry.wav");
-						happySound.play();
+						if (game.getSoundConfig()) {
+							backgroundSound.stop();
+							happySound.play();
+						}
 						powerUpParallax();
 					}
 					powerUpDuration = pwr.getDuration();
@@ -412,6 +422,7 @@ public class GameScene extends Scene {
 		} else if (game.getIsGameOver()) {
 			if (game.getSoundStatus() && !gameOverSound.isExecuting()) {
 				backgroundSound.stop();
+				happySound.stop();
 				gameOverSound.play();
 				
 			}
