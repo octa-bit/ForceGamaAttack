@@ -233,6 +233,9 @@ Ao final do jogo, seja por vitória ou derrota, há um fluxo condicional, onde a
 ##### Diagrama Sprite
 ![Diagrama de colaboração - Sprite v0.2](https://i.imgur.com/6gbSLao.png)
 
+#### Versão 1.1
+#### Diagrama MenuGame
+![Diagrama de colaboração - Menu Game v0.3](https://i.imgur.com/A9hu47n.png)
 
 ### 6.4 Diagrama de Atividades
 
