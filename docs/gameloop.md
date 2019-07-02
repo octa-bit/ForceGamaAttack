@@ -1,6 +1,6 @@
 |Versão|Autor|Descrição|
 |------|-----|---------|
-|1.0|João Vítor|Score|
+|1.0|João Vítor|Gameloop|
 
 ## Gameloop: Iterator
 
