@@ -8,7 +8,7 @@ Para implementação da nave do player foi implementado o padrão GOFs **Singlet
 
 De acordo com Erich Gamma, o singleton visa garantir que uma classe tenha somente uma instância e fornece um ponto global de acesso para a mesma.
 
-O **Singleton** foi escolhida para que a nave do jogador tenha apenas uma INSTANCE da sprite.
+O **Singleton** foi escolhida para que a nave do jogador tenha apenas uma INSTANCE da sprite e que essa instância seja apenas usada para a nave.
 
 ![diagram](images/code_spaceship_singleton.PNG)
 
